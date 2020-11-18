@@ -9,5 +9,9 @@
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="src\Enums\" />
+  </ItemGroup>
+
 
 </Project>
