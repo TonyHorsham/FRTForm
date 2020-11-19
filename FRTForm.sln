@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30709.132
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FRTForm", "FRTForm.csproj", "{4EFE1395-22B4-4783-82A1-7E5E8F8345F4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{449C40CF-2866-4A0D-8807-267AC4BB4FE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FRTFormTests", "..\FRTFormTests\FRTFormTests.csproj", "{7BD36D97-C438-4D99-A918-08303EAFD863}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{4EFE1395-22B4-4783-82A1-7E5E8F8345F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EFE1395-22B4-4783-82A1-7E5E8F8345F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EFE1395-22B4-4783-82A1-7E5E8F8345F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BD36D97-C438-4D99-A918-08303EAFD863}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BD36D97-C438-4D99-A918-08303EAFD863}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BD36D97-C438-4D99-A918-08303EAFD863}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BD36D97-C438-4D99-A918-08303EAFD863}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7BD36D97-C438-4D99-A918-08303EAFD863} = {449C40CF-2866-4A0D-8807-267AC4BB4FE7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B56011FE-F9AE-48E1-91B0-5F4E40175FBE}
