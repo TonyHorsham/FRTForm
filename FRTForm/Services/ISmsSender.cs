@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace FlexResForm.Services
+namespace FRTForm.Services
 {
     public interface ISmsSender
     {

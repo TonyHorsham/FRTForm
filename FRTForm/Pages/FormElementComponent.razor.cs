@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using FlexResForm.Models;
-using FlexResForm.Settings;
-using FlexResForm.Utilities;
+using FRTForm.Models;
+using FRTForm.Settings;
+using FRTForm.Utilities;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
-namespace FlexResForm.Pages
+namespace FRTForm.Pages
 {
     public partial class FormElementComponent
     {

@@ -1,10 +1,10 @@
 ﻿// 20 08 2020 Created by Tony Horsham 17:13
 // Copyright T & D H Family Trust
 
-using FlexResForm.Enums;
-using FlexResForm.Models;
+using FRTForm.Enums;
+using FRTForm.Models;
 
-namespace FlexResForm.BlockTime.Models
+namespace FRTForm.BlockTime.Models
 {
     public class BlockTimeElement :IFormElement
     {

@@ -2,9 +2,9 @@
 // Copyright T & D H Family Trust
 
 using System;
-using FlexResForm.BlockTime.Models;
+using FRTForm.BlockTime.Models;
 
-namespace FlexResForm.BlockTime.Settings
+namespace FRTForm.BlockTime.Settings
 {
     /// <summary>
     /// Unique for each request

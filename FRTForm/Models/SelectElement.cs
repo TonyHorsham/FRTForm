@@ -3,9 +3,9 @@
 
 using System;
 using System.Collections.Generic;
-using FlexResForm.Enums;
+using FRTForm.Enums;
 
-namespace FlexResForm.Models
+namespace FRTForm.Models
 {
     public class SelectElement : IFormElement
     {

@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using FlexResForm.BlockTime.Models;
-using FlexResForm.BlockTime.Settings;
-using FlexResForm.BlockTime.Utilities;
-using FlexResForm.Models;
-using FlexResForm.Settings;
-using FlexResForm.Utilities;
+using FRTForm.BlockTime.Models;
+using FRTForm.BlockTime.Settings;
+using FRTForm.BlockTime.Utilities;
+using FRTForm.Models;
+using FRTForm.Settings;
+using FRTForm.Utilities;
 using Microsoft.AspNetCore.Components;
 
-namespace FlexResForm.Pages
+namespace FRTForm.Pages
 {
     public partial class BlockTimeComponent
     {

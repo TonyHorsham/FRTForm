@@ -4,10 +4,10 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using FlexResForm.Models;
-using FlexResForm.Settings;
+using FRTForm.Models;
+using FRTForm.Settings;
 
-namespace FlexResForm.Utilities
+namespace FRTForm.Utilities
 {
     /// <summary>
     /// .HandleClickAsync used to process change to individual elements;

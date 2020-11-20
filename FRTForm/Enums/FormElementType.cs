@@ -1,7 +1,7 @@
 ﻿// 18 06 2020 Created by Tony Horsham 15:35
 // Copyright T & D H Family Trust
 
-namespace FlexResForm.Enums
+namespace FRTForm.Enums
 {
     public enum FormElementType
     {

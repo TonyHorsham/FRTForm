@@ -1,10 +1,9 @@
 ﻿// 11 07 2020 Created by Tony Horsham 14:04
 // Copyright T & D H Family Trust
 
-using System;
-using FlexResForm.Enums;
+using FRTForm.Enums;
 
-namespace FlexResForm.Models
+namespace FRTForm.Models
 {
     public class TitleElement : IFormElement
     {

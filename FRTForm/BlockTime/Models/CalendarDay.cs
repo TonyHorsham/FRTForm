@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FlexResForm.BlockTime.Models
+namespace FRTForm.BlockTime.Models
 {
     /// <summary>
     /// This is a unique reference for one Calendar for one Location for one DayDate.

@@ -1,9 +1,9 @@
 ﻿// 19 09 2020 Created by Tony Horsham 14:06
 // Copyright T & D H Family Trust
 
-using FlexResForm.BlockTime.Settings;
+using FRTForm.BlockTime.Settings;
 
-namespace FlexResForm.Settings
+namespace FRTForm.Settings
 {
     /// <summary>
     ///  Generally just 'passed through' rather than any values used in the project

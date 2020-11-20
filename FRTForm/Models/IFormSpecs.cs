@@ -2,9 +2,9 @@
 // Copyright T & D H Family Trust
 
 using System.Collections.Generic;
-using FlexResForm.Utilities;
+using FRTForm.Utilities;
 
-namespace FlexResForm.Models
+namespace FRTForm.Models
 {
     /// <summary>
     /// An application will have named forms and code to launch those forms.

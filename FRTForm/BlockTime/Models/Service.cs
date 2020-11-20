@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FlexResForm.BlockTime.Models
+namespace FRTForm.BlockTime.Models
 {
     public readonly struct Service
     {

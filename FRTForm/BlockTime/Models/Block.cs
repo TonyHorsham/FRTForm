@@ -1,8 +1,7 @@
 ﻿using System;
-using FlexResForm.BlockTime.Enums;
-using FlexResForm.Models;
+using FRTForm.BlockTime.Enums;
 
-namespace FlexResForm.BlockTime.Models
+namespace FRTForm.BlockTime.Models
 {
     /// <summary>
     /// Basic building block of booking system.

@@ -2,10 +2,10 @@
 // Copyright T & D H Family Trust
 
 using System.Collections.Generic;
-using FlexResForm.Models;
-using FlexResForm.Services;
+using FRTForm.Models;
+using FRTForm.Services;
 
-namespace FlexResForm.Settings
+namespace FRTForm.Settings
 {
     public interface IApplicationSettings
     {

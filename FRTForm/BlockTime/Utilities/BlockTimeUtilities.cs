@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using FlexResForm.BlockTime.Enums;
-using FlexResForm.BlockTime.Models;
+using FRTForm.BlockTime.Enums;
+using FRTForm.BlockTime.Models;
 
-namespace FlexResForm.BlockTime.Utilities
+namespace FRTForm.BlockTime.Utilities
 {
     public static class BlockTimeUtilities
     {
@@ -43,8 +43,8 @@ namespace FlexResForm.BlockTime.Utilities
         /// <param name="displayBlocks"></param>
         /// <param name="block"></param>
         /// <returns></returns>
-        public static (DateTimeOffset startLimit, DateTimeOffset endLimit) GetLimits(List<FlexResForm.BlockTime.Models.Block> displayBlocks,
-            FlexResForm.BlockTime.Models.Block block)
+        public static (DateTimeOffset startLimit, DateTimeOffset endLimit) GetLimits(List<Block> displayBlocks,
+            Block block)
         {
             // need to find surrounding blocks for limits
             // first find the index of this block

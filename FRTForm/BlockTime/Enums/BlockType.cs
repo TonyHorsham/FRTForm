@@ -1,4 +1,4 @@
-﻿namespace FlexResForm.BlockTime.Enums
+﻿namespace FRTForm.BlockTime.Enums
 {
     /// <summary>
     /// Note there are no overlapping blocks

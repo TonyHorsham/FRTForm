@@ -2,9 +2,9 @@
 // Copyright T & D H Family Trust
 
 using System;
-using FlexResForm.Enums;
+using FRTForm.Enums;
 
-namespace FlexResForm.Models
+namespace FRTForm.Models
 {
     /// <summary>
     /// Interface to hold details of form elements

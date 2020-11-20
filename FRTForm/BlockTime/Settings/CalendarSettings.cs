@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using FlexResForm.BlockTime.Models;
+using FRTForm.BlockTime.Models;
 
-namespace FlexResForm.BlockTime.Settings
+namespace FRTForm.BlockTime.Settings
 {
     public class CalendarSettings
     {
