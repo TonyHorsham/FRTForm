@@ -1,5 +1,5 @@
 ﻿// 27 06 2020 Created by Tony Horsham 07:43
-// Copyright T & D H Family Trust
+
 
 using System;
 using System.Collections.Generic;

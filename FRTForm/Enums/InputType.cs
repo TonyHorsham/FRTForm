@@ -1,5 +1,5 @@
 ﻿// 11 06 2020 Created by Tony Horsham 13:59
-// Copyright T & D H Family Trust
+
 
 namespace FRTForm.Enums
 {
