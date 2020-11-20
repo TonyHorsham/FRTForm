@@ -1,0 +1,69 @@
+﻿@using FlexResForm.Models
+@using FlexResForm.Settings
+@using FlexResForm.Utilities
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Web
+@implements IDisposable
+
+<EditForm Model="Elements" OnSubmit="@FormSubmitted" id="@FormId">
+    @foreach (var element in Elements)
+    {
+        _currentElement = element;
+        <FormElementComponent AllSettings="AllSettings" Elements="Elements" 
+                              FormProcessor="FormProcessor" ElementName="@element.Name"
+                               FormDisplayOnly="@_displayOnly" OnCloseCallback="@OnCloseCallback" 
+                               OnDeleteCallback="@(OnDeleteCallback)" OnEditCallback="@(OnEditCallback)"
+                               OnClickCallback="@(HandleClick)"></FormElementComponent>
+    }
+</EditForm>
+
+@code {
+    [Parameter] public IAllSettings AllSettings { get; set; }
+    [Parameter] public List<IFormElement> Elements { get; set; }
+    [Parameter] public IFormProcessor FormProcessor { get; set; }
+    [Parameter] public string FormId { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnCloseCallback { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnEditCallback { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnDeleteCallback { get; set; }
+    [Parameter]//general click events from FormElementComponent
+    public EventCallback<string> OnClickCallback { get; set; }
+    [Parameter]
+    public EventCallback<EditContext> OnSubmitCallback { get; set; }
+
+    private IFormElement _currentElement;
+    private bool _displayOnly;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        _displayOnly = false;
+        FormProcessor.ElementsUpdated += this.ElementsUpdatedEventHandler;
+    }
+    
+    async Task HandleClick(string elementName)
+    {
+        //************ Needs to pass up to the caller, not deal with it here
+        await OnClickCallback.InvokeAsync(elementName);
+    }
+
+    async Task FormSubmitted()
+    {
+        // invoke the call back
+        var context = new EditContext(Elements);
+        await OnSubmitCallback.InvokeAsync(context);
+    }
+    public void ElementsUpdatedEventHandler(object sender, System.EventArgs e)
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        FormProcessor.ElementsUpdated -= this.ElementsUpdatedEventHandler;
+    }
+
+}

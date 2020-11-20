@@ -1,0 +1,187 @@
+﻿@using Models
+@using Enums
+@*@using Common.Settings*@
+@using Utilities
+@using System.Reflection
+@using System.ComponentModel.DataAnnotations
+@using FlexResForm.BlockTime.Models
+@using Microsoft.AspNetCore.Components.Web
+@*@inject SettingsService SettingsService*@
+@*@*inject IModalService ModalService*@
+
+@if (_formElement.Type == FormElementType.Input)
+{
+    var inputElement = (InputElement) _formElement;
+    string inputType = inputElement.InputType.ToString().ToLower();
+    if (!inputElement.NotVisible)
+    {
+        <div class="swforms-formgroup-stack">
+            @if (inputElement.Label != null)
+            {
+                <label style="margin: 0">@inputElement.Label
+                    @if (inputElement.Required)
+                    {
+                        <span style="color: red"> *</span>
+                    }
+                    </label>
+            }
+            <input type="@inputType" @onchange="UpdateElements"  disabled="@inputElement.NotEnabled"
+                   placeholder="@inputElement.Placeholder">
+            @if (inputElement.ErrorMsg != null)
+            {
+                <p style="color: red">@_formElement.ErrorMsg</p>
+            }
+        </div>
+    }
+}
+else if (_formElement.Type == FormElementType.Select)
+{
+    var selectElement = (SelectElement)_formElement;
+    if (!selectElement.NotVisible)
+    {
+        <div class="swcal-formgroup">
+            <div class="swcal-form-icon material-icons">@selectElement.Icon</div>
+            <select name="" @onchange="UpdateElements" disabled="@selectElement.NotEnabled"
+                    value="@selectElement.Value">
+                @foreach (var option in @selectElement.Options)
+                {
+                    <option value="@option.Key.ToString()">@option.Value</option>
+                }
+            </select>
+        </div>
+    }
+}
+else if (_formElement.Type == FormElementType.Button)
+{
+    var buttonElement = (ButtonElement) _formElement;
+    if (!buttonElement.NotVisible)
+    {
+        <button type="button" class="@buttonElement.ButtonClass" @onclick="HandleClick"
+                disabled="@buttonElement.NotEnabled">
+            @buttonElement.Value
+        </button>
+    }
+}
+else if (_formElement.Type == FormElementType.TextArea)
+{
+    var textAreaElement = (TextAreaElement)_formElement;
+    if (!textAreaElement.NotVisible)
+    {
+        // if notEnabled, do no show placeholder
+        if (textAreaElement.NotEnabled)
+        {
+            textAreaElement.Placeholder = "";
+        }
+        <div class="swcal-formgroup">
+            <div class="swcal-form-icon material-icons">@textAreaElement.Icon</div>
+            <textarea placeholder="@textAreaElement.Placeholder"  disabled="@textAreaElement.NotEnabled">@textAreaElement.Value</textarea>
+            <div class="swcal-message-add swcal-formheader-icon material-icons" @onclick="HandleClick">@textAreaElement.RightIcon</div>
+        </div>
+    }
+}
+else if (_formElement.Type == FormElementType.BlockTime)
+{
+    var timeElement = (BlockTimeElement) _formElement;
+    if (!timeElement.NotVisible)
+    {
+        var isStart = timeElement.IsStart;
+        var style = "swforms-formgroup";
+        // timeElement.NotEnabled overrides FormDisplayOnly
+        var displayOnly = timeElement.NotEnabled;
+        if (!displayOnly)
+        {
+            displayOnly = FormDisplayOnly;
+        }
+        // icon takes precedent (so label can be used for accessibility)
+        if (timeElement.DisplayIcon)
+        {
+            if (timeElement.IconStacked)
+            {
+                style = "swforms-formgroup-stack";
+            }
+            <div class="@style">
+                <div class="swcal-form-icon material-icons">@timeElement.Icon</div>
+                <BlockTimeComponent AllSettings="AllSettings" Elements="Elements" 
+                                    FormProcessor="FormProcessor" IsStart="@isStart"
+                       DisplayOnly="displayOnly" ></BlockTimeComponent>
+            </div>
+        }
+        else if(timeElement.DisplayLabel)
+        {
+            if (timeElement.LabelStacked)
+            {
+                style = "swforms-formgroup-stack";
+            }
+            <div class="@style">
+                @*//TODO Label needs spacing when adjacent to field*@
+                <label style="margin: 0">@timeElement.Label</label>
+                <BlockTimeComponent AllSettings="AllSettings" Elements="Elements" 
+                                    FormProcessor="FormProcessor" IsStart="@isStart"
+                       DisplayOnly="displayOnly" ></BlockTimeComponent>
+            </div>
+        }
+        else
+        {
+            <div class="@style">
+                <BlockTimeComponent AllSettings="AllSettings" Elements="Elements" 
+                                    FormProcessor="FormProcessor" IsStart="@isStart"
+                       DisplayOnly="displayOnly"></BlockTimeComponent>
+            </div>
+        }
+    }
+}
+else if (_formElement.Type == FormElementType.Title)
+{
+    @if (!_formElement.NotVisible)
+    {
+        <div class="swcal-formgroup">@_formElement.Value</div>
+    }
+}
+else if (_formElement.Type == FormElementType.SubmitAndClose)
+{
+    var header = (SubmitAndCloseElement)_formElement;
+    @if (!header.NotVisible)
+    {
+        <div class="swforms-formheader" id="submit">
+            <input type="submit" class="swforms-btn-primary"
+                   disabled="@header.NotEnabled" value="@header.SubmitButtonText"/>
+            <div class="swforms-formheader-icon material-icons"
+                 @onclick="OnCloseCallback">clear</div>
+        </div>
+        @if (_formElement.ErrorMsg != null)
+        {
+            <p style="color: red">@_formElement.ErrorMsg</p>
+        }
+    }
+}
+else if (_formElement.Type == FormElementType.EditDeleteClose)
+{
+    var header = (EditDeleteCloseElement)_formElement;
+    if (!header.NotVisible)
+    {
+        <div class="swforms-formheader" id="edit">
+            <div class="swcal-formheader-icon material-icons"
+                 @onclick="OnEditCallback">mode_edit</div>
+            <div class="swcal-formheader-icon material-icons"
+                 @onclick="OnDeleteCallback">delete_outline</div>
+            <div class="swcal-formheader-icon material-icons"
+                 @onclick="OnCloseCallback">clear</div>
+        </div>
+    }
+}
+else if (_formElement.Type == FormElementType.Close)
+{
+    var header = (CloseElement)_formElement;
+    if (!header.NotVisible)
+    {
+        <div class="swforms-formheader" id="close">
+            <p></p>
+            <div class="swforms-formheader-icon material-icons"
+                 @onclick="OnCloseCallback">clear</div>
+        </div>
+    }
+}
+
+@code {
+    
+}

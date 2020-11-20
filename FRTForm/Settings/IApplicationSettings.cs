@@ -1,0 +1,17 @@
+﻿// 19 09 2020 Created by Tony Horsham 13:56
+// Copyright T & D H Family Trust
+
+using System.Collections.Generic;
+using FlexResForm.Models;
+using FlexResForm.Services;
+
+namespace FlexResForm.Settings
+{
+    public interface IApplicationSettings
+    {
+        public string DataApi { get; }
+        public ISmsSender SmsSender { get; }
+        public IEmailSender EmailSender { get; }
+        public Dictionary<string, IFormSpecs> AppFormSpecs { get; }
+    }
+}

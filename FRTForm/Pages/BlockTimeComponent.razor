@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+
+<div class="swcal-timespan">@_valueString</div>
+@if (@*IsAdmin &&*@ !DisplayOnly)
+{
+    @if (_enablePlus30)
+    {
+        <div class="swcal-plus material-icons"
+             @onclick="@(e => ChangeTime(30))">forward_30</div>
+    }
+    else
+    {
+        <div class="swcal-plus swcal-disable material-icons">forward_30</div>
+    }
+    @if (_enablePlus5)
+    {
+        <div class="swcal-plus material-icons"
+             @onclick="@(e => ChangeTime(5))">forward_5</div>
+    }
+    else
+    {
+        <div class="swcal-plus swcal-disable material-icons">forward_5</div>
+    }
+    @if (_enableMinus5)
+    {
+        <div class="swcal-minus material-icons"
+             @onclick="@(e => ChangeTime(-5))">replay_5</div>
+    }
+    else
+    {
+        <div class="swcal-plus swcal-disable material-icons">replay_5</div>
+    }
+    @if (_enableMinus30)
+    {
+        <div class="swcal-plus material-icons"
+             @onclick="@(e => ChangeTime(-30))">replay_30</div>
+    }
+    else
+    {
+        <div class="swcal-plus swcal-disable material-icons">replay_30</div>
+    }
+}
+
+@code {
+
+}
+
