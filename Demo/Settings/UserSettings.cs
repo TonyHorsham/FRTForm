@@ -1,5 +1,4 @@
 ﻿// 21 11 2020 Created by Tony Horsham 16:06
-// Copyright T & D H Family Trust
 
 using System;
 using FRTForm.BlockTime.Models;
