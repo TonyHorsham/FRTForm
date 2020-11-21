@@ -8,8 +8,4 @@
     <ProjectReference Include="..\FRTForm\FRTForm.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Settings\" />
-  </ItemGroup>
-
 </Project>
