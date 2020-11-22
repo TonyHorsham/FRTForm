@@ -1,4 +1,6 @@
 ﻿@page "/"
+@using Demo.FormClasses.Settings
+@using Common.Services
 
 <h1>Demo web app for FRTForm</h1>
 
@@ -11,8 +13,8 @@ Click the link in the menu bar to display a demonstration form using FRTForm
     {
         base.OnInitialized();
         //var formSettings = FlexResFormSettingsSetup.FlexResFormSettings;
-        //var appSettings = new ApplicationSettings("url", new DummySmsSender(),
-        //    new DummyEmailSender(), formSettings.FormSpecs, 0.0, 3.5);
+        var appSettings = new ApplicationSettings("url", new DummySmsSender(),
+            new DummyEmailSender(), formSettings.FormSpecs, 0.0, 3.5);
         //var calendarSettings = new FlexResForm.BlockTime.Settings.CalendarSettings
         //{
         //    DefaultBlockDuration = 60,
