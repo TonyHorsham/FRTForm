@@ -12,4 +12,8 @@
     <Folder Include="FormClasses\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Blazored.Modal" Version="5.1.0" />
+  </ItemGroup>
+
 </Project>
