@@ -3,7 +3,7 @@
 using System;
 using FRTForm.BlockTime.Models;
 
-namespace Demo.Settings
+namespace Demo.FormClasses.Settings
 {/// <summary>
     /// If user changes settings in a session,
     ///  the changes need to be stored.

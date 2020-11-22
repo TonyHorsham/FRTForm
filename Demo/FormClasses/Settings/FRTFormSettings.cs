@@ -4,7 +4,7 @@
 using System.Collections.Generic;
 using FRTForm.Models;
 
-namespace Demo.Settings
+namespace Demo.FormClasses.Settings
 {
     public readonly struct FRTFormSettings
     {

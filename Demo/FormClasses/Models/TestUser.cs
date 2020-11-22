@@ -2,7 +2,7 @@
 
 using FRTForm.BlockTime.Models;
 
-namespace Demo.Models
+namespace Demo.FormClasses.Models
 {
     public readonly struct TestUser : IUser
     {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using FRTForm.Models;
 using FRTForm.Utilities;
 
-namespace Demo.Models
+namespace Demo.FormClasses.Models
 {
     public class DemoFormSpecs : IFormSpecs
     {

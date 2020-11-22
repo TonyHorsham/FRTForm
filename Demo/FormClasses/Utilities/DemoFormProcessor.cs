@@ -7,7 +7,7 @@ using FRTForm.Models;
 using FRTForm.Settings;
 using FRTForm.Utilities;
 
-namespace Demo.Utilities
+namespace Demo.FormClasses.Utilities
 {
     public class DemoFormProcessor : IFormProcessor
     {
