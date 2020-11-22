@@ -8,5 +8,77 @@
                OnSubmitCallback="@(HandleSubmit)"></FormComponent>
 
 @code {
+    [Parameter] public IAllSettings AllSettings { get; set; }
 
+    private string _formSpecsName = "demoForm";
+    private IFormSpecs _formSpecs;
+    private List<IFormElement> _elements;
+    private IFormProcessor _formProcessor;
+    private string _formId;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        var formSpecs = AllSettings.ApplicationSettings.AppFormSpecs;
+        if (!formSpecs.ContainsKey(_formSpecsName))
+        {
+            var errorMessage = "AllSettings.ApplicationSettings.AppFormSpecs ";
+            errorMessage += "does not contain formSpecs named " + _formSpecsName;
+            throw new ArgumentException(errorMessage);
+        }
+        _formSpecs = AllSettings.ApplicationSettings.AppFormSpecs[_formSpecsName];
+        _elements = new List<IFormElement>();
+        // need to avoid passing elements by reference
+        // Because FormSpecs are static
+        foreach (var element in _formSpecs.Elements)
+        {
+            var copy = element.Clone();
+            _elements.Add(copy);
+        }
+        _formProcessor = _formSpecs.FormProcessor;
+        _formId = _formSpecs.FormId;
+    }
+    void Delete()
+    {
+
+    }
+    void Edit()
+    {
+
+    }
+    async Task HandleClick(string elementName)
+    {
+        // may want to call another form, depending on element
+        var currentElement = _elements.FirstOrDefault(e => e.Name == elementName);
+        await _formSpecs.FormProcessor.HandleClickAsync(_elements, elementName, AllSettings);
+    }
+    void HandleSubmit(EditContext editContext)
+    {
+        // submit only supposed to be enabled if all data valid
+        // BUT should check for error messages in all elements
+        var valid = true;
+        foreach (var element in _elements)
+        {
+            if (!string.IsNullOrEmpty(element.ErrorMsg))
+            {
+                valid = false;
+            }
+        }
+        if (valid)
+        {
+            _formSpecs.FormProcessor.FormSubmittedAsync(_elements, AllSettings);
+            ModalResult result = ModalResult.Ok("");
+            BlazoredModal.Close();// if all data changes handled in this buttonClass, no need to pass a param back
+        }
+        else
+        {
+            // else assume that element error messages are displayed
+            // in any event, userId will only have option of fixing errors or closing the form
+        }
+    }
+
+    void Close()
+    {
+        BlazoredModal.Cancel();
+    }
 }
