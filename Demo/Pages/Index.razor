@@ -2,6 +2,7 @@
 @using Demo.FormClasses.Settings
 @using Common.Services
 @using Demo.FormClasses.Utilities
+@using FRTForm.BlockTime.Enums
 @using FRTForm.BlockTime.Models
 
 @inject IModalService Modal
@@ -30,6 +31,12 @@ Click the link in the menu bar to display a demonstration form using FRTForm
             Services = new List<Service>()// needs to be valued after data available
         };
         _allSettings = new AllSettings(appSettings, calendarSettings);
+        var calendarId = "anything";
+        var calendarDay= new CalendarDay(calendarId, DateTimeOffset.Now, 1);
+        var block = new Block(1, DateTimeOffset.Now, TimeSpan.FromHours(1), 1,
+            BlockType.Available, calendarId);
+        _allSettings.CurrentBlockParameters =  new CurrentBlockParameters(block, calendarDay,
+            "", false, DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
     }
 
     private void HandleClick()
