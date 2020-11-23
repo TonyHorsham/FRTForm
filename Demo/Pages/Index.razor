@@ -4,7 +4,11 @@
 @using Demo.FormClasses.Utilities
 @using FRTForm.BlockTime.Models
 
+@inject IModalService Modal
+
 <h1>Demo web app for FRTForm</h1>
+
+<button type="button" @onclick="HandleClick">Launch DemoForm</button>
 
 Click the link in the menu bar to display a demonstration form using FRTForm
 
@@ -28,4 +32,10 @@ Click the link in the menu bar to display a demonstration form using FRTForm
         _allSettings = new AllSettings(appSettings, calendarSettings);
     }
 
+    private void HandleClick()
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(DemoForm.AllSettings), _allSettings);
+        Modal.Show<DemoForm>("", parameters);
+    }
 }
