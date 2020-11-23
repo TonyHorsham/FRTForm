@@ -8,6 +8,7 @@
                OnSubmitCallback="@(HandleSubmit)"></FormComponent>
 
 @code {
+    [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
     [Parameter] public IAllSettings AllSettings { get; set; }
 
     private string _formSpecsName = "demoForm";
