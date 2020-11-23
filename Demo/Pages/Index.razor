@@ -2,6 +2,7 @@
 @using Demo.FormClasses.Settings
 @using Common.Services
 @using Demo.FormClasses.Utilities
+@using FRTForm.BlockTime.Models
 
 <h1>Demo web app for FRTForm</h1>
 
@@ -16,16 +17,15 @@ Click the link in the menu bar to display a demonstration form using FRTForm
         var formSettings = FormSpecsSetup.FRTFormSettings;
         var appSettings = new ApplicationSettings("url", new DummySmsSender(),
             new DummyEmailSender(), formSettings.FormSpecs);
-        _allSettings = new AllSettingsCalendar(appSettings, null);
-        //var calendarSettings = new FlexResForm.BlockTime.Settings.CalendarSettings
-        //{
-        //    DefaultBlockDuration = 60,
-        //    MaxBlockDuration = 120,
-        //    MinBlockDuration = 30,
-        //    Services = new List<FlexResForm.BlockTime.Models.Service>()// needs to be valued after data available
-        //};
-
-        //_allSettings = new AllSettingsCalendar(appSettings, calendarSettings);
+        // for a form not using BlockTime, calendarSettings can be null
+        var calendarSettings = new CalendarSettings
+        {
+            DefaultBlockDuration = 60,
+            MaxBlockDuration = 120,
+            MinBlockDuration = 30,
+            Services = new List<Service>()// needs to be valued after data available
+        };
+        _allSettings = new AllSettings(appSettings, calendarSettings);
     }
 
 }
