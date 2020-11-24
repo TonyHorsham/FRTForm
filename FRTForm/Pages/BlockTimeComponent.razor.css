@@ -1,0 +1,36 @@
+﻿.swcal-timespan {
+}
+
+.swcal-plus, .swcal-minus, .swcal-time-interval {
+    font-size: 0.95rem;
+    line-height: 0.9rem;
+    text-align: center;
+}
+
+.swcal-time-interval {
+    font-size: 0.85rem;
+}
+
+.swcal-minus {
+    line-height: 0.7rem;
+}
+
+.swcal-plus, .swcal-minus {
+    font-weight: 200;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.swcal-hidden {
+    color: white;
+    cursor: default;
+}
+
+.swcal-main .blazored-modal-header {
+    padding-bottom: 0;
+}
+
+.swcal-disable {
+    color: #eee;
+    cursor: auto;
+}
