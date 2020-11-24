@@ -43,6 +43,10 @@ Click the link in the menu bar to display a demonstration form using FRTForm
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(DemoForm.AllSettings), _allSettings);
-        Modal.Show<DemoForm>("", parameters);
+        var options = new ModalOptions()
+        {
+            HideCloseButton = true
+        };
+        Modal.Show<DemoForm>("", parameters, options);
     }
 }
