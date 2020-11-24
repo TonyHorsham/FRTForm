@@ -5,6 +5,7 @@
 @using Microsoft.AspNetCore.Components.Web
 @implements IDisposable
 
+<link href="_content/FRTForm/FRTForm.bundle.scp.css" rel="stylesheet">
 <EditForm Model="Elements" OnSubmit="@FormSubmitted" id="@FormId">
     @foreach (var element in Elements)
     {
