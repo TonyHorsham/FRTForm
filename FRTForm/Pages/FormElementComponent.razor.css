@@ -11,51 +11,6 @@
     padding-bottom: 1.2rem;
 }
 
-.swforms-form-icon {
-    padding-right: 0.7rem;
-}
-
-.swforms-timespan {
-}
-
-.swforms-plus, .swforms-minus, .swforms-time-interval {
-    font-size: 0.95rem;
-    line-height: 0.9rem;
-    text-align: center;
-}
-
-.swforms-time-interval {
-    font-size: 0.85rem;
-}
-
-.swforms-minus {
-    line-height: 0.7rem;
-}
-
-.swforms-plus, .swforms-minus {
-    font-weight: 200;
-    font-size: 2rem;
-    cursor: pointer;
-}
-
-.swforms-hidden {
-    color: white;
-    cursor: default;
-}
-
-.swforms-message-add {
-    padding: 0 0 0 0.5rem;
-}
-
-.swforms-main .blazored-modal-header {
-    padding-bottom: 0;
-}
-
-.swforms-disable {
-    color: #eee;
-    cursor: auto;
-}
-
 .swforms-formheader {
     padding-bottom: 1rem;
     display: flex;
@@ -91,17 +46,10 @@ button:disabled,
     background-color: #a9a9a9;
 }
 
-.swforms-clickable {
-    cursor: pointer;
-}
 /*bootstrap*/
 button:not(:disabled),
 [type="button"]:not(:disabled),
 [type="reset"]:not(:disabled),
 [type="submit"]:not(:disabled) {
     cursor: pointer;
-}
-
-.swforms-panel {
-    border: 1px solid blue;
 }
