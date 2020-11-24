@@ -1,0 +1,5 @@
+﻿/*FRTForm is designed to not use the header*/
+
+.blazored-modal-header {
+    padding: 0;
+}
