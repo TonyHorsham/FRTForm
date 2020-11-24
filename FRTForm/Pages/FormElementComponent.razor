@@ -15,7 +15,7 @@
     string inputType = inputElement.InputType.ToString().ToLower();
     if (!inputElement.NotVisible)
     {
-        <div class="swforms-formgroup-stack">
+        <div class="frtform-formgroup-stack">
             @if (inputElement.Label != null)
             {
                 <label style="margin: 0">@inputElement.Label
@@ -39,8 +39,8 @@ else if (_formElement.Type == FormElementType.Select)
     var selectElement = (SelectElement)_formElement;
     if (!selectElement.NotVisible)
     {
-        <div class="swforms-formgroup">
-            <div class="swforms-form-icon material-icons">@selectElement.Icon</div>
+        <div class="frtform-formgroup">
+            <div class="frtform-form-icon material-icons">@selectElement.Icon</div>
             <select name="" @onchange="UpdateElements" disabled="@selectElement.NotEnabled"
                     value="@selectElement.Value">
                 @foreach (var option in @selectElement.Options)
@@ -72,10 +72,10 @@ else if (_formElement.Type == FormElementType.TextArea)
         {
             textAreaElement.Placeholder = "";
         }
-        <div class="swforms-formgroup">
-            <div class="swforms-form-icon material-icons">@textAreaElement.Icon</div>
+        <div class="frtform-formgroup">
+            <div class="frtform-form-icon material-icons">@textAreaElement.Icon</div>
             <textarea placeholder="@textAreaElement.Placeholder"  disabled="@textAreaElement.NotEnabled">@textAreaElement.Value</textarea>
-            <div class="swforms-message-add swforms-formheader-icon material-icons" @onclick="HandleClick">@textAreaElement.RightIcon</div>
+            <div class="frtform-message-add frtform-formheader-icon material-icons" @onclick="HandleClick">@textAreaElement.RightIcon</div>
         </div>
     }
 }
@@ -85,7 +85,7 @@ else if (_formElement.Type == FormElementType.BlockTime)
     if (!timeElement.NotVisible)
     {
         var isStart = timeElement.IsStart;
-        var style = "swforms-formgroup";
+        var style = "frtform-formgroup";
         // timeElement.NotEnabled overrides FormDisplayOnly
         var displayOnly = timeElement.NotEnabled;
         if (!displayOnly)
@@ -97,10 +97,10 @@ else if (_formElement.Type == FormElementType.BlockTime)
         {
             if (timeElement.IconStacked)
             {
-                style = "swforms-formgroup-stack";
+                style = "frtform-formgroup-stack";
             }
             <div class="@style">
-                <div class="swforms-form-icon material-icons">@timeElement.Icon</div>
+                <div class="frtform-form-icon material-icons">@timeElement.Icon</div>
                 <BlockTimeComponent AllSettings="AllSettings" Elements="Elements" 
                                     FormProcessor="FormProcessor" IsStart="@isStart"
                        DisplayOnly="displayOnly" ></BlockTimeComponent>
@@ -110,7 +110,7 @@ else if (_formElement.Type == FormElementType.BlockTime)
         {
             if (timeElement.LabelStacked)
             {
-                style = "swforms-formgroup-stack";
+                style = "frtform-formgroup-stack";
             }
             <div class="@style">
                 @*//TODO Label needs spacing when adjacent to field*@
@@ -134,7 +134,7 @@ else if (_formElement.Type == FormElementType.Title)
 {
     @if (!_formElement.NotVisible)
     {
-        <div class="swforms-formgroup">@_formElement.Value</div>
+        <div class="frtform-formgroup">@_formElement.Value</div>
     }
 }
 else if (_formElement.Type == FormElementType.SubmitAndClose)
@@ -142,10 +142,10 @@ else if (_formElement.Type == FormElementType.SubmitAndClose)
     var header = (SubmitAndCloseElement)_formElement;
     @if (!header.NotVisible)
     {
-        <div class="swforms-formheader" id="submit">
-            <input type="submit" class="swforms-btn-primary"
+        <div class="frtform-formheader" id="submit">
+            <input type="submit" class="frtform-btn-primary"
                    disabled="@header.NotEnabled" value="@header.SubmitButtonText"/>
-            <div class="swforms-formheader-icon material-icons"
+            <div class="frtform-formheader-icon material-icons"
                  @onclick="OnCloseCallback">clear</div>
         </div>
         @if (_formElement.ErrorMsg != null)
@@ -159,12 +159,12 @@ else if (_formElement.Type == FormElementType.EditDeleteClose)
     var header = (EditDeleteCloseElement)_formElement;
     if (!header.NotVisible)
     {
-        <div class="swforms-formheader" id="edit">
-            <div class="swforms-formheader-icon material-icons"
+        <div class="frtform-formheader" id="edit">
+            <div class="frtform-formheader-icon material-icons"
                  @onclick="OnEditCallback">mode_edit</div>
-            <div class="swforms-formheader-icon material-icons"
+            <div class="frtform-formheader-icon material-icons"
                  @onclick="OnDeleteCallback">delete_outline</div>
-            <div class="swforms-formheader-icon material-icons"
+            <div class="frtform-formheader-icon material-icons"
                  @onclick="OnCloseCallback">clear</div>
         </div>
     }
@@ -174,9 +174,9 @@ else if (_formElement.Type == FormElementType.Close)
     var header = (CloseElement)_formElement;
     if (!header.NotVisible)
     {
-        <div class="swforms-formheader" id="close">
+        <div class="frtform-formheader" id="close">
             <p></p>
-            <div class="swforms-formheader-icon material-icons"
+            <div class="frtform-formheader-icon material-icons"
                  @onclick="OnCloseCallback">clear</div>
         </div>
     }

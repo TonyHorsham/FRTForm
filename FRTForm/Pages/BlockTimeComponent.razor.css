@@ -1,23 +1,23 @@
-﻿.swcal-timespan {
+﻿.frtform-timespan {
 }
 
-.swcal-plus, .swcal-minus {
+.frtform-plus, .frtform-minus {
     font-size: 0.95rem;
     line-height: 0.9rem;
     text-align: center;
 }
 
-.swcal-minus {
+.frtform-minus {
     line-height: 0.7rem;
 }
 
-.swcal-plus, .swcal-minus {
+.frtform-plus, .frtform-minus {
     font-weight: 200;
     font-size: 2rem;
     cursor: pointer;
 }
 
-.swcal-disable {
+.frtform-disable {
     color: #eee;
     cursor: auto;
 }
