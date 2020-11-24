@@ -3,24 +3,26 @@
     align-items: center;
     padding-bottom: 1.2rem;
 }
-
 .swforms-formgroup-stack {
     display: flex;
     flex-direction: column;
     /*    align-items: center;*/
     padding-bottom: 1.2rem;
 }
-
 .swforms-formheader {
     padding-bottom: 1rem;
     display: flex;
     justify-content: space-between;
 }
-
+.swforms-form-icon {
+    padding-right: 0.7rem;
+}
 .swforms-formheader-icon {
     cursor: pointer;
 }
-
+.swforms-message-add {
+    padding: 0 0 0 0.5rem;
+}
 .swforms-btn-primary {
     color: #fff;
     background-color: #1b6ec2;
@@ -29,7 +31,6 @@
     font-family: inherit;
     line-height: inherit;
 }
-
 .swforms-btn-danger {
     color: #fff;
     background-color: red;
@@ -38,14 +39,12 @@
     font-family: inherit;
     line-height: inherit;
 }
-
 button:disabled,
 [type="button"]:disabled,
 [type="reset"]:disabled,
 [type="submit"]:disabled {
     background-color: #a9a9a9;
 }
-
 /*bootstrap*/
 button:not(:disabled),
 [type="button"]:not(:disabled),
