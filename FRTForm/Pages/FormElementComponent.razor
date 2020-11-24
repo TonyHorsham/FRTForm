@@ -39,8 +39,8 @@ else if (_formElement.Type == FormElementType.Select)
     var selectElement = (SelectElement)_formElement;
     if (!selectElement.NotVisible)
     {
-        <div class="swcal-formgroup">
-            <div class="swcal-form-icon material-icons">@selectElement.Icon</div>
+        <div class="swforms-formgroup">
+            <div class="swforms-form-icon material-icons">@selectElement.Icon</div>
             <select name="" @onchange="UpdateElements" disabled="@selectElement.NotEnabled"
                     value="@selectElement.Value">
                 @foreach (var option in @selectElement.Options)
@@ -72,10 +72,10 @@ else if (_formElement.Type == FormElementType.TextArea)
         {
             textAreaElement.Placeholder = "";
         }
-        <div class="swcal-formgroup">
-            <div class="swcal-form-icon material-icons">@textAreaElement.Icon</div>
+        <div class="swforms-formgroup">
+            <div class="swforms-form-icon material-icons">@textAreaElement.Icon</div>
             <textarea placeholder="@textAreaElement.Placeholder"  disabled="@textAreaElement.NotEnabled">@textAreaElement.Value</textarea>
-            <div class="swcal-message-add swcal-formheader-icon material-icons" @onclick="HandleClick">@textAreaElement.RightIcon</div>
+            <div class="swforms-message-add swforms-formheader-icon material-icons" @onclick="HandleClick">@textAreaElement.RightIcon</div>
         </div>
     }
 }
@@ -100,7 +100,7 @@ else if (_formElement.Type == FormElementType.BlockTime)
                 style = "swforms-formgroup-stack";
             }
             <div class="@style">
-                <div class="swcal-form-icon material-icons">@timeElement.Icon</div>
+                <div class="swforms-form-icon material-icons">@timeElement.Icon</div>
                 <BlockTimeComponent AllSettings="AllSettings" Elements="Elements" 
                                     FormProcessor="FormProcessor" IsStart="@isStart"
                        DisplayOnly="displayOnly" ></BlockTimeComponent>
@@ -134,7 +134,7 @@ else if (_formElement.Type == FormElementType.Title)
 {
     @if (!_formElement.NotVisible)
     {
-        <div class="swcal-formgroup">@_formElement.Value</div>
+        <div class="swforms-formgroup">@_formElement.Value</div>
     }
 }
 else if (_formElement.Type == FormElementType.SubmitAndClose)
@@ -160,11 +160,11 @@ else if (_formElement.Type == FormElementType.EditDeleteClose)
     if (!header.NotVisible)
     {
         <div class="swforms-formheader" id="edit">
-            <div class="swcal-formheader-icon material-icons"
+            <div class="swforms-formheader-icon material-icons"
                  @onclick="OnEditCallback">mode_edit</div>
-            <div class="swcal-formheader-icon material-icons"
+            <div class="swforms-formheader-icon material-icons"
                  @onclick="OnDeleteCallback">delete_outline</div>
-            <div class="swcal-formheader-icon material-icons"
+            <div class="swforms-formheader-icon material-icons"
                  @onclick="OnCloseCallback">clear</div>
         </div>
     }
