@@ -39,6 +39,12 @@
     font-family: inherit;
     line-height: inherit;
 }
+select {
+    font-size: 1.2rem;
+    border: 2px solid #eee;
+    border-radius: 10%;
+    font-family: inherit;
+}
 button:disabled,
 [type="button"]:disabled,
 [type="reset"]:disabled,
