@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using FRTForm.Services;
 
-namespace Common.Services
+namespace Demo.FormClasses.Services
 {
     public class DummySmsSender : ISmsSender
     {
