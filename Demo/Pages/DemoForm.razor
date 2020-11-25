@@ -1,7 +1,7 @@
 ﻿@page "/demoform"
 
 <link href="css/BlazoredModalCustom.css" rel="stylesheet"/>
-<div class="demoForm">
+<div class="demoForm"> @*use class for overall form styling*@
     <FormComponent AllSettings="AllSettings" Elements="_elements"
                    FormProcessor="_formProcessor" FormId="@_formId"
                    OnCloseCallback="@(Close)" OnDeleteCallback="@(Delete)"
