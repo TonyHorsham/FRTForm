@@ -26,7 +26,7 @@
                     </label>
             }
             <input type="@inputType" @onchange="UpdateElements"  disabled="@inputElement.NotEnabled"
-                   placeholder="@inputElement.Placeholder">
+                   placeholder="@inputElement.Placeholder" id="@_formElement.Name">
             @if (inputElement.ErrorMsg != null)
             {
                 <p style="color: red">@_formElement.ErrorMsg</p>
@@ -42,7 +42,7 @@ else if (_formElement.Type == FormElementType.Select)
         <div class="frtform-formgroup">
             <div class="frtform-form-icon material-icons">@selectElement.Icon</div>
             <select name="" @onchange="UpdateElements" disabled="@selectElement.NotEnabled"
-                    value="@selectElement.Value">
+                    value="@selectElement.Value" id="@_formElement.Name">
                 @foreach (var option in @selectElement.Options)
                 {
                     <option value="@option.Key.ToString()">@option.Value</option>
@@ -57,7 +57,7 @@ else if (_formElement.Type == FormElementType.Button)
     if (!buttonElement.NotVisible)
     {
         <button type="button" class="@buttonElement.ButtonClass" @onclick="HandleClick"
-                disabled="@buttonElement.NotEnabled">
+                disabled="@buttonElement.NotEnabled" id="@_formElement.Name">
             @buttonElement.Value
         </button>
     }
@@ -74,7 +74,10 @@ else if (_formElement.Type == FormElementType.TextArea)
         }
         <div class="frtform-formgroup">
             <div class="frtform-form-icon material-icons">@textAreaElement.Icon</div>
-            <textarea placeholder="@textAreaElement.Placeholder"  disabled="@textAreaElement.NotEnabled">@textAreaElement.Value</textarea>
+            <textarea placeholder="@textAreaElement.Placeholder"  
+                      disabled="@textAreaElement.NotEnabled" id="@_formElement.Name">
+                @textAreaElement.Value
+            </textarea>
             <div class="frtform-message-add frtform-formheader-icon material-icons" @onclick="HandleClick">@textAreaElement.RightIcon</div>
         </div>
     }
@@ -99,7 +102,7 @@ else if (_formElement.Type == FormElementType.BlockTime)
             {
                 style = "frtform-formgroup-stack";
             }
-            <div class="@style">
+            <div class="@style" id="@_formElement.Name">
                 <div class="frtform-form-icon material-icons">@timeElement.Icon</div>
                 <BlockTimeComponent AllSettings="AllSettings" Elements="Elements" 
                                     FormProcessor="FormProcessor" IsStart="@isStart"
@@ -112,7 +115,7 @@ else if (_formElement.Type == FormElementType.BlockTime)
             {
                 style = "frtform-formgroup-stack";
             }
-            <div class="@style">
+            <div class="@style" id="@_formElement.Name">
                 @*//TODO Label needs spacing when adjacent to field*@
                 <label style="margin: 0">@timeElement.Label</label>
                 <BlockTimeComponent AllSettings="AllSettings" Elements="Elements" 
@@ -122,7 +125,7 @@ else if (_formElement.Type == FormElementType.BlockTime)
         }
         else
         {
-            <div class="@style">
+            <div class="@style" id="@_formElement.Name">
                 <BlockTimeComponent AllSettings="AllSettings" Elements="Elements" 
                                     FormProcessor="FormProcessor" IsStart="@isStart"
                        DisplayOnly="displayOnly"></BlockTimeComponent>
@@ -134,7 +137,7 @@ else if (_formElement.Type == FormElementType.Title)
 {
     @if (!_formElement.NotVisible)
     {
-        <div class="frtform-formgroup">@_formElement.Value</div>
+        <div class="frtform-formgroup" id="@_formElement.Name">@_formElement.Value</div>
     }
 }
 else if (_formElement.Type == FormElementType.SubmitAndClose)
@@ -142,8 +145,8 @@ else if (_formElement.Type == FormElementType.SubmitAndClose)
     var header = (SubmitAndCloseElement)_formElement;
     @if (!header.NotVisible)
     {
-        <div class="frtform-formheader" id="submit">
-            <input type="submit" class="frtform-btn-primary"
+        <div class="frtform-formheader" id="@_formElement.Name">
+            <input type="submit" class="frtform-btn-primary" id="@_formElement.Name"
                    disabled="@header.NotEnabled" value="@header.SubmitButtonText"/>
             <div class="frtform-formheader-icon material-icons"
                  @onclick="OnCloseCallback">clear</div>
@@ -159,7 +162,7 @@ else if (_formElement.Type == FormElementType.EditDeleteClose)
     var header = (EditDeleteCloseElement)_formElement;
     if (!header.NotVisible)
     {
-        <div class="frtform-formheader" id="edit">
+        <div class="frtform-formheader" id="@_formElement.Name">
             <div class="frtform-formheader-icon material-icons"
                  @onclick="OnEditCallback">mode_edit</div>
             <div class="frtform-formheader-icon material-icons"
@@ -174,7 +177,7 @@ else if (_formElement.Type == FormElementType.Close)
     var header = (CloseElement)_formElement;
     if (!header.NotVisible)
     {
-        <div class="frtform-formheader" id="close">
+        <div class="frtform-formheader" id="@_formElement.Name">
             <p></p>
             <div class="frtform-formheader-icon material-icons"
                  @onclick="OnCloseCallback">clear</div>
