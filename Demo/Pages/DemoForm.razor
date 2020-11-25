@@ -1,11 +1,14 @@
 ﻿@page "/demoform"
 
 <link href="css/BlazoredModalCustom.css" rel="stylesheet"/>
-<FormComponent class="demoForm" AllSettings="AllSettings" Elements="_elements" 
-               FormProcessor="_formProcessor" FormId="@_formId"
-               OnCloseCallback="@(Close)" OnDeleteCallback="@(Delete)"
-               OnEditCallback="@(Edit)" OnClickCallback="@(HandleClick)"
-               OnSubmitCallback="@(HandleSubmit)"></FormComponent>
+<div class="demoForm">
+    <FormComponent AllSettings="AllSettings" Elements="_elements"
+                   FormProcessor="_formProcessor" FormId="@_formId"
+                   OnCloseCallback="@(Close)" OnDeleteCallback="@(Delete)"
+                   OnEditCallback="@(Edit)" OnClickCallback="@(HandleClick)"
+                   OnSubmitCallback="@(HandleSubmit)">
+    </FormComponent>
+    </div>
 
 @code {
     [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
