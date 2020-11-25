@@ -41,8 +41,7 @@ namespace Demo.FormClasses.Utilities
                 duration.DisplayIcon = true;
                 elements.Add(duration);
                 IFormProcessor formProcessor = new DemoFormProcessor();
-                var formSpecs = new DemoFormSpecs(25, elements,
-                    formProcessor);
+                var formSpecs = new FormSpecs("demoForm",25, elements, formProcessor);
                 return formSpecs;
             }
         }
