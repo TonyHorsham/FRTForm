@@ -31,6 +31,8 @@ Click the link in the menu bar to display a demonstration form using FRTForm
             Services = new List<Service>()// needs to be valued after data available
         };
         _allSettings = new AllSettings(appSettings, calendarSettings);
+        // for a form not using BlockTime, CurrentBlockParameters can be null
+        // so no need to setup calendarDay and block
         var calendarId = "anything";
         var calendarDay= new CalendarDay(calendarId, DateTimeOffset.Now, 1);
         var block = new Block(1, DateTimeOffset.Now, TimeSpan.FromHours(1), 1,
