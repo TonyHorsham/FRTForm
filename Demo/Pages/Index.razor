@@ -19,9 +19,9 @@ Click the link in the menu bar to display a demonstration form using FRTForm
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        var formSettings = FormSpecsSetup.FRTFormSettings;
+        var formSpecs = FormSpecsSetup.FormSpecs;
         var appSettings = new ApplicationSettings("url", new DummySmsSender(),
-            new DummyEmailSender(), formSettings.FormSpecs);
+            new DummyEmailSender(), formSpecs);
         // for a form not using BlockTime, calendarSettings can be null
         var calendarSettings = new CalendarSettings
         {

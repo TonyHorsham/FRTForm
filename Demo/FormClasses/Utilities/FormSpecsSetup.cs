@@ -11,16 +11,20 @@ namespace Demo.FormClasses.Utilities
 {
     public static class FormSpecsSetup
     {
-        public static FRTFormSettings FRTFormSettings
+        /// <summary>
+        /// This structure holds the form specifications for an application.
+        /// It also allows for a single razor file to handle multiple form options.
+        /// </summary>
+        public static Dictionary<string, IFormSpecs> FormSpecs
         {
             get
             {
                 Dictionary<string, IFormSpecs> formSpecs = new Dictionary<string, IFormSpecs>();
                 formSpecs.Add("demoForm", DemoFormSpecs);
-                return new FRTFormSettings(formSpecs);
+                return formSpecs;
             }
         }
-
+       
         private static IFormSpecs DemoFormSpecs
         {
             get
