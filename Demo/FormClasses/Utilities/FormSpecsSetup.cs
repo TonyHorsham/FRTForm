@@ -13,6 +13,7 @@ namespace Demo.FormClasses.Utilities
     {
         /// <summary>
         /// This structure holds the form specifications for an application.
+        /// It facilitates testing.
         /// It also allows for a single razor file to handle multiple form options.
         /// </summary>
         public static Dictionary<string, IFormSpecs> FormSpecs

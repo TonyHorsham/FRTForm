@@ -19,7 +19,8 @@ Click the link in the menu bar to display a demonstration form using FRTForm
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        // formSpecs could be created directly, but FormSpecsSetup provides more flexibility
+        // formSpecs could be created directly,
+        //  but FormSpecsSetup provides more flexibility as well as testing
         var formSpecs = FormSpecsSetup.FormSpecs;
         var appSettings = new ApplicationSettings("url", new DummySmsSender(),
             new DummyEmailSender(), formSpecs);
