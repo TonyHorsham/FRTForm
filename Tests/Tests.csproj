@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Demo\Demo.csproj" />
     <ProjectReference Include="..\FRTForm\FRTForm.csproj" />
   </ItemGroup>
 
