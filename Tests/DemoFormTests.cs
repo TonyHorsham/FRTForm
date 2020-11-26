@@ -52,51 +52,36 @@ namespace Tests
         [Test]
         public void FormSpecs_AllElements_NumberCorrect()
         {
-            // 6 elements needed
-            Assert.AreEqual(6, _testFormElements.Count);
+            // 5 elements needed
+            Assert.AreEqual(5, _testFormElements.Count);
         }
         [Test]
         public void Elements_Includes_NamedElements([Values(
-            "SubmitHeader", "Title", "Name", "Tel", "Code")] string name)
+            "DisplayHeader", "SubmitHeader", "Title", "StartTime", "Duration")] string name)
         {
             var element = _testFormElements.FirstOrDefault(fe => fe.Name == name);
             Assert.IsNotNull(element);
             //check that tests do not interfere
-            ExtractElements(out var submit, out var title, out var nameInput, out var phoneInput,
-                out var sendCode, out var code, _testFormElements);
-            Assert.IsNull(nameInput.Value);
+            ExtractElements(out var display, out var submit, out var title, 
+                out var start, out var duration, _testFormElements);
+
         }
-        public async Task VaryingElements_VisibleEnabled_DependsOnRequiredFields()
-        {
-            // Code input element only visible (and enabled) if code generated
-            // Name and Tel disabled once code generated
-
-            // SubmitHeader only enabled if all required fields have valid values
-
-            ExtractElements(out var submit, out var title, out var nameInput, out var phoneInput,
-                out var sendCode, out var code, _testFormElements);
-            nameInput.Value = "test";
-            await _testFormProcessor.UpdateElementsAsync(_testFormElements, _allSettings, false);
-        }
-
         #region Utilities
 
-        private void ExtractElements(out SubmitAndCloseElement submit, out TitleElement title,
-            out InputElement nameInput, out InputElement phoneInput,
-            out ButtonElement sendCode, out InputElement code, List<IFormElement> elements)
+        private void ExtractElements(out EditDeleteCloseElement display, out SubmitAndCloseElement submit, 
+            out TitleElement title, out BlockTimeElement start, out BlockTimeElement duration,
+            List<IFormElement> elements)
         {
+            display = (EditDeleteCloseElement) elements
+                .FirstOrDefault(fe => fe.Name == "DisplayHeader");
             submit = (SubmitAndCloseElement)elements
                 .FirstOrDefault(fe => fe.Name == "SubmitHeader");
             title = (TitleElement)elements
                 .FirstOrDefault(fe => fe.Name == "Title");
-            nameInput = (InputElement)elements
-                .FirstOrDefault(fe => fe.Name == "Name");
-            phoneInput = (InputElement)elements
-                .FirstOrDefault(fe => fe.Name == "Tel");
-            sendCode = (ButtonElement)elements
-                .FirstOrDefault(fe => fe.Name == "SendCode"); ;
-            code = (InputElement)elements
-                .FirstOrDefault(fe => fe.Name == "Code");
+            start = (BlockTimeElement)elements
+                .FirstOrDefault(fe => fe.Name == "StartTime");
+            duration = (BlockTimeElement)elements
+                .FirstOrDefault(fe => fe.Name == "Duration");
         }
 
         #endregion
