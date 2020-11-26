@@ -64,7 +64,7 @@ namespace Tests
             //check that tests do not interfere
             ExtractElements(out var display, out var submit, out var title, 
                 out var start, out var duration, _testFormElements);
-
+            Assert.AreEqual("All elements displayed for styling initially", title.Value);
         }
         #region Utilities
 

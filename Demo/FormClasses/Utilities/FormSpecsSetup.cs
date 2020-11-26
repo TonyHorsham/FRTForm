@@ -35,7 +35,7 @@ namespace Demo.FormClasses.Utilities
                 elements.Add(editDeleteCloseElement);
                 var submitAndCloseElement = new SubmitAndCloseElement("SubmitHeader", "Save Changes");
                 elements.Add(submitAndCloseElement);
-                var titleElement = new TitleElement("Title", "populateInForm");
+                var titleElement = new TitleElement("Title", "All elements displayed for styling initially");
                 elements.Add(titleElement);
                 var start = new BlockTimeElement("StartTime", "Start", "schedule", false);
                 start.IsStart = true;
