@@ -13,7 +13,7 @@ namespace FRTForm.Pages
 {
     public partial class BlockTimeComponent
     {
-        [Parameter] public IAllSettings AllSettings { get; set; }
+        [Parameter] public IAllSettingsBT AllSettings { get; set; }
         [Parameter] public List<IFormElement> Elements { get; set; }
         [Parameter] public IFormProcessor FormProcessor { get; set; }
         [Parameter] public bool IsStart { get; set; }// if not Start, dealing with Duration

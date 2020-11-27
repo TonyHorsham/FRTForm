@@ -20,7 +20,7 @@ namespace Tests
     [TestFixture]
     public class DemoFormTests
     {
-        private IAllSettings _allSettings;
+        private IAllSettingsBT _allSettings;
         private IFormProcessor _testFormProcessor;
         private List<IFormElement> _testFormElements;
 

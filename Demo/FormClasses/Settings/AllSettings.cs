@@ -5,7 +5,7 @@ using FRTForm.Settings;
 
 namespace Demo.FormClasses.Settings
 {
-    public class AllSettings : IAllSettings
+    public class AllSettings : IAllSettingsBT
     {
         public AllSettings(IApplicationSettings applicationSettings, 
             CalendarSettings calendarSettings)
