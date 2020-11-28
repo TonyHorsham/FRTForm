@@ -11,7 +11,7 @@
 <h1>Demo web app for FRTForm</h1>
 
 <button type="button" @onclick="@(e => HandleClick("modalFormSpecs"))">Launch DemoFormModal</button>
-<button type="button" @onclick="@(e => HandleClick("basicFormSpecs"))">Launch DemoFormBasic</button>
+<button type="button" @onclick="@(e => HandleClick("basicFormSpecs"))">Launch DemoFormModal</button>
 
 Click the link in the menu bar to display a demonstration form using FRTForm
 
@@ -60,7 +60,7 @@ Click the link in the menu bar to display a demonstration form using FRTForm
         }
         else if (formSpecsName == "basicFormSpecs")
         {
-            NavigationManager.NavigateTo("demoForm");
+            NavigationManager.NavigateTo("basicForm");
         }
     }
 }
