@@ -9,7 +9,7 @@
 
 <h1>Demo web app for FRTForm</h1>
 
-<button type="button" @onclick="HandleClick">Launch DemoForm</button>
+<button type="button" @onclick="@(e => HandleClick("demoForm"))">Launch DemoForm</button>
 
 Click the link in the menu bar to display a demonstration form using FRTForm
 
@@ -43,7 +43,7 @@ Click the link in the menu bar to display a demonstration form using FRTForm
             "", false, DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
     }
 
-    private void HandleClick()
+    private void HandleClick(string formName)
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(DemoForm.AllSettings), _allSettings);
