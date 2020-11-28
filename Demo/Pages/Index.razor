@@ -43,10 +43,11 @@ Click the link in the menu bar to display a demonstration form using FRTForm
             "", false, DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
     }
 
-    private void HandleClick(string formName)
+    private void HandleClick(string formSpecsName)
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(DemoForm.AllSettings), _allSettings);
+        parameters.Add(nameof(DemoForm.FormSpecsName), formSpecsName);
         var options = new ModalOptions()
         {
             HideCloseButton = true

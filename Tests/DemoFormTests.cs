@@ -44,7 +44,7 @@ namespace Tests
                 BlockType.Available, calendarId);
             _allSettings.CurrentBlockParameters = new CurrentBlockParameters(block, calendarDay,
                 "", false, DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
-            var formSpec = formSpecs["demoForm"];
+            var formSpec = formSpecs["modalFormSpecs"];
             _testFormProcessor = formSpec.FormProcessor;
             _testFormElements = formSpec.Elements;
         }

@@ -13,8 +13,8 @@
 @code {
     [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
     [Parameter] public IAllSettings AllSettings { get; set; }
+    [Parameter] public string FormSpecsName { get; set; }
 
-    private string _formSpecsName = "demoForm";
     private IFormSpecs _formSpecs;
     private List<IFormElement> _elements;
     private IFormProcessor _formProcessor;
@@ -24,13 +24,13 @@
     {
         base.OnInitialized();
         var formSpecs = AllSettings.ApplicationSettings.AppFormSpecs;
-        if (!formSpecs.ContainsKey(_formSpecsName))
+        if (!formSpecs.ContainsKey(FormSpecsName))
         {
             var errorMessage = "AllSettings.ApplicationSettings.AppFormSpecs ";
-            errorMessage += "does not contain formSpecs named " + _formSpecsName;
+            errorMessage += "does not contain formSpecs named " + FormSpecsName;
             throw new ArgumentException(errorMessage);
         }
-        _formSpecs = AllSettings.ApplicationSettings.AppFormSpecs[_formSpecsName];
+        _formSpecs = AllSettings.ApplicationSettings.AppFormSpecs[FormSpecsName];
         _elements = new List<IFormElement>();
         // need to avoid passing elements by reference
         // Because FormSpecs are static

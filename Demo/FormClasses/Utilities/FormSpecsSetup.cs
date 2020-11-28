@@ -21,12 +21,12 @@ namespace Demo.FormClasses.Utilities
             get
             {
                 Dictionary<string, IFormSpecs> formSpecs = new Dictionary<string, IFormSpecs>();
-                formSpecs.Add("demoForm", DemoFormSpecs);
+                formSpecs.Add("modalFormSpecs", ModalFormSpecs);
                 return formSpecs;
             }
         }
        
-        private static IFormSpecs DemoFormSpecs
+        private static IFormSpecs ModalFormSpecs
         {
             get
             {
