@@ -120,7 +120,7 @@ else if (_formElement.Type == FormElementType.BlockTime)
             <div class="@style" id="@_formElement.Name">
                 @*//TODO Label needs spacing when adjacent to field*@
                 <label style="margin: 0">@timeElement.Label</label>
-                <BlockTimeComponent AllSettings="AllSettings" Elements="Elements" 
+                <BlockTimeComponent AllSettings="allSettingsBT" Elements="Elements" 
                                     FormProcessor="FormProcessor" IsStart="@isStart"
                        DisplayOnly="displayOnly" ></BlockTimeComponent>
             </div>
@@ -128,7 +128,7 @@ else if (_formElement.Type == FormElementType.BlockTime)
         else
         {
             <div class="@style" id="@_formElement.Name">
-                <BlockTimeComponent AllSettings="AllSettings" Elements="Elements" 
+                <BlockTimeComponent AllSettings="allSettingsBT" Elements="Elements" 
                                     FormProcessor="FormProcessor" IsStart="@isStart"
                        DisplayOnly="displayOnly"></BlockTimeComponent>
             </div>
