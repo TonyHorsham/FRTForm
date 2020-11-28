@@ -6,10 +6,12 @@
 @using FRTForm.BlockTime.Models
 
 @inject IModalService Modal
+@inject NavigationManager NavigationManager
 
 <h1>Demo web app for FRTForm</h1>
 
-<button type="button" @onclick="@(e => HandleClick("demoForm"))">Launch DemoForm</button>
+<button type="button" @onclick="@(e => HandleClick("modalFormSpecs"))">Launch DemoFormModal</button>
+<button type="button" @onclick="@(e => HandleClick("basicFormSpecs"))">Launch DemoFormBasic</button>
 
 Click the link in the menu bar to display a demonstration form using FRTForm
 
@@ -58,7 +60,7 @@ Click the link in the menu bar to display a demonstration form using FRTForm
         }
         else if (formSpecsName == "basicFormSpecs")
         {
-            
+            NavigationManager.NavigateTo("demoForm");
         }
     }
 }
