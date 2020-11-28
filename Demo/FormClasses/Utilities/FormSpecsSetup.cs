@@ -22,6 +22,7 @@ namespace Demo.FormClasses.Utilities
             {
                 Dictionary<string, IFormSpecs> formSpecs = new Dictionary<string, IFormSpecs>();
                 formSpecs.Add("modalFormSpecs", ModalFormSpecs);
+                formSpecs.Add("basicFormSpecs", BasicFormSpecs);
                 return formSpecs;
             }
         }
@@ -47,6 +48,18 @@ namespace Demo.FormClasses.Utilities
                 elements.Add(duration);
                 IFormProcessor formProcessor = new DemoFormProcessor();
                 var formSpecs = new FormSpecs("demoForm",25, elements, formProcessor);
+                return formSpecs;
+            }
+        }
+        private static IFormSpecs BasicFormSpecs
+        {
+            get
+            {
+                var elements = new List<IFormElement>();
+                var titleElement = new TitleElement("Title", "All elements displayed for styling initially");
+                elements.Add(titleElement);
+                IFormProcessor formProcessor = new DemoFormProcessor();
+                var formSpecs = new FormSpecs("demoForm", 25, elements, formProcessor);
                 return formSpecs;
             }
         }

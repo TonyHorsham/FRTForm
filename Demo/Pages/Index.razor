@@ -45,13 +45,20 @@ Click the link in the menu bar to display a demonstration form using FRTForm
 
     private void HandleClick(string formSpecsName)
     {
-        var parameters = new ModalParameters();
-        parameters.Add(nameof(DemoForm.AllSettings), _allSettings);
-        parameters.Add(nameof(DemoForm.FormSpecsName), formSpecsName);
-        var options = new ModalOptions()
+        if (formSpecsName == "modalFormSpecs")
         {
-            HideCloseButton = true
-        };
-        Modal.Show<DemoForm>("", parameters, options);
+            var parameters = new ModalParameters();
+            parameters.Add(nameof(DemoForm.AllSettings), _allSettings);
+            parameters.Add(nameof(DemoForm.FormSpecsName), formSpecsName);
+            var options = new ModalOptions()
+            {
+                HideCloseButton = true
+            };
+            Modal.Show<DemoForm>("", parameters, options); 
+        }
+        else if (formSpecsName == "basicFormSpecs")
+        {
+            
+        }
     }
 }
