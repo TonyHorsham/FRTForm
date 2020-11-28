@@ -1,0 +1,27 @@
+﻿@page "/basicform"
+@using Demo.FormClasses.Settings
+<h3>BasicForm</h3>
+
+<link href="css/BlazoredModalCustom.css" rel="stylesheet"/>
+<div class="demoForm"> @*use class for overall form styling*@
+    <FormComponent AllSettings="AllSettings" Elements="_elements"
+                   FormProcessor="_formProcessor" FormId="@_formId"
+                   @*OnCloseCallback="@(Close)" OnDeleteCallback="@(Delete)"
+                   OnEditCallback="@(Edit)" OnClickCallback="@(HandleClick)"*@
+                   OnSubmitCallback="@(HandleSubmit)">
+    </FormComponent>
+</div>
+
+@code {
+
+    private IFormSpecs _formSpecs;
+    private List<IFormElement> _elements;
+    private IFormProcessor _formProcessor;
+    private string _formId;
+
+    private void HandleSubmit()
+    {
+        throw new NotImplementedException();
+    }
+
+}
