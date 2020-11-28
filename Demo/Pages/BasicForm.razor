@@ -1,25 +1,58 @@
-﻿@page "/basicform"
+﻿@page "/basicform/{FormSpecsName}"
 @using Demo.FormClasses.Settings
+@using Demo.FormClasses.Utilities
+@using Demo.FormClasses.Services
 <h3>BasicForm</h3>
 
 <link href="css/BlazoredModalCustom.css" rel="stylesheet"/>
 <div class="demoForm"> @*use class for overall form styling*@
-    <FormComponent AllSettings="AllSettings" Elements="_elements"
+    <FormComponent AllSettings="_allSettings" Elements="_elements"
                    FormProcessor="_formProcessor" FormId="@_formId"
-                   @*OnCloseCallback="@(Close)" OnDeleteCallback="@(Delete)"
-                   OnEditCallback="@(Edit)" OnClickCallback="@(HandleClick)"*@
-                   OnSubmitCallback="@(HandleSubmit)">
+                   OnClickCallback="@(HandleClick)" OnSubmitCallback="@(HandleSubmit)">
     </FormComponent>
 </div>
 
 @code {
+    [Parameter] public string FormSpecsName { get; set; }
 
+    private IAllSettings _allSettings;
     private IFormSpecs _formSpecs;
     private List<IFormElement> _elements;
     private IFormProcessor _formProcessor;
     private string _formId;
 
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        var formSpecs = FormSpecsSetup.FormSpecs;
+        var appSettings = new ApplicationSettings("url", new DummySmsSender(),
+            new DummyEmailSender(), formSpecs);
+        if (!formSpecs.ContainsKey(FormSpecsName))
+        {
+            var errorMessage = "FormSpecsSetup.FormSpecs ";
+            errorMessage += "does not contain formSpecs named " + FormSpecsName;
+            throw new ArgumentException(errorMessage);
+        }
+        _allSettings = new AllSettings(appSettings, null);
+        _formSpecs = _allSettings.ApplicationSettings.AppFormSpecs[FormSpecsName];
+        _elements = new List<IFormElement>();
+        // need to avoid passing elements by reference
+        // Because FormSpecs are static
+        foreach (var element in _formSpecs.Elements)
+        {
+            var copy = element.Clone();
+            _elements.Add(copy);
+        }
+        _formProcessor = _formSpecs.FormProcessor;
+        _formId = _formSpecs.FormId;
+    }
+
     private void HandleSubmit()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void HandleClick()
     {
         throw new NotImplementedException();
     }
