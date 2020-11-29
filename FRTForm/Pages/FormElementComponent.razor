@@ -186,6 +186,19 @@ else if (_formElement.Type == FormElementType.Close)
         </div>
     }
 }
+else if (_formElement.Type == FormElementType.Submit)
+{
+    @if (!_formElement.NotVisible)
+    {
+        var submit = (SubmitElement)_formElement;
+        <div class="frtform-formheader" id="@_formElement.Name">
+            <input type="submit" class="frtform-btn-primary" id="@_formElement.Name"
+                   disabled="@_formElement.NotEnabled" value="@submit.SubmitButtonText"/>
+            <div class="frtform-formheader-icon material-icons"
+                 @onclick="OnCloseCallback">clear</div>
+        </div>
+    }
+}
 
 @code {
     
