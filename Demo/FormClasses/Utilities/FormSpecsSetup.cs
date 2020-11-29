@@ -58,7 +58,9 @@ namespace Demo.FormClasses.Utilities
                 var elements = new List<IFormElement>();
                 var titleElement = new TitleElement("Title", "All elements displayed for styling initially");
                 elements.Add(titleElement);
-                IFormProcessor formProcessor = new DemoFormProcessor();
+                var submit = new SubmitElement("Submit", "Test Submit Button");
+                elements.Add(submit);
+                IFormProcessor formProcessor = new BasicFormProcessor();
                 var formSpecs = new FormSpecs("demoForm", 25, elements, formProcessor);
                 return formSpecs;
             }
