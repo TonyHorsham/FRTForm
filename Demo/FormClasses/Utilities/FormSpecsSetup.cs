@@ -26,7 +26,11 @@ namespace Demo.FormClasses.Utilities
                 return formSpecs;
             }
         }
-       
+        /// <summary>
+        /// Following IFormElements defined 30NOV20
+        /// ButtonElement, CloseElement, EditDeleteCloseElement, InputElement, SelectElement,
+        /// SubmitAndCloseElement, SubmitElement, TextAreaElement, TitleElement
+        /// </summary>
         private static IFormSpecs ModalFormSpecs
         {
             get
