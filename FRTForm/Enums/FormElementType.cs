@@ -17,7 +17,6 @@ namespace FRTForm.Enums
         Button,
         BlockTime,
         Select,
-        TextArea,
-        Submit
+        TextArea
     }
 }

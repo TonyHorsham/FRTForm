@@ -13,6 +13,37 @@
 @{
     var id = "frtform-" + _formElement.Name;
 }
+@*ignore if notVisible. If hidden elements required will need to create a new IFormElement type*@
+@if (!_formElement.NotVisible)
+{
+    switch (_formElement.Type)
+    {
+        case FormElementType.SubmitAndClose:
+            break;
+        case FormElementType.EditDeleteClose:
+            break;
+        case FormElementType.Close:
+            break;
+        case FormElementType.Title:
+            break;
+        case FormElementType.Input:
+            break;
+        case FormElementType.Text:
+            break;
+        case FormElementType.Panel:
+            break;
+        case FormElementType.Button:
+            break;
+        case FormElementType.BlockTime:
+            break;
+        case FormElementType.Select:
+            break;
+        case FormElementType.TextArea:
+            break;
+        default:
+            throw new ArgumentOutOfRangeException();
+    } 
+}
 
 @if (_formElement.Type == FormElementType.Input)
 {
