@@ -1,4 +1,7 @@
-﻿.frtform-formgroup {
+﻿.frtform-formelement {
+
+}
+.frtform-formgroup {
     display: flex;
     align-items: center;
     padding-bottom: 1.2rem;
