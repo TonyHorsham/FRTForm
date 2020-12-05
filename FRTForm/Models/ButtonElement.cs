@@ -26,13 +26,16 @@ namespace FRTForm.Models
         public ButtonType ButtonType { get; }
         public string ButtonClass { get; } // for styling
         public string Value { get; set; } // button text
+        public bool NotVisible { get; set; }
+        public bool NotEnabled { get; set; }
+        public string ErrorMsg { get; set; }
+
+        // provision for confirmation before processing the click event
+        // default is no confirmation
         public bool ConfirmationRequired { get; set; }// launch ConfirmationForm
         public string ActionName { get; set; }// ConfirmationForm.ActionName
         public string ActionDescription { get; set; }// ConfirmationForm.ActionDescription
         public bool CloseForm { get; set; }// if true the action should close the form
-        public bool NotVisible { get; set; }
-        public bool NotEnabled { get; set; }
-        public string ErrorMsg { get; set; }
         public IFormElement Clone()
         {
             return (ButtonElement) this.MemberwiseClone();
