@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Demo.FormClasses.Models;
 using Demo.FormClasses.Settings;
 using FRTForm.BlockTime.Models;
+using FRTForm.Enums;
 using FRTForm.Models;
 using FRTForm.Utilities;
 
@@ -37,7 +38,7 @@ namespace Demo.FormClasses.Utilities
             {
                 var elements = new List<IFormElement>();
                 var displayOnlyButtonElement = new ButtonElement("DisplayOnly", "Click to set form to display only",
-                    "button", "frtform-danger");
+                    ButtonType.Button, "frtform-danger");
                 var editDeleteCloseElement = new EditDeleteCloseElement("DisplayHeader");
                 elements.Add(editDeleteCloseElement);
                 var submitAndCloseElement = new SubmitAndCloseElement("SubmitHeader", "Save Changes");

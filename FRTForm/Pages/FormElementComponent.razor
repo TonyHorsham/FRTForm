@@ -61,10 +61,23 @@ else if (_formElement.Type == FormElementType.Button)
     var buttonElement = (ButtonElement) _formElement;
     if (!buttonElement.NotVisible)
     {
-        <button type="button" class="@buttonElement.ButtonClass" @onclick="HandleClick"
-                disabled="@buttonElement.NotEnabled" id="@id">
-            @buttonElement.Value
-        </button>
+        switch (buttonElement.ButtonType)
+        {
+            case ButtonType.Button:
+                <button type="button" class="@buttonElement.ButtonClass" @onclick="HandleClick"
+                        disabled="@buttonElement.NotEnabled" id="@id">
+                    @buttonElement.Value
+                </button>
+                break;
+            case ButtonType.Reset:
+                throw new NotImplementedException();
+            case ButtonType.Submit:
+                <input type="submit" class="frtform-btn-primary" id="@id"
+                       disabled="@_formElement.NotEnabled" value="@buttonElement.Value"/>
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 }
 else if (_formElement.Type == FormElementType.TextArea)

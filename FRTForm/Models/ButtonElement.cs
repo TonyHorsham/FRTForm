@@ -8,7 +8,7 @@ namespace FRTForm.Models
 {
     public class ButtonElement : IFormElement
     {
-        public ButtonElement(string name, string value, string buttonType,
+        public ButtonElement(string name, string value, ButtonType buttonType,
             string buttonClass)
         {
             Name = name;
@@ -23,7 +23,7 @@ namespace FRTForm.Models
 
         public FormElementType Type => FormElementType.Button;
         public string Name { get; }
-        public string ButtonType { get; } // button, reset or submit
+        public ButtonType ButtonType { get; }
         public string ButtonClass { get; } // for styling
         public string Value { get; set; } // button text
         public bool ConfirmationRequired { get; set; }// launch ConfirmationForm
