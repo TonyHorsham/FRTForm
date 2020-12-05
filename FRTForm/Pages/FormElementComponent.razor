@@ -60,7 +60,7 @@
                         }
                     </label>
                 }
-                <input type="@inputType" @onchange="UpdateElements"  disabled="@inputElement.NotEnabled"
+                <input type="@inputType" @onchange="UpdateElements"  disabled="@_formElement.NotEnabled"
                        placeholder="@inputElement.Placeholder" id="@id">
             </div>
             break;
@@ -74,7 +74,7 @@
             {
                 case ButtonType.Button:
                     <button type="button" class="@buttonElement.ButtonClass" @onclick="HandleClick"
-                            disabled="@buttonElement.NotEnabled" id="@id">
+                            disabled="@_formElement.NotEnabled" id="@id">
                         @buttonElement.Value
                     </button>
                     break;
@@ -140,7 +140,7 @@
             var selectElement = (SelectElement)_formElement;
             <div class="frtform-formgroup">
                 <div class="frtform-form-icon material-icons">@selectElement.Icon</div>
-                <select name="" @onchange="UpdateElements" disabled="@selectElement.NotEnabled"
+                <select name="" @onchange="UpdateElements" disabled="@_formElement.NotEnabled"
                         value="@selectElement.Value" id="@id">
                     @foreach (var option in @selectElement.Options)
                     {
@@ -159,7 +159,7 @@
             <div class="frtform-formgroup">
                 <div class="frtform-form-icon material-icons">@textAreaElement.Icon</div>
                 <textarea placeholder="@textAreaElement.Placeholder"  
-                      disabled="@textAreaElement.NotEnabled" id="@id">
+                      disabled="@_formElement.NotEnabled" id="@id">
                 @textAreaElement.Value
             </textarea>
                 <div class="frtform-message-add frtform-formheader-icon material-icons" @onclick="HandleClick">@textAreaElement.RightIcon</div>
