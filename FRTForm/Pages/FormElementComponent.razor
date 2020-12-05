@@ -81,7 +81,7 @@
                 case ButtonType.Reset:
                     throw new NotImplementedException();
                 case ButtonType.Submit:
-                    <input type="submit" class="frtform-btn-primary" id="@id"
+                    <input type="submit" class="@buttonElement.ButtonClass" id="@id"
                            disabled="@_formElement.NotEnabled" value="@buttonElement.Value"/>
                     break;
                 default:
