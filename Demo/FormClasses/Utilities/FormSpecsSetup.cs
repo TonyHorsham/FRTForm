@@ -28,9 +28,9 @@ namespace Demo.FormClasses.Utilities
             }
         }
         /// <summary>
-        /// Following IFormElements defined 30NOV20
+        /// Following IFormElements implemented 5DEC20
         /// ButtonElement, CloseElement, EditDeleteCloseElement, InputElement, SelectElement,
-        /// SubmitAndCloseElement, SubmitElement, TextAreaElement, TitleElement
+        /// SubmitAndCloseElement, TextAreaElement, TitleElement
         /// </summary>
         private static IFormSpecs ModalFormSpecs
         {
