@@ -19,219 +19,158 @@
     switch (_formElement.Type)
     {
         case FormElementType.SubmitAndClose:
+            var header = (SubmitAndCloseElement)_formElement;
+            <div class="frtform-formheader" id="@id">
+                <input type="submit" class="frtform-btn-primary"
+                       disabled="@_formElement.NotEnabled" value="@header.SubmitButtonText"/>
+                <div class="frtform-formheader-icon material-icons"
+                     @onclick="OnCloseCallback">clear</div>
+            </div>
             break;
         case FormElementType.EditDeleteClose:
+            <div class="frtform-formheader" id="@id">
+                <div class="frtform-formheader-icon material-icons"
+                     @onclick="OnEditCallback">mode_edit</div>
+                <div class="frtform-formheader-icon material-icons"
+                     @onclick="OnDeleteCallback">delete_outline</div>
+                <div class="frtform-formheader-icon material-icons"
+                     @onclick="OnCloseCallback">clear</div>
+            </div>
             break;
         case FormElementType.Close:
+            <div class="frtform-formheader" id="@id">
+                <p></p>
+                <div class="frtform-formheader-icon material-icons"
+                     @onclick="OnCloseCallback">clear</div>
+            </div>
             break;
         case FormElementType.Title:
+            <div class="frtform-formgroup" id="@id">@_formElement.Value</div>
             break;
         case FormElementType.Input:
+            var inputElement = (InputElement) _formElement;
+            string inputType = inputElement.InputType.ToString().ToLower();
+            <div class="frtform-formgroup-stack">
+                @if (inputElement.Label != null)
+                {
+                    <label style="margin: 0">@inputElement.Label
+                        @if (inputElement.Required)
+                        {
+                            <span style="color: red"> *</span>
+                        }
+                    </label>
+                }
+                <input type="@inputType" @onchange="UpdateElements"  disabled="@inputElement.NotEnabled"
+                       placeholder="@inputElement.Placeholder" id="@id">
+            </div>
             break;
         case FormElementType.Text:
             break;
         case FormElementType.Panel:
             break;
         case FormElementType.Button:
+            var buttonElement = (ButtonElement) _formElement;
+            switch (buttonElement.ButtonType)
+            {
+                case ButtonType.Button:
+                    <button type="button" class="@buttonElement.ButtonClass" @onclick="HandleClick"
+                            disabled="@buttonElement.NotEnabled" id="@id">
+                        @buttonElement.Value
+                    </button>
+                    break;
+                case ButtonType.Reset:
+                    throw new NotImplementedException();
+                case ButtonType.Submit:
+                    <input type="submit" class="frtform-btn-primary" id="@id"
+                           disabled="@_formElement.NotEnabled" value="@buttonElement.Value"/>
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
             break;
         case FormElementType.BlockTime:
+            var timeElement = (BlockTimeElement) _formElement;
+            var allSettingsBT = (IAllSettingsBT)AllSettings;
+            var isStart = timeElement.IsStart;
+            var style = "frtform-formgroup";
+            // timeElement.NotEnabled overrides FormDisplayOnly
+            var displayOnly = timeElement.NotEnabled;
+            if (!displayOnly)
+            {
+                displayOnly = FormDisplayOnly;
+            }
+            // icon takes precedent (so label can be used for accessibility)
+            if (timeElement.DisplayIcon)
+            {
+                if (timeElement.IconStacked)
+                {
+                    style = "frtform-formgroup-stack";
+                }
+                <div class="@style" id="@id">
+                    <div class="frtform-form-icon material-icons">@timeElement.Icon</div>
+                    <BlockTimeComponent AllSettings="allSettingsBT" Elements="Elements" 
+                                        FormProcessor="FormProcessor" IsStart="@isStart"
+                                        DisplayOnly="displayOnly" ></BlockTimeComponent>
+                </div>
+            }
+            else if(timeElement.DisplayLabel)
+            {
+                if (timeElement.LabelStacked)
+                {
+                    style = "frtform-formgroup-stack";
+                }
+                <div class="@style" id="@id">
+                    @*//TODO Label needs spacing when adjacent to field*@
+                    <label style="margin: 0">@timeElement.Label</label>
+                    <BlockTimeComponent AllSettings="allSettingsBT" Elements="Elements" 
+                                        FormProcessor="FormProcessor" IsStart="@isStart"
+                                        DisplayOnly="displayOnly" ></BlockTimeComponent>
+                </div>
+            }
+            else
+            {
+                <div class="@style" id="@id">
+                    <BlockTimeComponent AllSettings="allSettingsBT" Elements="Elements" 
+                                        FormProcessor="FormProcessor" IsStart="@isStart"
+                                        DisplayOnly="displayOnly"></BlockTimeComponent>
+                </div>
+            }
             break;
         case FormElementType.Select:
+            var selectElement = (SelectElement)_formElement;
+            <div class="frtform-formgroup">
+                <div class="frtform-form-icon material-icons">@selectElement.Icon</div>
+                <select name="" @onchange="UpdateElements" disabled="@selectElement.NotEnabled"
+                        value="@selectElement.Value" id="@id">
+                    @foreach (var option in @selectElement.Options)
+                    {
+                        <option value="@option.Key.ToString()">@option.Value</option>
+                    }
+                </select>
+            </div>
             break;
         case FormElementType.TextArea:
-            break;
-        default:
-            throw new ArgumentOutOfRangeException();
-    } 
-}
-
-@if (_formElement.Type == FormElementType.Input)
-{
-    var inputElement = (InputElement) _formElement;
-    string inputType = inputElement.InputType.ToString().ToLower();
-    if (!inputElement.NotVisible)
-    {
-        <div class="frtform-formgroup-stack">
-            @if (inputElement.Label != null)
+            var textAreaElement = (TextAreaElement)_formElement;
+            // if notEnabled, do no show placeholder
+            if (textAreaElement.NotEnabled)
             {
-                <label style="margin: 0">@inputElement.Label
-                    @if (inputElement.Required)
-                    {
-                        <span style="color: red"> *</span>
-                    }
-                    </label>
+                textAreaElement.Placeholder = "";
             }
-            <input type="@inputType" @onchange="UpdateElements"  disabled="@inputElement.NotEnabled"
-                   placeholder="@inputElement.Placeholder" id="@id">
-            @if (inputElement.ErrorMsg != null)
-            {
-                <p style="color: red">@_formElement.ErrorMsg</p>
-            }
-        </div>
-    }
-}
-else if (_formElement.Type == FormElementType.Select)
-{
-    var selectElement = (SelectElement)_formElement;
-    if (!selectElement.NotVisible)
-    {
-        <div class="frtform-formgroup">
-            <div class="frtform-form-icon material-icons">@selectElement.Icon</div>
-            <select name="" @onchange="UpdateElements" disabled="@selectElement.NotEnabled"
-                    value="@selectElement.Value" id="@id">
-                @foreach (var option in @selectElement.Options)
-                {
-                    <option value="@option.Key.ToString()">@option.Value</option>
-                }
-            </select>
-        </div>
-    }
-}
-else if (_formElement.Type == FormElementType.Button)
-{
-    var buttonElement = (ButtonElement) _formElement;
-    if (!buttonElement.NotVisible)
-    {
-        switch (buttonElement.ButtonType)
-        {
-            case ButtonType.Button:
-                <button type="button" class="@buttonElement.ButtonClass" @onclick="HandleClick"
-                        disabled="@buttonElement.NotEnabled" id="@id">
-                    @buttonElement.Value
-                </button>
-                break;
-            case ButtonType.Reset:
-                throw new NotImplementedException();
-            case ButtonType.Submit:
-                <input type="submit" class="frtform-btn-primary" id="@id"
-                       disabled="@_formElement.NotEnabled" value="@buttonElement.Value"/>
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-    }
-}
-else if (_formElement.Type == FormElementType.TextArea)
-{
-    var textAreaElement = (TextAreaElement)_formElement;
-    if (!textAreaElement.NotVisible)
-    {
-        // if notEnabled, do no show placeholder
-        if (textAreaElement.NotEnabled)
-        {
-            textAreaElement.Placeholder = "";
-        }
-        <div class="frtform-formgroup">
-            <div class="frtform-form-icon material-icons">@textAreaElement.Icon</div>
-            <textarea placeholder="@textAreaElement.Placeholder"  
+            <div class="frtform-formgroup">
+                <div class="frtform-form-icon material-icons">@textAreaElement.Icon</div>
+                <textarea placeholder="@textAreaElement.Placeholder"  
                       disabled="@textAreaElement.NotEnabled" id="@id">
                 @textAreaElement.Value
             </textarea>
-            <div class="frtform-message-add frtform-formheader-icon material-icons" @onclick="HandleClick">@textAreaElement.RightIcon</div>
-        </div>
-    }
-}
-else if (_formElement.Type == FormElementType.BlockTime)
-{
-    var timeElement = (BlockTimeElement) _formElement;
-    var allSettingsBT = (IAllSettingsBT)AllSettings;
-    if (!timeElement.NotVisible)
-    {
-        var isStart = timeElement.IsStart;
-        var style = "frtform-formgroup";
-        // timeElement.NotEnabled overrides FormDisplayOnly
-        var displayOnly = timeElement.NotEnabled;
-        if (!displayOnly)
-        {
-            displayOnly = FormDisplayOnly;
-        }
-        // icon takes precedent (so label can be used for accessibility)
-        if (timeElement.DisplayIcon)
-        {
-            if (timeElement.IconStacked)
-            {
-                style = "frtform-formgroup-stack";
-            }
-            <div class="@style" id="@id">
-                <div class="frtform-form-icon material-icons">@timeElement.Icon</div>
-                <BlockTimeComponent AllSettings="allSettingsBT" Elements="Elements" 
-                                    FormProcessor="FormProcessor" IsStart="@isStart"
-                       DisplayOnly="displayOnly" ></BlockTimeComponent>
+                <div class="frtform-message-add frtform-formheader-icon material-icons" @onclick="HandleClick">@textAreaElement.RightIcon</div>
             </div>
-        }
-        else if(timeElement.DisplayLabel)
-        {
-            if (timeElement.LabelStacked)
-            {
-                style = "frtform-formgroup-stack";
-            }
-            <div class="@style" id="@id">
-                @*//TODO Label needs spacing when adjacent to field*@
-                <label style="margin: 0">@timeElement.Label</label>
-                <BlockTimeComponent AllSettings="allSettingsBT" Elements="Elements" 
-                                    FormProcessor="FormProcessor" IsStart="@isStart"
-                       DisplayOnly="displayOnly" ></BlockTimeComponent>
-            </div>
-        }
-        else
-        {
-            <div class="@style" id="@id">
-                <BlockTimeComponent AllSettings="allSettingsBT" Elements="Elements" 
-                                    FormProcessor="FormProcessor" IsStart="@isStart"
-                       DisplayOnly="displayOnly"></BlockTimeComponent>
-            </div>
-        }
+            break;
+        default:
+            throw new ArgumentOutOfRangeException();
     }
-}
-else if (_formElement.Type == FormElementType.Title)
-{
-    @if (!_formElement.NotVisible)
+    @if (_formElement.ErrorMsg != null)
     {
-        <div class="frtform-formgroup" id="@id">@_formElement.Value</div>
-    }
-}
-else if (_formElement.Type == FormElementType.SubmitAndClose)
-{
-    var header = (SubmitAndCloseElement)_formElement;
-    @if (!header.NotVisible)
-    {
-        <div class="frtform-formheader" id="@id">
-            <input type="submit" class="frtform-btn-primary"
-                   disabled="@header.NotEnabled" value="@header.SubmitButtonText"/>
-            <div class="frtform-formheader-icon material-icons"
-                 @onclick="OnCloseCallback">clear</div>
-        </div>
-        @if (_formElement.ErrorMsg != null)
-        {
-            <p style="color: red">@_formElement.ErrorMsg</p>
-        }
-    }
-}
-else if (_formElement.Type == FormElementType.EditDeleteClose)
-{
-    var header = (EditDeleteCloseElement)_formElement;
-    if (!header.NotVisible)
-    {
-        <div class="frtform-formheader" id="@id">
-            <div class="frtform-formheader-icon material-icons"
-                 @onclick="OnEditCallback">mode_edit</div>
-            <div class="frtform-formheader-icon material-icons"
-                 @onclick="OnDeleteCallback">delete_outline</div>
-            <div class="frtform-formheader-icon material-icons"
-                 @onclick="OnCloseCallback">clear</div>
-        </div>
-    }
-}
-else if (_formElement.Type == FormElementType.Close)
-{
-    var header = (CloseElement)_formElement;
-    if (!header.NotVisible)
-    {
-        <div class="frtform-formheader" id="@id">
-            <p></p>
-            <div class="frtform-formheader-icon material-icons"
-                 @onclick="OnCloseCallback">clear</div>
-        </div>
+        <p style="color: red">@_formElement.ErrorMsg</p>
     }
 }
 
