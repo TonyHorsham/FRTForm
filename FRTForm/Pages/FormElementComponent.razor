@@ -17,7 +17,7 @@
 @if (!_formElement.NotVisible)
 {
     <div class="frtform-formelement">
-        switch (_formElement.Type)
+        @switch (_formElement.Type)
         {
             case FormElementType.SubmitAndClose:
                 var header = (SubmitAndCloseElement)_formElement;
