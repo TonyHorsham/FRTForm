@@ -1,5 +1,6 @@
 ﻿// 23 11 2020 Created by Tony Horsham 16:00
 
+using System;
 using System.Collections.Generic;
 using Demo.FormClasses.Models;
 using Demo.FormClasses.Settings;
@@ -31,6 +32,7 @@ namespace Demo.FormClasses.Utilities
         /// Following IFormElements implemented 5DEC20
         /// ButtonElement, CloseElement, EditDeleteCloseElement, InputElement, SelectElement,
         /// SubmitAndCloseElement, TextAreaElement, TitleElement
+        /// Plus BlockTimeElement in the BlockTime namespace
         /// </summary>
         private static IFormSpecs ModalFormSpecs
         {
@@ -44,8 +46,21 @@ namespace Demo.FormClasses.Utilities
                 elements.Add(closeElement);
                 var editDeleteCloseElement = new EditDeleteCloseElement("DisplayHeader");
                 elements.Add(editDeleteCloseElement);
+                var inputElement = new InputElement(InputType.Text, "TextInput", "Input a text value",
+                    "Input a text value", 0, Int32.MaxValue, true);
+                elements.Add(inputElement);
+                var selectElement = new SelectElement("Select", "Select a number", "schedule");
+                var options = new Dictionary<int, string>
+                {
+                    {1, "one"},
+                    {2,"two"}
+                };
+                selectElement.Options = options;
+                elements.Add(selectElement);
                 var submitAndCloseElement = new SubmitAndCloseElement("SubmitHeader", "Save Changes");
                 elements.Add(submitAndCloseElement);
+                var textAreaElement = new TextAreaElement("TextArea", "Details" , "schedule");
+                elements.Add(textAreaElement);
                 var titleElement = new TitleElement("Title", "All elements displayed for styling initially");
                 elements.Add(titleElement);
                 var start = new BlockTimeElement("StartTime", "Start", "schedule", false);

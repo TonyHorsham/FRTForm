@@ -52,12 +52,12 @@ namespace Tests
         [Test]
         public void FormSpecs_AllElements_NumberCorrect()
         {
-            var elementsNeeded = 7;
-            Assert.AreEqual(elementsNeeded, _testFormElements.Count);
+            var elementsExpected = 10;
+            Assert.AreEqual(elementsExpected, _testFormElements.Count);
         }
         [Test]
         public void Elements_Includes_NamedElements([Values("DisplayOnly", "Close",
-            "DisplayHeader", "SubmitHeader", "Title", "StartTime", "Duration")] string name)
+            "DisplayHeader", "TextInput", "Select", "SubmitHeader", "Title", "StartTime", "Duration")] string name)
         {
             var element = _testFormElements.FirstOrDefault(fe => fe.Name == name);
             Assert.IsNotNull(element);
