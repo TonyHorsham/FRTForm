@@ -52,26 +52,32 @@ namespace Tests
         [Test]
         public void FormSpecs_AllElements_NumberCorrect()
         {
-            // 5 elements needed
-            Assert.AreEqual(5, _testFormElements.Count);
+            var elementsNeeded = 7;
+            Assert.AreEqual(elementsNeeded, _testFormElements.Count);
         }
         [Test]
-        public void Elements_Includes_NamedElements([Values(
+        public void Elements_Includes_NamedElements([Values("DisplayOnly", "Close",
             "DisplayHeader", "SubmitHeader", "Title", "StartTime", "Duration")] string name)
         {
             var element = _testFormElements.FirstOrDefault(fe => fe.Name == name);
             Assert.IsNotNull(element);
             //check that tests do not interfere
-            ExtractElements(out var display, out var submit, out var title, 
+            ExtractElements(out var displayOnly, out var closeElement, out var display,
+                out var submit, out var title, 
                 out var start, out var duration, _testFormElements);
             Assert.AreEqual("All elements displayed for styling initially", title.Value);
         }
         #region Utilities
 
-        private void ExtractElements(out EditDeleteCloseElement display, out SubmitAndCloseElement submit, 
+        private void ExtractElements(out ButtonElement displayOnly, out CloseElement closeElement,
+            out EditDeleteCloseElement display, out SubmitAndCloseElement submit, 
             out TitleElement title, out BlockTimeElement start, out BlockTimeElement duration,
             List<IFormElement> elements)
         {
+            displayOnly = (ButtonElement) elements
+                .FirstOrDefault(fe => fe.Name == "DisplayOnly");
+            closeElement = (CloseElement) elements
+                .FirstOrDefault(fe => fe.Name == "Close");
             display = (EditDeleteCloseElement) elements
                 .FirstOrDefault(fe => fe.Name == "DisplayHeader");
             submit = (SubmitAndCloseElement)elements
