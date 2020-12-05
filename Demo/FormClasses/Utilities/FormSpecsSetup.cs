@@ -36,6 +36,8 @@ namespace Demo.FormClasses.Utilities
             get
             {
                 var elements = new List<IFormElement>();
+                var displayOnlyButtonElement = new ButtonElement("DisplayOnly", "Click to set form to display only",
+                    "button", "frtform-danger");
                 var editDeleteCloseElement = new EditDeleteCloseElement("DisplayHeader");
                 elements.Add(editDeleteCloseElement);
                 var submitAndCloseElement = new SubmitAndCloseElement("SubmitHeader", "Save Changes");
