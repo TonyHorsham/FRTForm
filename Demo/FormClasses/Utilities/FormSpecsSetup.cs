@@ -38,7 +38,7 @@ namespace Demo.FormClasses.Utilities
             {
                 var elements = new List<IFormElement>();
                 var displayOnlyButtonElement = new ButtonElement("DisplayOnly", "Click to set form to display only",
-                    ButtonType.Button, "frtform-danger");
+                    ButtonType.Button, "frtform-btn-primary");
                 var editDeleteCloseElement = new EditDeleteCloseElement("DisplayHeader");
                 elements.Add(editDeleteCloseElement);
                 var submitAndCloseElement = new SubmitAndCloseElement("SubmitHeader", "Save Changes");
@@ -65,7 +65,7 @@ namespace Demo.FormClasses.Utilities
                 var elements = new List<IFormElement>();
                 var titleElement = new TitleElement("Title", "All elements displayed for styling initially");
                 elements.Add(titleElement);
-                var submit = new SubmitElement("Submit", "Test Submit Button");
+                var submit = new ButtonElement("Submit", "Test Submit Button", ButtonType.Submit, "frtform-btn-danger");
                 elements.Add(submit);
                 IFormProcessor formProcessor = new BasicFormProcessor();
                 var formSpecs = new FormSpecs("demoForm", 25, elements, formProcessor);

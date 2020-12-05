@@ -203,15 +203,6 @@ else if (_formElement.Type == FormElementType.Close)
         </div>
     }
 }
-else if (_formElement.Type == FormElementType.Submit)
-{
-    @if (!_formElement.NotVisible)
-    {
-        var submit = (SubmitElement)_formElement;
-        <input type="submit" class="frtform-btn-primary" id="@id"
-               disabled="@_formElement.NotEnabled" value="@submit.SubmitButtonText"/>
-    }
-}
 
 @code {
     
