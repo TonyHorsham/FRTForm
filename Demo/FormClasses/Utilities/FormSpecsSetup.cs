@@ -39,7 +39,7 @@ namespace Demo.FormClasses.Utilities
             get
             {
                 var elements = new List<IFormElement>();
-                var displayOnlyButtonElement = new ButtonElement("DisplayOnly", "Click to set form to display only",
+                var displayOnlyButtonElement = new ButtonElement("DisplayOnlyButton", "Click to set form to display only",
                     ButtonType.Button, "frtform-btn-primary");
                 elements.Add(displayOnlyButtonElement);
                 var closeElement = new CloseElement("Close");

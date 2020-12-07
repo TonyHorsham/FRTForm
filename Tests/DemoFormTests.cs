@@ -69,6 +69,18 @@ namespace Tests
                 out var start, out var duration, _testFormElements);
             Assert.AreEqual("All elements displayed for styling initially", title.Value);
         }
+
+        [Test]
+        public async Task kjkjkjkj()
+        {
+            _testFormProcessor.ExtractElements(out var displayOnlyButton, out var closeElement, out var display,
+                out var input, out var select, out var submit,
+                out var textArea, out var title,
+                out var start, out var duration, _testFormElements);
+            await _testFormProcessor.UpdateElementsAsync(_testFormElements, _allSettings, false);
+            Assert.IsTrue(!submit.NotEnabled);
+            await _testFormProcessor.HandleClickAsync(_testFormElements, "DisplayOnlyButton", _allSettings);
+        }
         #region Utilities
 
         

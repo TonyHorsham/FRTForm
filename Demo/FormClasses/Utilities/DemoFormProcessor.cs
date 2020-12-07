@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using FRTForm.BlockTime.Models;
@@ -13,26 +14,44 @@ namespace Demo.FormClasses.Utilities
 {
     public class DemoFormProcessor : IFormProcessor
     {
-        public Task HandleClickAsync(List<IFormElement> formElements, string elementName, IAllSettings allSettings)
+        public async Task HandleClickAsync(List<IFormElement> formElements, string elementName, IAllSettings allSettings)
         {
-            throw new NotImplementedException();
+            if (elementName == "DisplayOnlyButton")
+            {
+               // Structs make this more complicated!
+                // need to find the index, copy with cast, replace
+                var originalElement = formElements.FirstOrDefault(e => e.Name == "Code");
+                Debug.Assert(originalElement != null, nameof(originalElement) + " != null");
+                
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+            await UpdateElementsAsync(formElements, allSettings, false);
         }
 
-        public Task UpdateElementsAsync(List<IFormElement> formElements, IAllSettings allSettings, bool displayOnly)
+        public async Task UpdateElementsAsync(List<IFormElement> formElements, IAllSettings allSettings, bool displayOnly)
         {
             ExtractElements(out var displayOnlyButton, out var closeElement, out var display,
                 out var input, out var select, out var submit,
                 out var textArea, out var title,
                 out var start, out var duration, formElements);
-            throw new NotImplementedException();
+
+
+            OnElementsUpdated(EventArgs.Empty);
         }
 
-        public Task FormSubmittedAsync(List<IFormElement> formElements, IAllSettings allSettings)
+        public async Task FormSubmittedAsync(List<IFormElement> formElements, IAllSettings allSettings)
         {
             throw new NotImplementedException();
         }
 
         public event EventHandler ElementsUpdated;
+        protected virtual void OnElementsUpdated(System.EventArgs e)
+        {
+            ElementsUpdated?.Invoke(this, e);
+        }
 
         #region Utilities
         // use for tests as well as locally
@@ -44,7 +63,7 @@ namespace Demo.FormClasses.Utilities
         {
             // N.B. Use name of elements rather than inputType, even if only one example of each
             displayOnlyButton = (ButtonElement)elements
-                .FirstOrDefault(fe => fe.Name == "DisplayOnly");
+                .FirstOrDefault(fe => fe.Name == "DisplayOnlyButton");
             closeElement = (CloseElement)elements
                 .FirstOrDefault(fe => fe.Name == "Close");
             input = (InputElement)elements
