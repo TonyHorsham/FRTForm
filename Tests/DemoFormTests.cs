@@ -63,7 +63,7 @@ namespace Tests
             var element = _testFormElements.FirstOrDefault(fe => fe.Name == name);
             Assert.IsNotNull(element);
             //check that tests do not interfere
-            _testFormProcessor.ExtractElements(out var displayOnly, out var closeElement, out var display,
+            _testFormProcessor.ExtractElements(out var displayOnlyButton, out var closeElement, out var display,
                 out var input, out var select, out var submit,
                 out var textArea, out var title, 
                 out var start, out var duration, _testFormElements);
