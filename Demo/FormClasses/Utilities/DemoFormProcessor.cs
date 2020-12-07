@@ -20,7 +20,7 @@ namespace Demo.FormClasses.Utilities
             {
                // Structs make this more complicated!
                 // need to find the index, copy with cast, replace
-                var originalElement = formElements.FirstOrDefault(e => e.Name == "Code");
+                var originalElement = formElements.FirstOrDefault(e => e.Name == "DisplayOnlyButton");
                 Debug.Assert(originalElement != null, nameof(originalElement) + " != null");
                 
             }
