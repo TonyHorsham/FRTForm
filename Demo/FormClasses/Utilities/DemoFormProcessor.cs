@@ -18,11 +18,10 @@ namespace Demo.FormClasses.Utilities
         {
             if (elementName == "DisplayOnlyButton")
             {
-               // Structs make this more complicated!
-                // need to find the index, copy with cast, replace
-                var originalElement = formElements.FirstOrDefault(e => e.Name == "DisplayOnlyButton");
-                Debug.Assert(originalElement != null, nameof(originalElement) + " != null");
-                
+                // Can ignore cast if only dealing with interface properties
+                var displayOnlyButton = (ButtonElement) formElements.FirstOrDefault(e => e.Name == "DisplayOnlyButton");
+                Debug.Assert(displayOnlyButton != null, nameof(displayOnlyButton) + " != null");
+                SetupDisplayOnly(formElements);
             }
             else
             {
@@ -30,6 +29,8 @@ namespace Demo.FormClasses.Utilities
             }
             await UpdateElementsAsync(formElements, allSettings, false);
         }
+
+        
 
         public async Task UpdateElementsAsync(List<IFormElement> formElements, IAllSettings allSettings, bool displayOnly)
         {
@@ -82,6 +83,21 @@ namespace Demo.FormClasses.Utilities
                 .FirstOrDefault(fe => fe.Name == "StartTime");
             duration = (BlockTimeElement)elements
                 .FirstOrDefault(fe => fe.Name == "Duration");
+        }
+        private void SetupDisplayOnly(List<IFormElement> formElements)
+        {
+            ExtractElements(out var displayOnlyButton, out var closeElement, out var display,
+                out var input, out var select, out var submit,
+                out var textArea, out var title,
+                out var start, out var duration, formElements);
+            displayOnlyButton.NotVisible = true;
+            closeElement.NotVisible = true;
+            input.NotEnabled = true;
+            select.NotEnabled = true;
+            submit.NotVisible = true;
+            textArea.NotEnabled = true;
+            start.NotEnabled = true;
+            duration.NotEnabled = true;
         }
         private void Setup(IAllSettings allSettings, List<IFormElement> formElements)
         {
