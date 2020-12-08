@@ -18,10 +18,10 @@ namespace Demo.FormClasses.Utilities
         {
             if (elementName == "DisplayOnlyButton")
             {
-                // Can ignore cast if only dealing with interface properties
+                // Can ignore cast if only dealing with interface properties (as in this example)
                 var displayOnlyButton = (ButtonElement) formElements.FirstOrDefault(e => e.Name == "DisplayOnlyButton");
                 Debug.Assert(displayOnlyButton != null, nameof(displayOnlyButton) + " != null");
-                SetupDisplayOnly(formElements);
+                displayOnlyButton.NotVisible = true;
             }
             else
             {
@@ -38,7 +38,10 @@ namespace Demo.FormClasses.Utilities
                 out var input, out var select, out var submit,
                 out var textArea, out var title,
                 out var start, out var duration, formElements);
-
+            if (displayOnlyButton.NotVisible)
+            {
+                SetupDisplayOnly(formElements);
+            }
 
             OnElementsUpdated(EventArgs.Empty);
         }
@@ -90,7 +93,6 @@ namespace Demo.FormClasses.Utilities
                 out var input, out var select, out var submit,
                 out var textArea, out var title,
                 out var start, out var duration, formElements);
-            displayOnlyButton.NotVisible = true;
             closeElement.NotVisible = true;
             input.NotEnabled = true;
             select.NotEnabled = true;
