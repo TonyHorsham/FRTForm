@@ -38,6 +38,8 @@ namespace Demo.FormClasses.Utilities
         {
             get
             {
+                // elements in real examples will be ordered by desired location, NOT alphabetically
+                // because they are rendered by iterating through the list 
                 var elements = new List<IFormElement>();
                 var displayOnlyButtonElement = new ButtonElement("DisplayOnlyButton", "Click to set form to display only",
                     ButtonType.Button, "frtform-btn-primary");
