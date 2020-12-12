@@ -61,8 +61,14 @@ namespace Tests
         public void FormSpecs_SecondAccess_AllElementsNew()
         {
             var formSpec = _formSpecs[_formSpecName];
-            var elementsExpected = 10;
-            Assert.AreEqual(elementsExpected, _testFormElements.Count);
+            var secondElementList = formSpec.Elements;
+            foreach (var element in _testFormElements)
+            {
+                var secondElement = secondElementList
+                    .FirstOrDefault(e => e.Name == element.Name);
+                Assert.IsTrue(element.Equals(secondElement));
+                Assert.IsFalse(ReferenceEquals(element, secondElement));
+            }
         }
         [Test]
         public void Elements_Includes_NamedElements([Values("DisplayOnlyButton", "Close",
