@@ -24,12 +24,12 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        var formSpecs = FormSpecsSetup.FormSpecs;
+        var formSpecs = FormSpecsSetup.FormSpecsDictionary;
         var appSettings = new ApplicationSettings("url", new DummySmsSender(),
             new DummyEmailSender(), formSpecs);
         if (!formSpecs.ContainsKey(FormSpecsName))
         {
-            var errorMessage = "FormSpecsSetup.FormSpecs ";
+            var errorMessage = "FormSpecsSetup.FormSpecsDictionary ";
             errorMessage += "does not contain formSpecs named " + FormSpecsName;
             throw new ArgumentException(errorMessage);
         }
@@ -37,7 +37,7 @@
         _formSpecs = _allSettings.ApplicationSettings.AppFormSpecs[FormSpecsName];
         _elements = new List<IFormElement>();
         // need to avoid passing elements by reference
-        // Because FormSpecs are static
+        // Because FormSpecsDictionary is static
         foreach (var element in _formSpecs.Elements)
         {
             var copy = element.Clone();

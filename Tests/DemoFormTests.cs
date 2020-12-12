@@ -20,7 +20,7 @@ namespace Tests
     [TestFixture]
     public class DemoFormTests
     {
-        private Dictionary<string, IFormSpecs> _formSpecs;
+        private Dictionary<string, IFormSpecs> _formSpecsDictionary;
         private string _formSpecName = "modalFormSpecs";
         private IAllSettingsBT _allSettings;
         private DemoFormProcessor _testFormProcessor;
@@ -29,9 +29,9 @@ namespace Tests
         [SetUp]
         public async Task Setup()
         {
-            _formSpecs = FormSpecsSetup.FormSpecs;
+            _formSpecsDictionary = FormSpecsSetup.FormSpecsDictionary;
             var appSettings = new ApplicationSettings("url", new DummySmsSender(),
-                new DummyEmailSender(), _formSpecs);
+                new DummyEmailSender(), _formSpecsDictionary);
             var calendarSettings = new CalendarSettings
             {
                 DefaultBlockDuration = 60,
@@ -46,9 +46,9 @@ namespace Tests
                 BlockType.Available, calendarId);
             _allSettings.CurrentBlockParameters = new CurrentBlockParameters(block, calendarDay,
                 "", false, DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
-            var formSpec = _formSpecs[_formSpecName];
-            _testFormProcessor = (DemoFormProcessor) formSpec.FormProcessor;
-            _testFormElements = formSpec.Elements;
+            var formSpecs = _formSpecsDictionary[_formSpecName];
+            _testFormProcessor = (DemoFormProcessor) formSpecs.FormProcessor;
+            _testFormElements = formSpecs.Elements;
         }
 
         [Test]
@@ -60,8 +60,8 @@ namespace Tests
         [Test]
         public void FormSpecs_SecondAccess_AllElementsNew()
         {
-            var formSpec = _formSpecs[_formSpecName];
-            var secondElementList = formSpec.Elements;
+            var formSpecs = _formSpecsDictionary[_formSpecName];
+            var secondElementList = formSpecs.Elements;
             foreach (var element in _testFormElements)
             {
                 var secondElement = secondElementList
@@ -73,9 +73,9 @@ namespace Tests
         [Test]
         public void FormSpecs_SecondAccess_ProcessorNew()
         {
-            var formSpec = _formSpecs[_formSpecName];
-            var secondProcessor = formSpec.FormProcessor;
-            var secondElementList = formSpec.Elements;
+            var formSpecs = _formSpecsDictionary[_formSpecName];
+            var secondProcessor = formSpecs.FormProcessor;
+            var secondElementList = formSpecs.Elements;
             Assert.IsTrue(_testFormProcessor.Equals(secondProcessor));
             Assert.IsFalse(ReferenceEquals(_testFormProcessor, secondProcessor));
         }

@@ -23,7 +23,7 @@ Click the link in the menu bar to display a demonstration form using FRTForm
         base.OnInitialized();
         // formSpecs could be created directly,
         //  but FormSpecsSetup provides more flexibility as well as testing
-        var formSpecs = FormSpecsSetup.FormSpecs;
+        var formSpecs = FormSpecsSetup.FormSpecsDictionary;
         var appSettings = new ApplicationSettings("url", new DummySmsSender(),
             new DummyEmailSender(), formSpecs);
         // for a form not using BlockTime, calendarSettings can be null

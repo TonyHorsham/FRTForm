@@ -33,7 +33,7 @@
         _formSpecs = AllSettings.ApplicationSettings.AppFormSpecs[FormSpecsName];
         _elements = new List<IFormElement>();
         // need to avoid passing elements by reference
-        // Because FormSpecs are static
+        // Because FormSpecsDictionary is static
         foreach (var element in _formSpecs.Elements)
         {
             var copy = element.Clone();

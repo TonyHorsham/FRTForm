@@ -18,7 +18,7 @@ namespace Demo.FormClasses.Utilities
         /// It facilitates testing.
         /// It also allows for a single razor file to handle multiple form options.
         /// </summary>
-        public static Dictionary<string, IFormSpecs> FormSpecs
+        public static Dictionary<string, IFormSpecs> FormSpecsDictionary
         {
             get
             {
