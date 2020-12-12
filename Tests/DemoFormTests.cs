@@ -20,6 +20,8 @@ namespace Tests
     [TestFixture]
     public class DemoFormTests
     {
+        private Dictionary<string, IFormSpecs> _formSpecs;
+        private string _formSpecName = "modalFormSpecs";
         private IAllSettingsBT _allSettings;
         private DemoFormProcessor _testFormProcessor;
         private List<IFormElement> _testFormElements;
@@ -27,9 +29,9 @@ namespace Tests
         [SetUp]
         public async Task Setup()
         {
-            var formSpecs = FormSpecsSetup.FormSpecs;
+            _formSpecs = FormSpecsSetup.FormSpecs;
             var appSettings = new ApplicationSettings("url", new DummySmsSender(),
-                new DummyEmailSender(), formSpecs);
+                new DummyEmailSender(), _formSpecs);
             var calendarSettings = new CalendarSettings
             {
                 DefaultBlockDuration = 60,
@@ -44,7 +46,7 @@ namespace Tests
                 BlockType.Available, calendarId);
             _allSettings.CurrentBlockParameters = new CurrentBlockParameters(block, calendarDay,
                 "", false, DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
-            var formSpec = formSpecs["modalFormSpecs"];
+            var formSpec = _formSpecs[_formSpecName];
             _testFormProcessor = (DemoFormProcessor) formSpec.FormProcessor;
             _testFormElements = formSpec.Elements;
         }
@@ -52,6 +54,13 @@ namespace Tests
         [Test]
         public void FormSpecs_AllElements_NumberCorrect()
         {
+            var elementsExpected = 10;
+            Assert.AreEqual(elementsExpected, _testFormElements.Count);
+        }
+        [Test]
+        public void FormSpecs_SecondAccess_AllElementsNew()
+        {
+            var formSpec = _formSpecs[_formSpecName];
             var elementsExpected = 10;
             Assert.AreEqual(elementsExpected, _testFormElements.Count);
         }
