@@ -60,7 +60,7 @@ namespace Tests
         [Test]
         public void FormSpecs_SecondAccess_AllElementsNew()
         {
-            var formSpecs = _formSpecsDictionary[_formSpecName];
+            var formSpecs = _formSpecsDictionary[_formSpecName].Clone();
             var secondElementList = formSpecs.Elements;
             foreach (var element in _testFormElements)
             {
@@ -73,7 +73,7 @@ namespace Tests
         [Test]
         public void FormSpecs_SecondAccess_ProcessorNew()
         {
-            var formSpecs = _formSpecsDictionary[_formSpecName];
+            var formSpecs = _formSpecsDictionary[_formSpecName].Clone();
             var secondProcessor = formSpecs.FormProcessor;
             var secondElementList = formSpecs.Elements;
             Assert.IsTrue(_testFormProcessor.Equals(secondProcessor));
