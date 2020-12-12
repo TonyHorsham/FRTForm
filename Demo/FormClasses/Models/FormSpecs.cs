@@ -21,5 +21,18 @@ namespace Demo.FormClasses.Models
         public int LabelWidth { get; set; }
         public List<IFormElement> Elements { get; }
         public IFormProcessor FormProcessor { get; }
+        public IFormSpecs Clone()
+        {
+            var elements = new List<IFormElement>();
+            // need to avoid passing elements by reference
+            // Because FormSpecsDictionary is static
+            foreach (var element in this.Elements)
+            {
+                var copy = element.Clone();
+                elements.Add(copy);
+            }
+            var kkk = new FormSpecs(this.FormId, this.LabelWidth, elements, this.FormProcessor);
+            return kkk;
+        }
     }
 }
