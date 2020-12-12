@@ -71,6 +71,15 @@ namespace Tests
             }
         }
         [Test]
+        public void FormSpecs_SecondAccess_ProcessorNew()
+        {
+            var formSpec = _formSpecs[_formSpecName];
+            var secondProcessor = formSpec.FormProcessor;
+            var secondElementList = formSpec.Elements;
+            Assert.IsTrue(_testFormProcessor.Equals(secondProcessor));
+            Assert.IsFalse(ReferenceEquals(_testFormProcessor, secondProcessor));
+        }
+        [Test]
         public void Elements_Includes_NamedElements([Values("DisplayOnlyButton", "Close",
             "DisplayHeader", "TextInput", "Select", "SubmitHeader", "TextArea", "Title",
             "StartTime", "Duration")] string name)
