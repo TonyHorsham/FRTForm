@@ -52,6 +52,11 @@ namespace Demo.FormClasses.Utilities
         }
 
         public event EventHandler ElementsUpdated;
+        public virtual IFormProcessor Clone()
+        {
+            return this.CloneObject();
+        }
+
         protected virtual void OnElementsUpdated(System.EventArgs e)
         {
             ElementsUpdated?.Invoke(this, e);

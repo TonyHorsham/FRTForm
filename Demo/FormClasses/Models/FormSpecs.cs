@@ -21,7 +21,7 @@ namespace Demo.FormClasses.Models
         public int LabelWidth { get; set; }
         public List<IFormElement> Elements { get; }
         public IFormProcessor FormProcessor { get; }
-        public IFormSpecs Clone()
+        public virtual IFormSpecs Clone()
         {
             var elements = new List<IFormElement>();
             // need to avoid passing elements by reference
@@ -31,7 +31,7 @@ namespace Demo.FormClasses.Models
                 var copy = element.Clone();
                 elements.Add(copy);
             }
-            var kkk = new FormSpecs(this.FormId, this.LabelWidth, elements, this.FormProcessor);
+            var kkk = new FormSpecs(this.FormId, this.LabelWidth, elements, this.FormProcessor.Clone());
             return kkk;
         }
     }

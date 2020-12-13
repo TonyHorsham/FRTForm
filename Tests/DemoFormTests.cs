@@ -76,7 +76,6 @@ namespace Tests
             var formSpecs = _formSpecsDictionary[_formSpecName].Clone();
             var secondProcessor = formSpecs.FormProcessor;
             var secondElementList = formSpecs.Elements;
-            Assert.IsTrue(_testFormProcessor.Equals(secondProcessor));
             Assert.IsFalse(ReferenceEquals(_testFormProcessor, secondProcessor));
         }
         [Test]

@@ -27,5 +27,9 @@ namespace Demo.FormClasses.Utilities
         }
 
         public event EventHandler ElementsUpdated;
+        public IFormProcessor Clone()
+        {
+            return this.CloneObject();
+        }
     }
 }

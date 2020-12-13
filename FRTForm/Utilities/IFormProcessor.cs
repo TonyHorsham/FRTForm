@@ -24,5 +24,7 @@ namespace FRTForm.Utilities
         public Task UpdateElementsAsync(List<IFormElement> formElements, IAllSettings allSettings, bool displayOnly);
         public Task FormSubmittedAsync(List<IFormElement> formElements, IAllSettings allSettings);
         public event EventHandler ElementsUpdated;
+
+        public IFormProcessor Clone();
     }
 }
