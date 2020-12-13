@@ -23,22 +23,24 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        var formSpecs = AllSettings.ApplicationSettings.AppFormSpecs;
-        if (!formSpecs.ContainsKey(FormSpecsName))
+        var appFormSpecsDictionary = AllSettings.ApplicationSettings.AppFormSpecsDictionary;
+        if (!appFormSpecsDictionary.ContainsKey(FormSpecsName))
         {
-            var errorMessage = "AllSettings.ApplicationSettings.AppFormSpecs ";
+            var errorMessage = "AllSettings.ApplicationSettings.AppFormSpecsDictionary ";
             errorMessage += "does not contain formSpecs named " + FormSpecsName;
             throw new ArgumentException(errorMessage);
         }
-        _formSpecs = AllSettings.ApplicationSettings.AppFormSpecs[FormSpecsName];
-        _elements = new List<IFormElement>();
-        // need to avoid passing elements by reference
-        // Because FormSpecsDictionary is static
-        foreach (var element in _formSpecs.Elements)
-        {
-            var copy = element.Clone();
-            _elements.Add(copy);
-        }
+        // Because AppFormSpecsDictionary is static, always use .Clone
+        _formSpecs = AllSettings.ApplicationSettings.AppFormSpecsDictionary[FormSpecsName].Clone();
+        //_elements = new List<IFormElement>();
+        //// need to avoid passing elements by reference
+        //// Because FormSpecsDictionary is static
+        //foreach (var element in _formSpecs.Elements)
+        //{
+        //    var copy = element.Clone();
+        //    _elements.Add(copy);
+        //}
+        _elements = _formSpecs.Elements;
         _formProcessor = _formSpecs.FormProcessor;
         _formId = _formSpecs.FormId;
     }

@@ -46,6 +46,7 @@ namespace Tests
                 BlockType.Available, calendarId);
             _allSettings.CurrentBlockParameters = new CurrentBlockParameters(block, calendarDay,
                 "", false, DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
+            // Because FormSpecsDictionary is static, always use .Clone
             var formSpecs = _formSpecsDictionary[_formSpecName].Clone();
             _testFormProcessor = (DemoFormProcessor) formSpecs.FormProcessor;
             _testFormElements = formSpecs.Elements;

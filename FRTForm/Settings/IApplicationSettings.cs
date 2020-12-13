@@ -8,6 +8,6 @@ namespace FRTForm.Settings
 {
     public interface IApplicationSettings
     {
-       public Dictionary<string, IFormSpecs> AppFormSpecs { get; }
+       public Dictionary<string, IFormSpecs> AppFormSpecsDictionary { get; }
     }
 }

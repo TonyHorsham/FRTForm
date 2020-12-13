@@ -19,12 +19,12 @@ namespace Demo.FormClasses.Settings
             DataApi = dataApi;
             SmsSender = smsSender;
             EmailSender = emailSender;
-            AppFormSpecs = appFormSpecs;
+            AppFormSpecsDictionary = appFormSpecs;
         }
 
         public string DataApi { get; }
         public ISmsSender SmsSender { get; }
         public IEmailSender EmailSender { get; }
-        public Dictionary<string, IFormSpecs> AppFormSpecs { get; }
+        public Dictionary<string, IFormSpecs> AppFormSpecsDictionary { get; }
     }
 }

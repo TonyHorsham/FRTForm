@@ -24,17 +24,18 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        var formSpecs = FormSpecsSetup.FormSpecsDictionary;
+        var formSpecsDictionary = FormSpecsSetup.FormSpecsDictionary;
         var appSettings = new ApplicationSettings("url", new DummySmsSender(),
-            new DummyEmailSender(), formSpecs);
-        if (!formSpecs.ContainsKey(FormSpecsName))
+            new DummyEmailSender(), formSpecsDictionary);
+        if (!formSpecsDictionary.ContainsKey(FormSpecsName))
         {
             var errorMessage = "FormSpecsSetup.FormSpecsDictionary ";
             errorMessage += "does not contain formSpecs named " + FormSpecsName;
             throw new ArgumentException(errorMessage);
         }
         _allSettings = new AllSettings(appSettings, null);
-        _formSpecs = _allSettings.ApplicationSettings.AppFormSpecs[FormSpecsName];
+    // Because AppFormSpecsDictionary is static, always use .Clone
+        _formSpecs = _allSettings.ApplicationSettings.AppFormSpecsDictionary[FormSpecsName].Clone();
         _elements = new List<IFormElement>();
         // need to avoid passing elements by reference
         // Because FormSpecsDictionary is static
