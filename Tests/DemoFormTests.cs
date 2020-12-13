@@ -52,6 +52,7 @@ namespace Tests
             _testFormElements = formSpecs.Elements;
         }
 
+        #region BasicTests
         [Test]
         public void FormSpecs_AllElements_NumberCorrect()
         {
@@ -89,10 +90,11 @@ namespace Tests
             //check that tests do not interfere
             _testFormProcessor.ExtractElements(out var displayOnlyButton, out var closeElement, out var display,
                 out var input, out var select, out var submit,
-                out var textArea, out var title, 
+                out var textArea, out var title,
                 out var start, out var duration, _testFormElements);
             Assert.AreEqual("All elements displayed for styling initially", title.Value);
-        }
+        } 
+        #endregion
 
         [Test]
         public async Task DisplayOnlyButton_Always_BehavesAsExpected()
