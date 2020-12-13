@@ -27,7 +27,7 @@ namespace Tests
         private List<IFormElement> _testFormElements;
 
         [SetUp]
-        public async Task Setup()
+        public void Setup()
         {
             _formSpecsDictionary = FormSpecsSetup.FormSpecsDictionary;
             var appSettings = new ApplicationSettings("url", new DummySmsSender(),
