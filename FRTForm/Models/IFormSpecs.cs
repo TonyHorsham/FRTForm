@@ -9,8 +9,6 @@ namespace FRTForm.Models
     /// <summary>
     /// An application will have named forms and code to launch those forms.
     /// This interface means that the implementation of the forms is up to the developer.
-    /// 14SEP20 only tested with Blazored Modal forms, and all implementations have not
-    ///         extended the interface (so it could be a readonly struct)
     /// </summary>
     public interface IFormSpecs
     {
