@@ -16,4 +16,4 @@ Only TitleElement and ButtonElement (for Submit).
 Submit should return to the caller.
 
 DemoForm
-Use to show all IFormElement implementations
+Use to show all IFormElement implementations in a modal form
