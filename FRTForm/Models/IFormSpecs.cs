@@ -15,7 +15,6 @@ namespace FRTForm.Models
     public interface IFormSpecs
     {
         public string FormId { get; }
-        public int LabelWidth { get; set; }// rem and needs to be changed in FormProcessor
         public List<IFormElement> Elements { get; }
         public IFormProcessor FormProcessor { get; }
 

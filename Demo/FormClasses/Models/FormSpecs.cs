@@ -8,17 +8,15 @@ namespace Demo.FormClasses.Models
 {
     public class FormSpecs : IFormSpecs
     {
-        public FormSpecs(string formId, int labelWidth,
+        public FormSpecs(string formId, 
             List<IFormElement> elements, IFormProcessor formProcessor)
         {
             FormId = formId;
-            LabelWidth = labelWidth;
             Elements = elements;
             FormProcessor = formProcessor;
         }
 
         public string FormId { get; }
-        public int LabelWidth { get; set; }
         public List<IFormElement> Elements { get; }
         public IFormProcessor FormProcessor { get; }
         public virtual IFormSpecs Clone()
@@ -28,11 +26,11 @@ namespace Demo.FormClasses.Models
             // Because FormSpecsDictionary is static
             foreach (var element in this.Elements)
             {
-                var copy = element.Clone();
-                elements.Add(copy);
+                var elementClone = element.Clone();
+                elements.Add(elementClone);
             }
-            var kkk = new FormSpecs(this.FormId, this.LabelWidth, elements, this.FormProcessor.Clone());
-            return kkk;
+            var formSpecsClone = new FormSpecs(this.FormId, elements, this.FormProcessor.Clone());
+            return formSpecsClone;
         }
     }
 }

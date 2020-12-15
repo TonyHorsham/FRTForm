@@ -74,7 +74,7 @@ namespace Demo.FormClasses.Utilities
                 duration.DisplayIcon = true;
                 elements.Add(duration);
                 IFormProcessor formProcessor = new DemoFormProcessor();
-                var formSpecs = new FormSpecs("demoForm",25, elements, formProcessor);
+                var formSpecs = new FormSpecs("demoForm", elements, formProcessor);
                 return formSpecs;
             }
         }
@@ -88,7 +88,7 @@ namespace Demo.FormClasses.Utilities
                 var submit = new ButtonElement("Submit", "Test Submit Button", ButtonType.Submit, "frtform-btn-danger");
                 elements.Add(submit);
                 IFormProcessor formProcessor = new BasicFormProcessor();
-                var formSpecs = new FormSpecs("demoForm", 25, elements, formProcessor);
+                var formSpecs = new FormSpecs("basicForm",  elements, formProcessor);
                 return formSpecs;
             }
         }
