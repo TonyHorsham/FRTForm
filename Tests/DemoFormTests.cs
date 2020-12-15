@@ -21,7 +21,7 @@ namespace Tests
     public class DemoFormTests
     {
         private Dictionary<string, IFormSpecs> _formSpecsDictionary;
-        private string _formSpecName = "modalFormSpecs";
+        private string _formSpecName = "demoFormSpecs";
         private IAllSettingsBT _allSettings;
         private DemoFormProcessor _testFormProcessor;
         private List<IFormElement> _testFormElements;
