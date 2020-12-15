@@ -9,3 +9,11 @@
 5. Add the required IFormElements to the IFormSpecs implementation, so that the BasicTests pass.
 6. Add tests for all functionality and modify the IFormProcessor so the tests pass.
 7. Add new Blazor component i.e. the form.
+
+BasicForm
+Use to demonstrate non-modal form.
+Only TitleElement and ButtonElement (for Submit).
+Submit should return to the caller.
+
+DemoForm
+Use to show all IFormElement implementations
