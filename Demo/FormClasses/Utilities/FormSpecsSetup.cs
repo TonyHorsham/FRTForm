@@ -23,7 +23,7 @@ namespace Demo.FormClasses.Utilities
             get
             {
                 Dictionary<string, IFormSpecs> formSpecs = new Dictionary<string, IFormSpecs>();
-                formSpecs.Add("modalFormSpecs", ModalFormSpecs);
+                formSpecs.Add("demoFormSpecs", DemoFormSpecs);
                 formSpecs.Add("basicFormSpecs", BasicFormSpecs);
                 return formSpecs;
             }
@@ -34,7 +34,7 @@ namespace Demo.FormClasses.Utilities
         /// SubmitAndCloseElement, TextAreaElement, TitleElement
         /// Plus BlockTimeElement in the BlockTime namespace
         /// </summary>
-        private static IFormSpecs ModalFormSpecs
+        private static IFormSpecs DemoFormSpecs
         {
             get
             {
