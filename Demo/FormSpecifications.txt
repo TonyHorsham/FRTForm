@@ -6,6 +6,7 @@
 	FormSpecs_SecondAccess_AllElementsNew
 	FormSpecs_SecondAccess_ProcessorNew
 	Elements_Includes_NamedElements
+	FormSpecs_FormId_Correct
 5. Add the required IFormElements to the IFormSpecs implementation, so that the BasicTests pass.
 6. Add tests for all functionality and modify the IFormProcessor so the tests pass.
 7. Add new Blazor component i.e. the form.

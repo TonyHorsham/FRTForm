@@ -25,6 +25,7 @@ namespace Tests
         private IAllSettingsBT _allSettings;
         private DemoFormProcessor _testFormProcessor;
         private List<IFormElement> _testFormElements;
+        private string _formId;
 
         [SetUp]
         public void Setup()
@@ -50,6 +51,7 @@ namespace Tests
             var formSpecs = _formSpecsDictionary[_formSpecName].Clone();
             _testFormProcessor = (DemoFormProcessor) formSpecs.FormProcessor;
             _testFormElements = formSpecs.Elements;
+            _formId = formSpecs.FormId;
         }
 
         #region BasicTests
@@ -93,7 +95,13 @@ namespace Tests
                 out var textArea, out var title,
                 out var start, out var duration, _testFormElements);
             Assert.AreEqual("All elements displayed for styling initially", title.Value);
-        } 
+        }
+
+        [Test]
+        public void FormSpecs_FormId_Correct()
+        {
+            Assert.AreEqual(_formId, "demoForm");
+        }
         #endregion
 
         [Test]
