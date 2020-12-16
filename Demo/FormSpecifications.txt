@@ -10,10 +10,33 @@
 6. Add tests for all functionality and modify the IFormProcessor so the tests pass.
 7. Add new Blazor component i.e. the form.
 
-BasicForm
+BasicForm - formId = basicForm
 Use to demonstrate non-modal form.
 Only TitleElement and ButtonElement (for Submit).
 Submit should return to the caller.
 
-DemoForm
-Use to show all IFormElement implementations in a modal form
+DemoForm - formId = demoForm
+Use to show all IFormElement implementations in a modal form.
+Elements are listed in alphabetical order (by IFormElement type, not element name).
+Initially all elements are displayed so basic styling can be checked.
+	DisplayOnlyButton - visible and enabled
+	Close - visible but not enabled
+	DisplayHeader - visible but not enabled
+	TextInput - visible but not enabled
+	Select - visible but not enabled
+	SubmitHeader - visible but not enabled
+	TextArea - visible but not enabled
+	Title - visible, value = "All elements displayed for styling initially"
+	StartTime - visible but not enabled
+	Duration - visible but not enabled
+The DisplayOnlyButton switches the form to display only mode:
+	DisplayOnlyButton - not visible
+	Close - not visible
+	DisplayHeader - visible and enabled
+	TextInput - visible but not enabled
+	Select - visible but not enabled
+	SubmitHeader - not visible
+	TextArea - visible but not enabled
+	Title - visible, value = "Now in display only mode"
+	StartTime - visible but not enabled
+	Duration - visible but not enabled
