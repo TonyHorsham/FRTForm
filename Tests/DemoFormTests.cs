@@ -96,11 +96,16 @@ namespace Tests
                 out var start, out var duration, _testFormElements);
             Assert.AreEqual("All elements displayed for styling initially", title.Value);
         }
-
         [Test]
         public void FormSpecs_FormId_Correct()
         {
             Assert.AreEqual(_formId, "demoForm");
+        }
+        [Test]
+        public void FormSpecs_InitialElementOrder_Correct()
+        {
+            // ElementOrderCorrect should fail initially
+            Assert.IsFalse(ElementOrderCorrect(_testFormElements));
         }
         #endregion
 
@@ -122,10 +127,26 @@ namespace Tests
             Assert.IsTrue(textArea.NotEnabled);
             Assert.IsTrue(start.NotEnabled);
             Assert.IsTrue(duration.NotEnabled);
+            Assert.IsTrue(ElementOrderCorrect(_testFormElements));
         }
         #region Utilities
 
-        
+        private bool ElementOrderCorrect(List<IFormElement> formElements)
+        {
+            // initially in alphabetical order, but after button click should always be in this order
+            var correct = true;
+            if (formElements[0].Name != "Close") correct = false;
+            else if (formElements[1].Name != "DisplayHeader") correct = false;
+            else if (formElements[2].Name != "SubmitHeader") correct = false;
+            else if (formElements[3].Name != "DisplayOnlyButton") correct = false;
+            else if (formElements[4].Name != "Title") correct = false;
+            else if (formElements[5].Name != "TextInput") correct = false;
+            else if (formElements[6].Name != "Select") correct = false;
+            else if (formElements[7].Name != "TextArea") correct = false;
+            else if (formElements[8].Name != "StartTime") correct = false;
+            else if (formElements[9].Name != "Duration") correct = false;
+            return correct;
+        }
 
         #endregion
     }
