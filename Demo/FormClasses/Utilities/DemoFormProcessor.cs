@@ -16,18 +16,20 @@ namespace Demo.FormClasses.Utilities
     {
         public async Task HandleClickAsync(List<IFormElement> formElements, string elementName, IAllSettings allSettings)
         {
+            var displayOnly = false;
             if (elementName == "DisplayOnlyButton")
             {
                 // Can ignore cast if only dealing with interface properties (as in this example)
                 var displayOnlyButton = (ButtonElement) formElements.FirstOrDefault(e => e.Name == "DisplayOnlyButton");
                 Debug.Assert(displayOnlyButton != null, nameof(displayOnlyButton) + " != null");
                 displayOnlyButton.NotVisible = true;
+                displayOnly = true;
             }
             else
             {
                 throw new NotImplementedException();
             }
-            await UpdateElementsAsync(formElements, allSettings, false);
+            await UpdateElementsAsync(formElements, allSettings, displayOnly);
         }
 
         
@@ -38,7 +40,7 @@ namespace Demo.FormClasses.Utilities
                 out var input, out var select, out var submit,
                 out var textArea, out var title,
                 out var start, out var duration, formElements);
-            if (displayOnlyButton.NotVisible)
+            if (displayOnly)
             {
                 SetupDisplayOnly(formElements);
             }

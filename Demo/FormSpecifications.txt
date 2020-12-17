@@ -16,20 +16,21 @@ Use to demonstrate non-modal form.
 Only TitleElement and ButtonElement (for Submit).
 Submit should return to the caller.
 
-DemoForm - formId = demoForm
+DemoForm - 10 elements, formId = demoForm
+Element names: DisplayOnlyButton, Close, DisplayHeader, TextInput, Select, SubmitHeader, TextArea, Title, StartTime, Duration.
 Use to show all IFormElement implementations in a modal form.
 Elements are listed in alphabetical order (by IFormElement type, not element name).
 Initially all elements are displayed so basic styling can be checked.
 	DisplayOnlyButton - visible and enabled
-	Close - visible but not enabled
-	DisplayHeader - visible but not enabled
-	TextInput - visible but not enabled
-	Select - visible but not enabled
-	SubmitHeader - visible but not enabled
-	TextArea - visible but not enabled
+	Close - visible and enabled
+	DisplayHeader - visible and enabled
+	TextInput - visible and enabled
+	Select - visible and enabled
+	SubmitHeader - visible and enabled
+	TextArea - visible and enabled
 	Title - visible, value = "All elements displayed for styling initially"
-	StartTime - visible but not enabled
-	Duration - visible but not enabled
+	StartTime - visible and enabled
+	Duration - visible and enabled
 The DisplayOnlyButton switches the form to display only mode:
 	DisplayOnlyButton - not visible
 	Close - not visible
@@ -41,3 +42,14 @@ The DisplayOnlyButton switches the form to display only mode:
 	Title - visible, value = "Now in display only mode"
 	StartTime - visible but not enabled
 	Duration - visible but not enabled
+When in display only mode, clicking the edit icon changes to edit mode
+	DisplayOnlyButton - not visible
+	Close - not visible
+	DisplayHeader - not visible
+	TextInput - visible and enabled
+	Select - visible and enabled
+	SubmitHeader - visible
+	TextArea - visible and enabled
+	Title - visible, value = "Now in edit mode"
+	StartTime - visible and enabled
+	Duration - visible and enabled
