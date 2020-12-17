@@ -100,6 +100,7 @@ namespace Demo.FormClasses.Utilities
                 out var input, out var select, out var submit,
                 out var textArea, out var title,
                 out var start, out var duration, formElements);
+            title.Value = "Now in display only mode";
             closeElement.NotVisible = true;
             input.NotEnabled = true;
             select.NotEnabled = true;
@@ -107,6 +108,18 @@ namespace Demo.FormClasses.Utilities
             textArea.NotEnabled = true;
             start.NotEnabled = true;
             duration.NotEnabled = true;
+            // change the order of the elements
+            formElements.Clear();
+            formElements.Add(closeElement);
+            formElements.Add(display);
+            formElements.Add(submit);
+            formElements.Add(displayOnlyButton);
+            formElements.Add(title);
+            formElements.Add(input);
+            formElements.Add(select);
+            formElements.Add(textArea);
+            formElements.Add(start);
+            formElements.Add(duration);
         }
         private void Setup(IAllSettings allSettings, List<IFormElement> formElements)
         {
