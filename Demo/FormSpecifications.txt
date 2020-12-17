@@ -32,24 +32,25 @@ Initially all elements are displayed so basic styling can be checked.
 	StartTime - visible and enabled
 	Duration - visible and enabled
 The DisplayOnlyButton switches the form to display only mode:
-	DisplayOnlyButton - not visible
+	N.B. the changed order of the elements
 	Close - not visible
 	DisplayHeader - visible and enabled
+	SubmitHeader - not visible
+	DisplayOnlyButton - not visible
+	Title - visible, value = "Now in display only mode"
 	TextInput - visible but not enabled
 	Select - visible but not enabled
-	SubmitHeader - not visible
 	TextArea - visible but not enabled
-	Title - visible, value = "Now in display only mode"
 	StartTime - visible but not enabled
 	Duration - visible but not enabled
 When in display only mode, clicking the edit icon changes to edit mode
-	DisplayOnlyButton - not visible
 	Close - not visible
 	DisplayHeader - not visible
+	SubmitHeader - visible
+	DisplayOnlyButton - not visible
+	Title - visible, value = "Now in edit mode"
 	TextInput - visible and enabled
 	Select - visible and enabled
-	SubmitHeader - visible
 	TextArea - visible and enabled
-	Title - visible, value = "Now in edit mode"
 	StartTime - visible and enabled
 	Duration - visible and enabled
