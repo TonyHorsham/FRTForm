@@ -22,7 +22,6 @@ namespace Demo.FormClasses.Utilities
                 // Can ignore cast if only dealing with interface properties (as in this example)
                 var displayOnlyButton = (ButtonElement) formElements.FirstOrDefault(e => e.Name == "DisplayOnlyButton");
                 Debug.Assert(displayOnlyButton != null, nameof(displayOnlyButton) + " != null");
-                displayOnlyButton.NotVisible = true;
                 displayOnly = true;
             }
             else
@@ -46,7 +45,6 @@ namespace Demo.FormClasses.Utilities
             }
             else
             {
-
                 SetupInitialEdit(formElements);
             }
             OnElementsUpdated(EventArgs.Empty);
@@ -105,14 +103,6 @@ namespace Demo.FormClasses.Utilities
                 out var input, out var select, out var submit,
                 out var textArea, out var title,
                 out var start, out var duration, formElements);
-            title.Value = "Now in display only mode";
-            closeElement.NotVisible = true;
-            input.NotEnabled = true;
-            select.NotEnabled = true;
-            submit.NotVisible = true;
-            textArea.NotEnabled = true;
-            start.NotEnabled = true;
-            duration.NotEnabled = true;
             // change the order of the elements
             formElements.Clear();
             formElements.Add(closeElement);
@@ -125,6 +115,23 @@ namespace Demo.FormClasses.Utilities
             formElements.Add(textArea);
             formElements.Add(start);
             formElements.Add(duration);
+            closeElement.NotVisible = true;
+            display.NotVisible = false;
+            display.NotEnabled = false;
+            submit.NotVisible = true;
+            displayOnlyButton.NotVisible = true;
+            title.NotVisible = false;
+            title.Value = "Now in display only mode";
+            input.NotVisible = false;
+            input.NotEnabled = true;
+            select.NotVisible = false;
+            select.NotEnabled = true;
+            textArea.NotVisible = false;
+            textArea.NotEnabled = true;
+            start.NotVisible = false;
+            start.NotEnabled = true;
+            duration.NotVisible = false;
+            duration.NotEnabled = true;
         }
         private void SetupInitialEdit(List<IFormElement> formElements)
         {
@@ -132,14 +139,22 @@ namespace Demo.FormClasses.Utilities
                 out var input, out var select, out var submit,
                 out var textArea, out var title,
                 out var start, out var duration, formElements);
-            title.Value = "Now in edit mode";
             closeElement.NotVisible = true;
-            input.NotEnabled = false;
-            select.NotEnabled = false;
+            display.NotVisible = true;
             submit.NotVisible = false;
-            submit.NotEnabled = false;
+            submit.NotEnabled = true;// form will not be valid initially
+            displayOnlyButton.NotVisible = true;
+            title.NotVisible = false;
+            title.Value = "Now in edit mode";
+            input.NotVisible = false;
+            input.NotEnabled = false;
+            select.NotVisible = false;
+            select.NotEnabled = false;
+            textArea.NotVisible = false;
             textArea.NotEnabled = false;
+            start.NotVisible = false;
             start.NotEnabled = false;
+            duration.NotVisible = false;
             duration.NotEnabled = false;
         }
         private void Setup(IAllSettings allSettings, List<IFormElement> formElements)

@@ -146,7 +146,7 @@ namespace Tests
             Assert.IsTrue(closeElement.NotVisible);
             Assert.IsTrue(display.NotVisible);
             Assert.IsFalse(submit.NotVisible);
-            Assert.IsFalse(submit.NotEnabled);
+            Assert.IsTrue(submit.NotEnabled);
             Assert.IsTrue(displayOnlyButton.NotVisible);
             Assert.IsFalse(title.NotVisible);
             Assert.AreEqual("Now in edit mode", title.Value);
