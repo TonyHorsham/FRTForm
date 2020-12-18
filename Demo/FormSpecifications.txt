@@ -46,7 +46,7 @@ The DisplayOnlyButton switches the form to display only mode:
 When in display only mode, clicking the edit icon changes to edit mode
 	Close - not visible
 	DisplayHeader - not visible
-	SubmitHeader - visible
+	SubmitHeader - visible but not enabled (required fields missing)
 	DisplayOnlyButton - not visible
 	Title - visible, value = "Now in edit mode"
 	TextInput - visible and enabled

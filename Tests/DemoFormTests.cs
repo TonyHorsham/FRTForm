@@ -142,9 +142,9 @@ namespace Tests
             await _testFormProcessor.UpdateElementsAsync(_testFormElements, _allSettings, false);
             // this must be called before each subsequent test to get element order
             await _testFormProcessor.HandleClickAsync(_testFormElements, "DisplayOnlyButton", _allSettings);
-            await _testFormProcessor.UpdateElementsAsync(_testFormElements, _allSettings, true);
+            await _testFormProcessor.UpdateElementsAsync(_testFormElements, _allSettings, false);
             Assert.IsTrue(closeElement.NotVisible);
-            Assert.IsFalse(display.NotVisible);
+            Assert.IsTrue(display.NotVisible);
             Assert.IsFalse(submit.NotVisible);
             Assert.IsFalse(submit.NotEnabled);
             Assert.IsTrue(displayOnlyButton.NotVisible);

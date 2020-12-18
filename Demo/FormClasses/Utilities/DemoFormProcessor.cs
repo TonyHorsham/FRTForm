@@ -44,10 +44,15 @@ namespace Demo.FormClasses.Utilities
             {
                 SetupDisplayOnly(formElements);
             }
+            else
+            {
 
+                SetupInitialEdit(formElements);
+            }
             OnElementsUpdated(EventArgs.Empty);
         }
 
+        
         public async Task FormSubmittedAsync(List<IFormElement> formElements, IAllSettings allSettings)
         {
             throw new NotImplementedException();
@@ -120,6 +125,22 @@ namespace Demo.FormClasses.Utilities
             formElements.Add(textArea);
             formElements.Add(start);
             formElements.Add(duration);
+        }
+        private void SetupInitialEdit(List<IFormElement> formElements)
+        {
+            ExtractElements(out var displayOnlyButton, out var closeElement, out var display,
+                out var input, out var select, out var submit,
+                out var textArea, out var title,
+                out var start, out var duration, formElements);
+            title.Value = "Now in edit mode";
+            closeElement.NotVisible = true;
+            input.NotEnabled = false;
+            select.NotEnabled = false;
+            submit.NotVisible = false;
+            submit.NotEnabled = false;
+            textArea.NotEnabled = false;
+            start.NotEnabled = false;
+            duration.NotEnabled = false;
         }
         private void Setup(IAllSettings allSettings, List<IFormElement> formElements)
         {
