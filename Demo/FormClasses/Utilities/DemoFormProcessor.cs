@@ -150,6 +150,12 @@ namespace Demo.FormClasses.Utilities
             input.NotEnabled = false;
             select.NotVisible = false;
             select.NotEnabled = false;
+            if (string.IsNullOrEmpty(select.Value))
+            {
+                var firstKey = select.Options.Keys.First();
+                select.Value = select.Options[firstKey];
+                
+            }
             textArea.NotVisible = false;
             textArea.NotEnabled = false;
             start.NotVisible = false;

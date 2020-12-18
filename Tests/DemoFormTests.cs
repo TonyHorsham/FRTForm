@@ -169,6 +169,27 @@ namespace Tests
             await _testFormProcessor.UpdateElementsAsync(_testFormElements, _allSettings, false);
             EditModeCorrect(_testFormElements);
             Assert.IsTrue(ElementOrderCorrect(_testFormElements));
+            await _testFormProcessor.UpdateElementsAsync(_testFormElements, _allSettings, false);
+            EditModeCorrect(_testFormElements);
+        }
+        [Test]
+        public async Task Edit_ChangeSelection_BehavesAsExpected()
+        {
+            _testFormProcessor.ExtractElements(out var displayOnlyButton, out var closeElement, out var display,
+                out var input, out var select, out var submit,
+                out var textArea, out var title,
+                out var start, out var duration, _testFormElements);
+            await _testFormProcessor.UpdateElementsAsync(_testFormElements, _allSettings, false);
+            // this must be called before each subsequent test to get element order
+            await _testFormProcessor.HandleClickAsync(_testFormElements, "DisplayOnlyButton", _allSettings);
+            await _testFormProcessor.UpdateElementsAsync(_testFormElements, _allSettings, false);
+            Assert.AreEqual("1", select.Value);
+            // changing the selection does not enable submit
+            select.Value = "2";
+            await _testFormProcessor.UpdateElementsAsync(_testFormElements, _allSettings, false);
+            Assert.AreEqual("2", select.Value);
+            EditModeCorrect(_testFormElements);
+            Assert.IsTrue(ElementOrderCorrect(_testFormElements));
         }
         #region Utilities
 
