@@ -153,8 +153,7 @@ namespace Demo.FormClasses.Utilities
             if (string.IsNullOrEmpty(select.Value))
             {
                 var firstKey = select.Options.Keys.First();
-                select.Value = select.Options[firstKey];
-                
+                select.Value = firstKey.ToString();
             }
             textArea.NotVisible = false;
             textArea.NotEnabled = false;
