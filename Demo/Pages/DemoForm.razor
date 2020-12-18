@@ -15,7 +15,6 @@
     [Parameter] public IAllSettings AllSettings { get; set; }
     [Parameter] public string FormSpecsName { get; set; }
 
-    private IFormSpecs _formSpecs;
     private List<IFormElement> _elements;
     private IFormProcessor _formProcessor;
     private string _formId;
@@ -31,7 +30,7 @@
             throw new ArgumentException(errorMessage);
         }
         // Because AppFormSpecsDictionary is static, always use .Clone
-        _formSpecs = AllSettings.ApplicationSettings.AppFormSpecsDictionary[FormSpecsName].Clone();
+        var formSpecs = AllSettings.ApplicationSettings.AppFormSpecsDictionary[FormSpecsName].Clone();
         //_elements = new List<IFormElement>();
         //// need to avoid passing elements by reference
         //// Because FormSpecsDictionary is static
@@ -40,23 +39,24 @@
         //    var copy = element.Clone();
         //    _elements.Add(copy);
         //}
-        _elements = _formSpecs.Elements;
-        _formProcessor = _formSpecs.FormProcessor;
-        _formId = _formSpecs.FormId;
+        _elements = formSpecs.Elements;
+        _formProcessor = formSpecs.FormProcessor;
+        _formId = formSpecs.FormId;
     }
     void Delete()
     {
 
     }
-    void Edit()
-    {
 
+    async Task Edit()
+    {
+        await _formProcessor.UpdateElementsAsync(_elements, AllSettings, false);
     }
     async Task HandleClick(string elementName)
     {
         // may want to call another form, depending on element
         var currentElement = _elements.FirstOrDefault(e => e.Name == elementName);
-        await _formSpecs.FormProcessor.HandleClickAsync(_elements, elementName, AllSettings);
+        await _formProcessor.HandleClickAsync(_elements, elementName, AllSettings);
     }
     void HandleSubmit(EditContext editContext)
     {
@@ -72,7 +72,7 @@
         }
         if (valid)
         {
-            _formSpecs.FormProcessor.FormSubmittedAsync(_elements, AllSettings);
+            _formProcessor.FormSubmittedAsync(_elements, AllSettings);
             ModalResult result = ModalResult.Ok("");
             BlazoredModal.Close();// if all data changes handled in this buttonClass, no need to pass a param back
         }
