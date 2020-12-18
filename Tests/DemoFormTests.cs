@@ -167,19 +167,7 @@ namespace Tests
             // this must be called before each subsequent test to get element order
             await _testFormProcessor.HandleClickAsync(_testFormElements, "DisplayOnlyButton", _allSettings);
             await _testFormProcessor.UpdateElementsAsync(_testFormElements, _allSettings, false);
-            Assert.IsTrue(closeElement.NotVisible);
-            Assert.IsTrue(display.NotVisible);
-            Assert.IsFalse(submit.NotVisible);
-            Assert.IsTrue(submit.NotEnabled);
-            Assert.IsTrue(displayOnlyButton.NotVisible);
-            Assert.IsFalse(title.NotVisible);
-            Assert.AreEqual("Now in edit mode", title.Value);
-            Assert.IsFalse(input.NotEnabled);
-            Assert.IsTrue(input.Required);
-            Assert.IsFalse(select.NotEnabled);
-            Assert.IsFalse(textArea.NotEnabled);
-            Assert.IsFalse(start.NotEnabled);
-            Assert.IsFalse(duration.NotEnabled);
+            EditModeCorrect(_testFormElements);
             Assert.IsTrue(ElementOrderCorrect(_testFormElements));
         }
         #region Utilities
@@ -201,6 +189,27 @@ namespace Tests
             return correct;
         }
 
+        private void EditModeCorrect(List<IFormElement> formElements)
+        {
+            _testFormProcessor.ExtractElements(out var displayOnlyButton, out var closeElement, out var display,
+                out var input, out var select, out var submit,
+                out var textArea, out var title,
+                out var start, out var duration, _testFormElements);
+            Assert.IsTrue(closeElement.NotVisible);
+            Assert.IsTrue(display.NotVisible);
+            Assert.IsFalse(submit.NotVisible);
+            Assert.IsTrue(submit.NotEnabled);
+            Assert.IsTrue(displayOnlyButton.NotVisible);
+            Assert.IsFalse(title.NotVisible);
+            Assert.AreEqual("Now in edit mode", title.Value);
+            Assert.IsFalse(input.NotEnabled);
+            Assert.IsTrue(input.Required);
+            Assert.IsFalse(select.NotEnabled);
+            Assert.IsFalse(textArea.NotEnabled);
+            Assert.IsFalse(start.NotEnabled);
+            Assert.IsFalse(duration.NotEnabled);
+            Assert.IsTrue(ElementOrderCorrect(_testFormElements));
+        }
         #endregion
     }
 }
