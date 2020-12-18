@@ -24,7 +24,7 @@ Initially all elements are displayed so basic styling can be checked.
 	DisplayOnlyButton - visible and enabled
 	Close - visible and enabled
 	DisplayHeader - visible and enabled
-	TextInput - visible and enabled
+	TextInput - visible, enabled and required
 	Select - visible and enabled
 	SubmitHeader - visible and enabled
 	TextArea - visible and enabled
@@ -49,7 +49,7 @@ When in display only mode, clicking the edit icon changes to edit mode
 	SubmitHeader - visible but not enabled (required fields missing)
 	DisplayOnlyButton - not visible
 	Title - visible, value = "Now in edit mode"
-	TextInput - visible and enabled
+	TextInput - visible, enabled and required
 	Select - visible and enabled
 	TextArea - visible and enabled
 	StartTime - visible and enabled

@@ -101,14 +101,38 @@ namespace Tests
         {
             Assert.AreEqual(_formId, "demoForm");
         }
+        #endregion
         [Test]
-        public void FormSpecs_InitialElementOrder_Correct()
+        public void InitialDisplay_Always_BehavesAsExpected()
         {
-            // ElementOrderCorrect should fail initially
+            _testFormProcessor.ExtractElements(out var displayOnlyButton, out var closeElement, out var display,
+                out var input, out var select, out var submit,
+                out var textArea, out var title,
+                out var start, out var duration, _testFormElements);
+            //this form does not call _testFormProcessor.UpdateElementsAsync when first loaded
+            Assert.IsFalse(displayOnlyButton.NotVisible);
+            Assert.IsFalse(displayOnlyButton.NotEnabled);
+            Assert.IsFalse(closeElement.NotVisible);
+            Assert.IsFalse(closeElement.NotEnabled);
+            Assert.IsFalse(display.NotVisible);
+            Assert.IsFalse(display.NotEnabled);
+            Assert.IsFalse(input.NotVisible);
+            Assert.IsFalse(input.NotEnabled);
+            Assert.IsTrue(input.Required);
+            Assert.IsFalse(select.NotVisible);
+            Assert.IsFalse(select.NotEnabled);
+            Assert.IsFalse(submit.NotVisible);
+            Assert.IsFalse(submit.NotEnabled);
+            Assert.IsFalse(textArea.NotVisible);
+            Assert.IsFalse(textArea.NotEnabled);
+            Assert.IsFalse(title.NotVisible);
+            Assert.AreEqual("All elements displayed for styling initially", title.Value);
+            Assert.IsFalse(start.NotVisible);
+            Assert.IsFalse(start.NotEnabled);
+            Assert.IsFalse(duration.NotVisible);
+            Assert.IsFalse(duration.NotEnabled);
             Assert.IsFalse(ElementOrderCorrect(_testFormElements));
         }
-        #endregion
-
         [Test]
         public async Task DisplayOnlyButton_Always_BehavesAsExpected()
         {
@@ -151,6 +175,7 @@ namespace Tests
             Assert.IsFalse(title.NotVisible);
             Assert.AreEqual("Now in edit mode", title.Value);
             Assert.IsFalse(input.NotEnabled);
+            Assert.IsTrue(input.Required);
             Assert.IsFalse(select.NotEnabled);
             Assert.IsFalse(textArea.NotEnabled);
             Assert.IsFalse(start.NotEnabled);
