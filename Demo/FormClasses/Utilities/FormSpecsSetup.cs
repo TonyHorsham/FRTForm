@@ -51,7 +51,7 @@ namespace Demo.FormClasses.Utilities
                 var inputElement = new InputElement(InputType.Text, "TextInput", "Input a text value",
                     "Input a text value", 0, Int32.MaxValue, true);
                 elements.Add(inputElement);
-                var selectElement = new SelectElement("Select", "Select a number", "schedule");
+                var selectElement = new SelectElement("Select", "Select a number", "list_alt");
                 var options = new Dictionary<int, string>
                 {
                     {1, "one"},
@@ -61,7 +61,7 @@ namespace Demo.FormClasses.Utilities
                 elements.Add(selectElement);
                 var submitAndCloseElement = new SubmitAndCloseElement("SubmitHeader", "Save Changes");
                 elements.Add(submitAndCloseElement);
-                var textAreaElement = new TextAreaElement("TextArea", "Details" , "schedule");
+                var textAreaElement = new TextAreaElement("TextArea", "Details" , "notes");
                 elements.Add(textAreaElement);
                 var titleElement = new TitleElement("Title", "All elements displayed for styling initially");
                 elements.Add(titleElement);
