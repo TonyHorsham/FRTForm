@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using FRTForm.BlockTime.Models;
+using FRTForm.Enums;
 using FRTForm.Models;
 using FRTForm.Settings;
 using FRTForm.Utilities;
@@ -14,6 +15,7 @@ namespace Demo.FormClasses.Utilities
 {
     public class DemoFormProcessor : IFormProcessor
     {
+        private bool _shouldValidate;
         public async Task HandleClickAsync(List<IFormElement> formElements, string elementName, IAllSettings allSettings)
         {
             var displayOnly = false;
@@ -42,10 +44,21 @@ namespace Demo.FormClasses.Utilities
             if (displayOnly)
             {
                 SetupDisplayOnly(formElements);
+                _shouldValidate = false;
             }
             else
             {
-                SetupInitialEdit(formElements);
+                if (!_shouldValidate)
+                {
+                    SetupInitialEdit(formElements);
+                    // after initial 'load', need to validate
+                    _shouldValidate = true;
+                }
+                else
+                {
+                    SetupEdit(formElements);
+                    submit.NotEnabled = !IsValid(formElements);
+                }
             }
             OnElementsUpdated(EventArgs.Empty);
         }
@@ -139,28 +152,58 @@ namespace Demo.FormClasses.Utilities
                 out var input, out var select, out var submit,
                 out var textArea, out var title,
                 out var start, out var duration, formElements);
-            closeElement.NotVisible = true;
-            display.NotVisible = true;
-            submit.NotVisible = false;
+            SetupEdit(formElements);
             submit.NotEnabled = true;// form will not be valid initially
-            displayOnlyButton.NotVisible = true;
-            title.NotVisible = false;
             title.Value = "Now in edit mode";
-            input.NotVisible = false;
-            input.NotEnabled = false;
-            select.NotVisible = false;
-            select.NotEnabled = false;
             if (string.IsNullOrEmpty(select.Value))
             {
                 var firstKey = select.Options.Keys.First();
                 select.Value = firstKey.ToString();
             }
+        }
+        private void SetupEdit(List<IFormElement> formElements)
+        {
+            ExtractElements(out var displayOnlyButton, out var closeElement, out var display,
+                out var input, out var select, out var submit,
+                out var textArea, out var title,
+                out var start, out var duration, formElements);
+            closeElement.NotVisible = true;
+            display.NotVisible = true;
+            submit.NotVisible = false;
+            displayOnlyButton.NotVisible = true;
+            title.NotVisible = false;
+            input.NotVisible = false;
+            input.NotEnabled = false;
+            select.NotVisible = false;
+            select.NotEnabled = false;
             textArea.NotVisible = false;
             textArea.NotEnabled = false;
             start.NotVisible = false;
             start.NotEnabled = false;
             duration.NotVisible = false;
             duration.NotEnabled = false;
+        }
+
+        private bool IsValid(List<IFormElement> formElements)
+        {
+            var isValid = true;
+            ExtractElements(out var displayOnlyButton, out var closeElement, out var display,
+                out var input, out var select, out var submit,
+                out var textArea, out var title,
+                out var start, out var duration, formElements);
+            // input is the only required element
+            if (input.Required && string.IsNullOrEmpty(input.Value))
+            {
+                input.ErrorMsg = input.Name + " is required";
+                isValid = false;
+            }
+            else if (input.Value.Length < 5)
+            {
+                input.ErrorMsg = input.Name + " must contain at least five characters";
+                isValid = false;
+            }
+            // could change other elements in this method
+            return isValid;
         }
         private void Setup(IAllSettings allSettings, List<IFormElement> formElements)
         {
