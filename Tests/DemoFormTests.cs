@@ -191,6 +191,40 @@ namespace Tests
             EditModeCorrect(_testFormElements);
             Assert.IsTrue(ElementOrderCorrect(_testFormElements));
         }
+        [Test]
+        public async Task Edit_InputFieldShort_BehavesAsExpected()
+        {
+            _testFormProcessor.ExtractElements(out var displayOnlyButton, out var closeElement, out var display,
+                out var input, out var select, out var submit,
+                out var textArea, out var title,
+                out var start, out var duration, _testFormElements);
+            await _testFormProcessor.UpdateElementsAsync(_testFormElements, _allSettings, false);
+            // this must be called before each subsequent test to get element order
+            await _testFormProcessor.HandleClickAsync(_testFormElements, "DisplayOnlyButton", _allSettings);
+            await _testFormProcessor.UpdateElementsAsync(_testFormElements, _allSettings, false);
+            // input needs at least 5 characters
+            input.Value = "1234";
+            await _testFormProcessor.UpdateElementsAsync(_testFormElements, _allSettings, false);
+            EditModeCorrect(_testFormElements);
+            Assert.IsTrue(ElementOrderCorrect(_testFormElements));
+        }
+        [Test]
+        public async Task Edit_InputFieldOK_BehavesAsExpected()
+        {
+            _testFormProcessor.ExtractElements(out var displayOnlyButton, out var closeElement, out var display,
+                out var input, out var select, out var submit,
+                out var textArea, out var title,
+                out var start, out var duration, _testFormElements);
+            await _testFormProcessor.UpdateElementsAsync(_testFormElements, _allSettings, false);
+            // this must be called before each subsequent test to get element order
+            await _testFormProcessor.HandleClickAsync(_testFormElements, "DisplayOnlyButton", _allSettings);
+            await _testFormProcessor.UpdateElementsAsync(_testFormElements, _allSettings, false);
+            // input needs at least 5 characters
+            input.Value = "123456";
+            await _testFormProcessor.UpdateElementsAsync(_testFormElements, _allSettings, false);
+            Assert.IsFalse(submit.NotEnabled);
+            Assert.IsTrue(ElementOrderCorrect(_testFormElements));
+        }
         #region Utilities
 
         private bool ElementOrderCorrect(List<IFormElement> formElements)
