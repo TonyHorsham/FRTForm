@@ -210,14 +210,7 @@ namespace Demo.FormClasses.Utilities
             // could change other elements in this method
             return isValid;
         }
-        private void Setup(IAllSettings allSettings, List<IFormElement> formElements)
-        {
-            //var allSettingsCalendar = (IAllSettingsCalendar)allSettings;
-            //_swCalendarData = allSettingsCalendar.SwCalendarData;
-            //// extract services for this calendar
-            //_services = allSettings.CalendarSettings.Services;
-            //_user = allSettingsCalendar.UserSettings.User;
-        }
+       
         #endregion
     }
 }
