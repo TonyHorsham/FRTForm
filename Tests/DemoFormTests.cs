@@ -189,6 +189,7 @@ namespace Tests
             await _testFormProcessor.UpdateElementsAsync(_testFormElements, _allSettings, false);
             Assert.AreEqual("2", select.Value);
             EditModeCorrect(_testFormElements);
+            Assert.AreEqual("TextInput is required", input.ErrorMsg);
             Assert.IsTrue(ElementOrderCorrect(_testFormElements));
         }
         [Test]
@@ -206,6 +207,7 @@ namespace Tests
             input.Value = "1234";
             await _testFormProcessor.UpdateElementsAsync(_testFormElements, _allSettings, false);
             EditModeCorrect(_testFormElements);
+            Assert.AreEqual("TextInput must contain at least five characters", input.ErrorMsg);
             Assert.IsTrue(ElementOrderCorrect(_testFormElements));
         }
         [Test]
@@ -223,6 +225,7 @@ namespace Tests
             input.Value = "123456";
             await _testFormProcessor.UpdateElementsAsync(_testFormElements, _allSettings, false);
             Assert.IsFalse(submit.NotEnabled);
+            Assert.AreEqual(null, input.ErrorMsg);
             Assert.IsTrue(ElementOrderCorrect(_testFormElements));
         }
         #region Utilities
