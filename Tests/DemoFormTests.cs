@@ -190,6 +190,7 @@ namespace Tests
             Assert.AreEqual("2", select.Value);
             EditModeCorrect(_testFormElements);
             Assert.AreEqual("TextInput is required", input.ErrorMsg);
+            Assert.AreEqual("two is selected", textArea.Value);
             Assert.IsTrue(ElementOrderCorrect(_testFormElements));
         }
         [Test]

@@ -57,3 +57,4 @@ When in display only mode, clicking the edit icon changes to edit mode
 When in edit mode
 	first non-valid user action - SubmitHeader not enabled and error message displayed
 	first valid user action - SubmitHeader enabled and error message is null
+	Text area reflects select after the first change

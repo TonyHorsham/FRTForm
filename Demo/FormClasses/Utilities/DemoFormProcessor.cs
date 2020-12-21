@@ -178,6 +178,12 @@ namespace Demo.FormClasses.Utilities
             select.NotEnabled = false;
             textArea.NotVisible = false;
             textArea.NotEnabled = false;
+            if (!string.IsNullOrEmpty(select.Value))
+            {
+                // display the selection in the text box
+                var selectedKey = int.Parse(select.Value);
+                textArea.Value = select.Options[selectedKey] + " is selected"; 
+            }
             start.NotVisible = false;
             start.NotEnabled = false;
             duration.NotVisible = false;
