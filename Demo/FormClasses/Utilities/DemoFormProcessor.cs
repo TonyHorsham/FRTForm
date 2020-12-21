@@ -183,7 +183,11 @@ namespace Demo.FormClasses.Utilities
             duration.NotVisible = false;
             duration.NotEnabled = false;
         }
-
+        /// <summary>
+        /// validity rules defined here, not in model
+        /// </summary>
+        /// <param name="formElements"></param>
+        /// <returns></returns>
         private bool IsValid(List<IFormElement> formElements)
         {
             var isValid = true;
@@ -192,11 +196,12 @@ namespace Demo.FormClasses.Utilities
                 out var textArea, out var title,
                 out var start, out var duration, formElements);
             // input is the only required element
-            if (input.Required && string.IsNullOrEmpty(input.Value))
+            if (string.IsNullOrEmpty(input.Value))
             {
                 input.ErrorMsg = input.Name + " is required";
                 isValid = false;
             }
+            // and it must contain at least 5 characters
             else if (input.Value.Length < 5)
             {
                 input.ErrorMsg = input.Name + " must contain at least five characters";
