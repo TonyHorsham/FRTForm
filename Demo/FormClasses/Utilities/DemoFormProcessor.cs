@@ -202,6 +202,7 @@ namespace Demo.FormClasses.Utilities
                 out var textArea, out var title,
                 out var start, out var duration, formElements);
             // input is the only required element
+            input.ErrorMsg = null;
             if (string.IsNullOrEmpty(input.Value))
             {
                 input.ErrorMsg = input.Name + " is required";

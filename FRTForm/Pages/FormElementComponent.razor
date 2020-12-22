@@ -48,6 +48,9 @@
             case FormElementType.Input:
                 var inputElement = (InputElement) _formElement;
                 string inputType = inputElement.InputType.ToString().ToLower();
+                var borderClass = "";
+                @if (!string.IsNullOrEmpty(inputElement.ErrorMsg)){borderClass = "frtform-input-error";}
+                else if(!string.IsNullOrEmpty(inputElement.Value)){borderClass = "frtform-input-valid";}
                 <div class="frtform-formgroup-stack">
                     @if (inputElement.Label != null)
                     {
@@ -58,7 +61,7 @@
                             }
                         </label>
                     }
-                    <input type="@inputType" @onchange="UpdateElements" class="frtform-input"
+                    <input type="@inputType" @onchange="UpdateElements" class="frtform-input @borderClass"
                            disabled="@_formElement.NotEnabled" placeholder="@inputElement.Placeholder" id="@id">
                 </div>
                 break;

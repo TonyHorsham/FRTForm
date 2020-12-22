@@ -48,11 +48,23 @@
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
+    width: 100%;
+    border: 2px solid;
+    border-radius: 4px;
+}
+.frtform-input-error {
+    border-color: red;
+}
+.frtform-input-valid {
+    border-color: greenyellow;
 }
 .frtform-textarea {
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
+    width: 100%;
+    border: 2px solid;
+    border-radius: 4px;
 }
 .frtform-element-error {
     color: red;
