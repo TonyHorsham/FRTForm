@@ -61,11 +61,12 @@
     margin-top: -0.5rem;
     margin-bottom: 0.5rem;
 }
-select {
-    font-size: 1.2rem;
+.frtform-select {
     border: 2px solid #eee;
     border-radius: 10%;
     font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
 }
 button:disabled,
 [type="button"]:disabled,

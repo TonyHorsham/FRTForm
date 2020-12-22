@@ -138,7 +138,7 @@
                 var selectElement = (SelectElement)_formElement;
                 <div class="frtform-formgroup">
                     <div class="frtform-form-icon material-icons">@selectElement.Icon</div>
-                    <select name="" @onchange="UpdateElements" disabled="@_formElement.NotEnabled"
+                    <select class="frtform-select" name="@selectElement.Name" @onchange="UpdateElements" disabled="@_formElement.NotEnabled"
                             value="@selectElement.Value" id="@id">
                         @foreach (var option in @selectElement.Options)
                         {
