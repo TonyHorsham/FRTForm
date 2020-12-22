@@ -62,6 +62,7 @@ namespace Demo.FormClasses.Utilities
                 var submitAndCloseElement = new SubmitAndCloseElement("SubmitHeader", "Save Changes");
                 elements.Add(submitAndCloseElement);
                 var textAreaElement = new TextAreaElement("TextArea", "Details" , "notes");
+                textAreaElement.RightIcon = "add_to_photos";
                 elements.Add(textAreaElement);
                 var titleElement = new TitleElement("Title", "All elements displayed for styling initially");
                 elements.Add(titleElement);
