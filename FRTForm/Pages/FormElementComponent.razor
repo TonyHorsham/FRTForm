@@ -157,7 +157,7 @@
                 <div class="frtform-formgroup">
                     <div class="frtform-form-icon material-icons">@textAreaElement.Icon</div>
                     <textarea class="frtform-textarea" placeholder="@textAreaElement.Placeholder"  
-                          disabled="@_formElement.NotEnabled" id="@id">
+                          name="@textAreaElement.Name" disabled="@_formElement.NotEnabled" id="@id">
                     @textAreaElement.Value</textarea>
                     <div class="frtform-message-add frtform-formheader-icon material-icons" @onclick="HandleClick">@textAreaElement.RightIcon</div>
                 </div>
