@@ -157,6 +157,32 @@ namespace Tests
             Assert.IsTrue(ElementOrderCorrect(_testFormElements));
         }
         [Test]
+        public async Task TextAreaButton_Always_BehavesAsExpected()
+        {
+            _testFormProcessor.ExtractElements(out var displayOnlyButton, out var closeElement, out var display,
+                out var input, out var select, out var submit,
+                out var textArea, out var title,
+                out var start, out var duration, _testFormElements);
+            await _testFormProcessor.UpdateElementsAsync(_testFormElements, _allSettings, false);
+            await _testFormProcessor.HandleClickAsync(_testFormElements, "DisplayOnlyButton", _allSettings);
+            // This button puts the form into displayOnly mode and changes the element order
+            // now test TextArea button
+            await _testFormProcessor.HandleClickAsync(_testFormElements, "TextArea", _allSettings);
+            Assert.AreEqual("Button clicked", textArea.Value);
+            Assert.IsTrue(closeElement.NotVisible);
+            Assert.IsFalse(display.NotVisible);
+            Assert.IsTrue(submit.NotVisible);
+            Assert.IsTrue(displayOnlyButton.NotVisible);
+            Assert.IsFalse(title.NotVisible);
+            Assert.AreEqual("Now in display only mode", title.Value);
+            Assert.IsTrue(input.NotEnabled);
+            Assert.IsTrue(select.NotEnabled);
+            Assert.IsTrue(textArea.NotEnabled);
+            Assert.IsTrue(start.NotEnabled);
+            Assert.IsTrue(duration.NotEnabled);
+            Assert.IsTrue(ElementOrderCorrect(_testFormElements));
+        }
+        [Test]
         public async Task Edit_Always_BehavesAsExpected()
         {
             _testFormProcessor.ExtractElements(out var displayOnlyButton, out var closeElement, out var display,

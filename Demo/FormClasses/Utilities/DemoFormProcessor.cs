@@ -26,6 +26,12 @@ namespace Demo.FormClasses.Utilities
                 Debug.Assert(displayOnlyButton != null, nameof(displayOnlyButton) + " != null");
                 displayOnly = true;
             }
+            else if (elementName == "TextArea")
+            {
+                var textArea = (TextAreaElement) formElements.FirstOrDefault(e => e.Name == "TextArea");
+                Debug.Assert(textArea != null, nameof(textArea) + " != null");
+                textArea.Value = "Button clicked";
+            }
             else
             {
                 throw new NotImplementedException();
