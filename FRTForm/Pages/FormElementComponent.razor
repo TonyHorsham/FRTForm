@@ -49,6 +49,7 @@
                 var inputElement = (InputElement) _formElement;
                 string inputType = inputElement.InputType.ToString().ToLower();
                 var borderClass = "";
+                var required = "";
                 @if (!string.IsNullOrEmpty(inputElement.ErrorMsg)){borderClass = "frtform-input-error";}
                 else if(!string.IsNullOrEmpty(inputElement.Value)){borderClass = "frtform-input-valid";}
                 <div class="frtform-formgroup-stack">
@@ -58,10 +59,11 @@
                             @if (inputElement.Required)
                             {
                                 <span style="color: red"> *</span>
+                                required = "required";
                             }
                         </label>
                     }
-                    <input type="@inputType" @onchange="UpdateElements" class="frtform-input @borderClass"
+                    <input type="@inputType" @onchange="UpdateElements" class="frtform-input @borderClass" required="@required"
                            disabled="@_formElement.NotEnabled" placeholder="@inputElement.Placeholder" id="@id">
                 </div>
                 break;
