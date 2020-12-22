@@ -58,8 +58,8 @@
                             }
                         </label>
                     }
-                    <input type="@inputType" @onchange="UpdateElements"  disabled="@_formElement.NotEnabled"
-                           placeholder="@inputElement.Placeholder" id="@id">
+                    <input type="@inputType" @onchange="UpdateElements" class="frtform-input"
+                           disabled="@_formElement.NotEnabled" placeholder="@inputElement.Placeholder" id="@id">
                 </div>
                 break;
             case FormElementType.Text:
@@ -156,7 +156,7 @@
                 }
                 <div class="frtform-formgroup">
                     <div class="frtform-form-icon material-icons">@textAreaElement.Icon</div>
-                    <textarea placeholder="@textAreaElement.Placeholder"  
+                    <textarea class="frtform-textarea" placeholder="@textAreaElement.Placeholder"  
                           disabled="@_formElement.NotEnabled" id="@id">
                     @textAreaElement.Value
                 </textarea>

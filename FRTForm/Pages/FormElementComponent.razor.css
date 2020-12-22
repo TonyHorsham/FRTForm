@@ -42,6 +42,14 @@
     font-family: inherit;
     line-height: inherit;
 }
+.frtform-input {
+    font-family: inherit;
+    line-height: inherit;
+}
+.frtform-textarea {
+    font-family: inherit;
+    line-height: inherit;
+}
 .frtform-element-error {
     color: red;
     font-size: 0.8rem;
