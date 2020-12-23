@@ -188,3 +188,12 @@ app {
     color: #212529;
     text-align: left;
 }
+.frtform-textarea {
+    /*This is a contrived example of over-riding FRTForm styling*/
+    font-family: 'Pacifico' !important;
+}
+#frtform-Select {
+    /*This is a more realistic example of over-riding FRTForm styling.
+      Using the id, means that !important is not needed*/
+    font-family: 'Pacifico';
+}
