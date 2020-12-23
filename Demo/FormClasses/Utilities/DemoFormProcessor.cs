@@ -30,7 +30,7 @@ namespace Demo.FormClasses.Utilities
             {
                 var textArea = (TextAreaElement) formElements.FirstOrDefault(e => e.Name == "TextArea");
                 Debug.Assert(textArea != null, nameof(textArea) + " != null");
-                textArea.Value = "Button clicked";
+                textArea.Value += "Button clicked";
             }
             else
             {
@@ -188,7 +188,7 @@ namespace Demo.FormClasses.Utilities
             {
                 // display the selection in the text box
                 var selectedKey = int.Parse(select.Value);
-                textArea.Value = select.Options[selectedKey] + " is selected"; 
+                title.Value = "Now in edit mode" + select.Options[selectedKey] + " is selected"; 
             }
             start.NotVisible = false;
             start.NotEnabled = false;
