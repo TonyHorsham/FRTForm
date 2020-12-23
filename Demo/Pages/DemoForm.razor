@@ -74,12 +74,12 @@
         {
             _formProcessor.FormSubmittedAsync(_elements, AllSettings);
             ModalResult result = ModalResult.Ok("");
-            BlazoredModal.Close();// if all data changes handled in this buttonClass, no need to pass a param back
+            BlazoredModal.Close();// if all data changes handled in this method (including in IFormProcessor), no need to pass a param back
         }
         else
         {
             // else assume that element error messages are displayed
-            // in any event, userId will only have option of fixing errors or closing the form
+            // in any event, user will only have option of fixing errors or closing the form
         }
     }
 

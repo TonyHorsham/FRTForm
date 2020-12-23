@@ -72,7 +72,7 @@ namespace Demo.FormClasses.Utilities
         
         public async Task FormSubmittedAsync(List<IFormElement> formElements, IAllSettings allSettings)
         {
-            throw new NotImplementedException();
+            // nothing to do in this demo
         }
 
         public event EventHandler ElementsUpdated;
