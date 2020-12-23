@@ -188,7 +188,7 @@ namespace Demo.FormClasses.Utilities
             {
                 // display the selection in the text box
                 var selectedKey = int.Parse(select.Value);
-                title.Value = "Now in edit mode" + select.Options[selectedKey] + " is selected"; 
+                title.Value = "Now in edit mode - " + select.Options[selectedKey] + " is selected"; 
             }
             start.NotVisible = false;
             start.NotEnabled = false;
