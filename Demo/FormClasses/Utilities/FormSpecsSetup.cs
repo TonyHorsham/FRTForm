@@ -84,7 +84,7 @@ namespace Demo.FormClasses.Utilities
             get
             {
                 var elements = new List<IFormElement>();
-                var titleElement = new TitleElement("Title", "All elements displayed for styling initially");
+                var titleElement = new TitleElement("Title", "Just has submit button - it just closes the form and returns");
                 elements.Add(titleElement);
                 var submit = new ButtonElement("Submit", "Test Submit Button", ButtonType.Submit, "frtform-btn-danger");
                 elements.Add(submit);

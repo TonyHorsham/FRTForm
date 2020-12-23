@@ -21,9 +21,9 @@ namespace Demo.FormClasses.Utilities
             throw new NotImplementedException();
         }
 
-        public Task FormSubmittedAsync(List<IFormElement> formElements, IAllSettings allSettings)
+        public async Task FormSubmittedAsync(List<IFormElement> formElements, IAllSettings allSettings)
         {
-            throw new NotImplementedException();
+            // just ignore
         }
 
         public event EventHandler ElementsUpdated;

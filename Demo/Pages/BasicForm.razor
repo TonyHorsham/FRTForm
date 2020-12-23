@@ -2,6 +2,8 @@
 @using Demo.FormClasses.Settings
 @using Demo.FormClasses.Utilities
 @using Demo.FormClasses.Services
+@using Microsoft.AspNetCore.Http.Extensions
+@inject NavigationManager NavigationManager
 <h3>BasicForm</h3>
 
 <link href="css/BlazoredModalCustom.css" rel="stylesheet"/>
@@ -50,7 +52,9 @@
 
     private void HandleSubmit()
     {
-        throw new NotImplementedException();
+        _formProcessor.FormSubmittedAsync(_elements, _allSettings);
+        // return to caller
+        NavigationManager.NavigateTo("/");
     }
 
     private void HandleClick()
