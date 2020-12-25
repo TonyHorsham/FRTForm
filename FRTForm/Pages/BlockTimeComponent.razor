@@ -6,7 +6,7 @@
     @if (_enablePlus30)
     {
         <div class="frtform-plus material-icons"
-             @onclick="@(e => ChangeTime(30))">forward_30</div>
+             @onclick="e => ChangeTime(30)">forward_30</div>
     }
     else
     {
@@ -15,7 +15,7 @@
     @if (_enablePlus5)
     {
         <div class="frtform-plus material-icons"
-             @onclick="@(e => ChangeTime(5))">forward_5</div>
+             @onclick="e => ChangeTime(5)">forward_5</div>
     }
     else
     {
@@ -24,7 +24,7 @@
     @if (_enableMinus5)
     {
         <div class="frtform-minus material-icons"
-             @onclick="@(e => ChangeTime(-5))">replay_5</div>
+             @onclick="e => ChangeTime(-5)">replay_5</div>
     }
     else
     {
@@ -33,7 +33,7 @@
     @if (_enableMinus30)
     {
         <div class="frtform-plus material-icons"
-             @onclick="@(e => ChangeTime(-30))">replay_30</div>
+             @onclick="e => ChangeTime(-30)">replay_30</div>
     }
     else
     {
