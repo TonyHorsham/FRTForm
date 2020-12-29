@@ -269,6 +269,7 @@ namespace Tests
                 out var input, out var select, out var submit,
                 out var textArea, out var title,
                 out var start, out var duration, _testFormElements);
+            // multiple asserts is easier to work with cf succession of logic tests and a bool return
             Assert.IsTrue(closeElement.NotVisible);
             Assert.IsTrue(display.NotVisible);
             Assert.IsFalse(submit.NotVisible);
