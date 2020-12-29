@@ -31,14 +31,6 @@
         }
         // Because AppFormSpecsDictionary is static, always use .Clone
         var formSpecs = AllSettings.ApplicationSettings.AppFormSpecsDictionary[FormSpecsName].Clone();
-        //_elements = new List<IFormElement>();
-        //// need to avoid passing elements by reference
-        //// Because FormSpecsDictionary is static
-        //foreach (var element in _formSpecs.Elements)
-        //{
-        //    var copy = element.Clone();
-        //    _elements.Add(copy);
-        //}
         _elements = formSpecs.Elements;
         _formProcessor = formSpecs.FormProcessor;
         _formId = formSpecs.FormId;

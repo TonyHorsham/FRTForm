@@ -18,7 +18,6 @@
     [Parameter] public string FormSpecsName { get; set; }
 
     private IAllSettings _allSettings;
-    private IFormSpecs _formSpecs;
     private List<IFormElement> _elements;
     private IFormProcessor _formProcessor;
     private string _formId;
@@ -36,18 +35,11 @@
             throw new ArgumentException(errorMessage);
         }
         _allSettings = new AllSettings(appSettings, null);
-    // Because AppFormSpecsDictionary is static, always use .Clone
-        _formSpecs = _allSettings.ApplicationSettings.AppFormSpecsDictionary[FormSpecsName].Clone();
-        _elements = new List<IFormElement>();
-        // need to avoid passing elements by reference
-        // Because FormSpecsDictionary is static
-        foreach (var element in _formSpecs.Elements)
-        {
-            var copy = element.Clone();
-            _elements.Add(copy);
-        }
-        _formProcessor = _formSpecs.FormProcessor;
-        _formId = _formSpecs.FormId;
+        // Because AppFormSpecsDictionary is static, always use .Clone
+        var formSpecs = _allSettings.ApplicationSettings.AppFormSpecsDictionary[FormSpecsName].Clone();
+        _elements = formSpecs.Elements;
+        _formProcessor = formSpecs.FormProcessor;
+        _formId = formSpecs.FormId;
     }
 
     private void HandleSubmit()
