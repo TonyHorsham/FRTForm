@@ -12,6 +12,7 @@
     <RepositoryUrl>https://github.com/TonyHorsham/FRTForm</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>2.1.0-alpha</Version>
   </PropertyGroup>
 
   <ItemGroup>
