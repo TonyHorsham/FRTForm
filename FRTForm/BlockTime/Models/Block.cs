@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FRTForm.BlockTime.Enums;
 
 namespace FRTForm.BlockTime.Models
@@ -26,7 +27,7 @@ namespace FRTForm.BlockTime.Models
         public string ClientId { set; get; }
         // json string with messages - format TBA
         // probably timestamp, senderId, recipientId, and content
-        public string Messages { set; get; }
+        public List<Message> Messages { private set; get; }
         public bool IsUnchanged => _originalStart == Start &&
                                    _originalDuration == Duration &&
                                    _originalBlockType == BlockType &&
@@ -34,9 +35,8 @@ namespace FRTForm.BlockTime.Models
                                    // Title may be changed by code between DisplayOnly and Edit modes
                                    //_originalTitle == Title &&
                                    _originalDescription == Description &&
-                                   // if messages stored in another table, may ignore any changes
-                                   // i.e. if always reload messages from data source
-                                   _originalMessages == Messages;
+                                   // Message immutable, so only need to check if a message has been added
+                                   _originalMessages.Count == Messages.Count;
 
         //snapshot fields NOT persisted
         private DateTimeOffset _originalStart;
@@ -45,12 +45,12 @@ namespace FRTForm.BlockTime.Models
         private Service _originalService;
         private string _originalTitle;
         private string _originalDescription;
-        private string _originalMessages;
+        private List<Message> _originalMessages;
         private DateTimeOffset _snapshotTimeStamp;
 
         public Block(int id, DateTimeOffset start, TimeSpan duration, int locationId,
             BlockType blockType, string calendarId, string title = "",
-            string description = "", string clientId = "", string messages="")
+            string description = "", string clientId = "", List<Message> messages = null)
         {
             Id = id;
             Start = start;
@@ -59,7 +59,7 @@ namespace FRTForm.BlockTime.Models
             BlockType = blockType;
             CalendarId = calendarId;
             ClientId = clientId;
-            Messages = messages;
+            Messages = messages ?? new List<Message>();
             Service = new Service();
             Title = title;
             Description = description;
@@ -105,6 +105,12 @@ namespace FRTForm.BlockTime.Models
             Title = _originalTitle;
             Description = _originalDescription;
             Messages = _originalMessages;
+        }
+        // Message is immutable so no edit
+        // also no delete
+        public void AddMessage(Message message)
+        {
+            Messages.Add(message);
         }
     }
 }
