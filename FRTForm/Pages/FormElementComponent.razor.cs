@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using FRTForm.Models;
-using FRTForm.Settings;
+using FRTForm.Parameters;
 using FRTForm.Utilities;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
@@ -12,7 +12,7 @@ namespace FRTForm.Pages
     public partial class FormElementComponent
     {
         // need to pass back to IFormProcessor
-        [Parameter] public IAllSettings AllSettings { get; set; }
+        [Parameter] public IAllParams AllParams { get; set; }
         [Parameter] public List<IFormElement> Elements { get; set; }
         [Parameter] public IFormProcessor FormProcessor { get; set; }
         [Parameter] public string ElementName { get; set; }
@@ -56,7 +56,7 @@ namespace FRTForm.Pages
             // PLUS intention is to use in browser version, and want to validate using other field values
             _formElement.Value = c.Value.ToString();
             // call method to change the other elements
-            FormProcessor.UpdateElementsAsync(Elements, AllSettings, FormDisplayOnly);
+            FormProcessor.UpdateElementsAsync(Elements, AllParams, FormDisplayOnly);
         }
 
         class ElementValidator : ValidationAttribute

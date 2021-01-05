@@ -1,11 +1,12 @@
 ﻿// 27 11 2020 Created by Tony Horsham 11:06
 
-using FRTForm.Settings;
+using FRTForm.BlockTime.Settings;
+using FRTForm.Parameters;
 
-namespace FRTForm.BlockTime.Settings
+namespace FRTForm.BlockTime.Parameters
 {
     // ReSharper disable once InconsistentNaming
-    public interface IAllSettingsBT : IAllSettings
+    public interface IAllParamsBT : IAllParams
     {
         // 22SEP20 Decision that any IFormElement that needs extra properties
         // should be accommodated in the interface, to avoid the need to cast to access the properties

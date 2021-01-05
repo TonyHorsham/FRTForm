@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using FRTForm.BlockTime.Models;
+using FRTForm.BlockTime.Parameters;
 using FRTForm.BlockTime.Settings;
 using FRTForm.BlockTime.Utilities;
 using FRTForm.Models;
-using FRTForm.Settings;
 using FRTForm.Utilities;
 using Microsoft.AspNetCore.Components;
 
@@ -13,7 +13,7 @@ namespace FRTForm.Pages
 {
     public partial class BlockTimeComponent
     {
-        [Parameter] public IAllSettingsBT AllSettings { get; set; }
+        [Parameter] public IAllParamsBT AllParams { get; set; }
         [Parameter] public List<IFormElement> Elements { get; set; }
         [Parameter] public IFormProcessor FormProcessor { get; set; }
         [Parameter] public bool IsStart { get; set; }// if not Start, dealing with Duration
@@ -37,9 +37,9 @@ namespace FRTForm.Pages
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            _is24 = AllSettings.Is24;
-            _currentBlockParameters = AllSettings.CurrentBlockParameters;
-            _calendarSettings = AllSettings.CalendarSettings;
+            _is24 = AllParams.Is24;
+            _currentBlockParameters = AllParams.CurrentBlockParameters;
+            _calendarSettings = AllParams.CalendarSettings;
             _block = _currentBlockParameters.Block;
             _startLimit = _currentBlockParameters.StartLimit;
             _endLimit = _currentBlockParameters.EndLimit;
@@ -81,7 +81,7 @@ namespace FRTForm.Pages
             SetAllowSettings();
             SetValueString();
             // Elements is updated
-            await FormProcessor.UpdateElementsAsync(Elements, AllSettings, DisplayOnly);
+            await FormProcessor.UpdateElementsAsync(Elements, AllParams, DisplayOnly);
             await BlockChanged.InvokeAsync(_block);
         }
         private void SetValueString()

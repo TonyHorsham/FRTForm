@@ -4,7 +4,7 @@
 using System;
 using FRTForm.BlockTime.Models;
 
-namespace FRTForm.BlockTime.Settings
+namespace FRTForm.BlockTime.Parameters
 {
     /// <summary>
     /// Unique for each request

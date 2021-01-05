@@ -1,20 +1,21 @@
 ﻿// 23 11 2020 Created by Tony Horsham 16:17
 
+using FRTForm.BlockTime.Parameters;
 using FRTForm.BlockTime.Settings;
-using FRTForm.Settings;
+using FRTForm.Parameters;
 
-namespace Demo.FormClasses.Settings
+namespace Demo.FormClasses.Parameters
 {
-    public class AllSettings : IAllSettingsBT
+    public class AllParams : IAllParamsBT
     {
-        public AllSettings(IApplicationSettings applicationSettings, 
+        public AllParams(IAppParams applicationSettings, 
             CalendarSettings calendarSettings)
         {
-            ApplicationSettings = applicationSettings;
+            AppParams = applicationSettings;
             CalendarSettings = calendarSettings;
         }
 
-        public IApplicationSettings ApplicationSettings { get; }
+        public IAppParams AppParams { get; }
         public CalendarSettings CalendarSettings { get; }
         public CurrentBlockParameters CurrentBlockParameters { get; set; }
         public bool Is24 { get; set; }

@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using FRTForm.Models;
-using FRTForm.Settings;
+using FRTForm.Parameters;
 
 namespace FRTForm.Utilities
 {
@@ -20,9 +20,9 @@ namespace FRTForm.Utilities
     public interface IFormProcessor
     {
         public Task HandleClickAsync(List<IFormElement> formElements, string elementName,
-            IAllSettings allSettings);
-        public Task UpdateElementsAsync(List<IFormElement> formElements, IAllSettings allSettings, bool displayOnly);
-        public Task FormSubmittedAsync(List<IFormElement> formElements, IAllSettings allSettings);
+            IAllParams allSettings);
+        public Task UpdateElementsAsync(List<IFormElement> formElements, IAllParams allParams, bool displayOnly);
+        public Task FormSubmittedAsync(List<IFormElement> formElements, IAllParams allSettings);
         public event EventHandler ElementsUpdated;
 
         public IFormProcessor Clone();

@@ -4,9 +4,9 @@
 using System.Collections.Generic;
 using FRTForm.Models;
 
-namespace FRTForm.Settings
+namespace FRTForm.Parameters
 {
-    public interface IApplicationSettings
+    public interface IAppParams
     {
        public Dictionary<string, IFormSpecs> AppFormSpecsDictionary { get; }
     }

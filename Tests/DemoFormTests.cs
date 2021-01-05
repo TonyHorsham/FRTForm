@@ -4,14 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Demo.FormClasses.Parameters;
 using Demo.FormClasses.Services;
-using Demo.FormClasses.Settings;
 using Demo.FormClasses.Utilities;
 using FRTForm.BlockTime.Enums;
 using FRTForm.BlockTime.Models;
+using FRTForm.BlockTime.Parameters;
 using FRTForm.BlockTime.Settings;
 using FRTForm.Models;
-using FRTForm.Settings;
 using FRTForm.Utilities;
 using NUnit.Framework;
 
@@ -22,7 +22,7 @@ namespace Tests
     {
         private Dictionary<string, IFormSpecs> _formSpecsDictionary;
         private string _formSpecName = "demoFormSpecs";
-        private IAllSettingsBT _allSettings;
+        private IAllParamsBT _allSettings;
         private DemoFormProcessor _testFormProcessor;
         private List<IFormElement> _testFormElements;
         private string _formId;
@@ -31,7 +31,7 @@ namespace Tests
         public void Setup()
         {
             _formSpecsDictionary = FormSpecsSetup.FormSpecsDictionary;
-            var appSettings = new ApplicationSettings("url", new DummySmsSender(),
+            var appSettings = new AppParams("url", new DummySmsSender(),
                 new DummyEmailSender(), _formSpecsDictionary);
             var calendarSettings = new CalendarSettings
             {
@@ -40,7 +40,7 @@ namespace Tests
                 MinBlockDuration = 30,
                 Services = new List<Service>()// needs to be valued after data available
             };
-            _allSettings = new AllSettings(appSettings, calendarSettings);
+            _allSettings = new AllParams(appSettings, calendarSettings);
             var calendarId = "anything";
             var calendarDay = new CalendarDay(calendarId, DateTimeOffset.Now, 1);
             var block = new Block(1, DateTimeOffset.Now, TimeSpan.FromHours(1), 1,

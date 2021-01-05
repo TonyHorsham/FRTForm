@@ -1,5 +1,5 @@
 ﻿@using FRTForm.Models
-@using FRTForm.Settings
+@using FRTForm.Parameters
 @using FRTForm.Utilities
 @using Microsoft.AspNetCore.Components.Forms
 @using Microsoft.AspNetCore.Components.Web
@@ -10,7 +10,7 @@
     @foreach (var element in Elements)
     {
         _currentElement = element;
-        <FormElementComponent AllSettings="AllSettings" Elements="Elements" 
+        <FormElementComponent AllParams="AllParams" Elements="Elements" 
                               FormProcessor="FormProcessor" ElementName="@element.Name"
                                FormDisplayOnly="@_displayOnly" OnCloseCallback="@OnCloseCallback" 
                                OnDeleteCallback="@(OnDeleteCallback)" OnEditCallback="@(OnEditCallback)"
@@ -19,7 +19,7 @@
 </EditForm>
 
 @code {
-    [Parameter] public IAllSettings AllSettings { get; set; }
+    [Parameter] public IAllParams AllParams { get; set; }
     [Parameter] public List<IFormElement> Elements { get; set; }
     [Parameter] public IFormProcessor FormProcessor { get; set; }
     [Parameter] public string FormId { get; set; }
@@ -44,7 +44,7 @@
         _displayOnly = false;
         FormProcessor.ElementsUpdated += this.ElementsUpdatedEventHandler;
     }
-    
+
     async Task HandleClick(string elementName)
     {
         //************ Needs to pass up to the caller, not deal with it here

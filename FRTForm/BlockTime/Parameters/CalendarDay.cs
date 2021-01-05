@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FRTForm.BlockTime.Models
+namespace FRTForm.BlockTime.Parameters
 {
     /// <summary>
     /// This is a unique reference for one Calendar for one Location for one DayDate.

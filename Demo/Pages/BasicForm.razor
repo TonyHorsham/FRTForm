@@ -1,14 +1,15 @@
 ﻿@page "/basicform/{FormSpecsName}"
-@using Demo.FormClasses.Settings
 @using Demo.FormClasses.Utilities
 @using Demo.FormClasses.Services
+@using FRTForm.Parameters
 @using Microsoft.AspNetCore.Http.Extensions
+@using Demo.FormClasses.Parameters
 @inject NavigationManager NavigationManager
 <h3>BasicForm</h3>
 
 <link href="css/BlazoredModalCustom.css" rel="stylesheet"/>
 <div class="demoForm"> @*use class for overall form styling*@
-    <FormComponent AllSettings="_allSettings" Elements="_elements"
+    <FormComponent AllParams="_allParams" Elements="_elements"
                    FormProcessor="_formProcessor" FormId="@_formId"
                    OnClickCallback="@(HandleClick)" OnSubmitCallback="@(HandleSubmit)">
     </FormComponent>
@@ -17,7 +18,7 @@
 @code {
     [Parameter] public string FormSpecsName { get; set; }
 
-    private IAllSettings _allSettings;
+    private IAllParams _allParams;
     private List<IFormElement> _elements;
     private IFormProcessor _formProcessor;
     private string _formId;
@@ -26,7 +27,7 @@
     {
         base.OnInitialized();
         var formSpecsDictionary = FormSpecsSetup.FormSpecsDictionary;
-        var appSettings = new ApplicationSettings("url", new DummySmsSender(),
+        var appSettings = new AppParams("url", new DummySmsSender(),
             new DummyEmailSender(), formSpecsDictionary);
         if (!formSpecsDictionary.ContainsKey(FormSpecsName))
         {
@@ -34,9 +35,9 @@
             errorMessage += "does not contain formSpecs named " + FormSpecsName;
             throw new ArgumentException(errorMessage);
         }
-        _allSettings = new AllSettings(appSettings, null);
+        _allParams = new AllParams(appSettings, null);
         // Because AppFormSpecsDictionary is static, always use .Clone
-        var formSpecs = _allSettings.ApplicationSettings.AppFormSpecsDictionary[FormSpecsName].Clone();
+        var formSpecs = _allParams.AppParams.AppFormSpecsDictionary[FormSpecsName].Clone();
         _elements = formSpecs.Elements;
         _formProcessor = formSpecs.FormProcessor;
         _formId = formSpecs.FormId;
@@ -44,7 +45,7 @@
 
     private void HandleSubmit()
     {
-        _formProcessor.FormSubmittedAsync(_elements, _allSettings);
+        _formProcessor.FormSubmittedAsync(_elements, _allParams);
         // return to caller
         NavigationManager.NavigateTo("/");
     }

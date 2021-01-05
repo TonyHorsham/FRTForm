@@ -4,6 +4,7 @@
 @using System.Reflection
 @using System.ComponentModel.DataAnnotations
 @using FRTForm.BlockTime.Models
+@using FRTForm.BlockTime.Parameters
 @using FRTForm.BlockTime.Settings
 @using Microsoft.AspNetCore.Components.Web
 
@@ -93,7 +94,7 @@
                 break;
             case FormElementType.BlockTime:
                 var timeElement = (BlockTimeElement) _formElement;
-                var allSettingsBT = (IAllSettingsBT)AllSettings;
+                var allParamsBt = (IAllParamsBT)AllParams;
                 var isStart = timeElement.IsStart;
                 var style = "frtform-formgroup";
                 // timeElement.NotEnabled overrides FormDisplayOnly
@@ -111,7 +112,7 @@
                     }
                     <div class="@style" id="@id">
                         <div class="frtform-form-icon material-icons">@timeElement.Icon</div>
-                        <BlockTimeComponent AllSettings="allSettingsBT" Elements="Elements" 
+                        <BlockTimeComponent AllParams="allParamsBt" Elements="Elements" 
                                             FormProcessor="FormProcessor" IsStart="@isStart"
                                             DisplayOnly="displayOnly" ></BlockTimeComponent>
                     </div>
@@ -125,7 +126,7 @@
                     <div class="@style" id="@id">
                         @*//TODO Label needs spacing when adjacent to field*@
                         <label style="margin: 0">@timeElement.Label</label>
-                        <BlockTimeComponent AllSettings="allSettingsBT" Elements="Elements" 
+                        <BlockTimeComponent AllParams="allParamsBt" Elements="Elements" 
                                             FormProcessor="FormProcessor" IsStart="@isStart"
                                             DisplayOnly="displayOnly" ></BlockTimeComponent>
                     </div>
@@ -133,7 +134,7 @@
                 else
                 {
                     <div class="@style" id="@id">
-                        <BlockTimeComponent AllSettings="allSettingsBT" Elements="Elements" 
+                        <BlockTimeComponent AllParams="allParamsBt" Elements="Elements" 
                                             FormProcessor="FormProcessor" IsStart="@isStart"
                                             DisplayOnly="displayOnly"></BlockTimeComponent>
                     </div>

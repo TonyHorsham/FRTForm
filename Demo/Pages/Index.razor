@@ -1,9 +1,10 @@
 ﻿@page "/"
-@using Demo.FormClasses.Settings
 @using Demo.FormClasses.Services
 @using Demo.FormClasses.Utilities
 @using FRTForm.BlockTime.Enums
 @using FRTForm.BlockTime.Models
+@using FRTForm.BlockTime.Parameters
+@using Demo.FormClasses.Parameters
 
 @inject IModalService Modal
 @inject NavigationManager NavigationManager
@@ -14,7 +15,7 @@
 <button type="button" @onclick="@(e => HandleClick("basicFormSpecs"))">Launch BasicForm</button>
 
 @code {
-    private IAllSettingsBT _allSettings;
+    private IAllParamsBT _allParams;
 
     protected override void OnInitialized()
     {
@@ -22,7 +23,7 @@
         // formSpecs could be created directly,
         //  but FormSpecsSetup provides more flexibility as well as testing
         var formSpecs = FormSpecsSetup.FormSpecsDictionary;
-        var appSettings = new ApplicationSettings("url", new DummySmsSender(),
+        var appSettings = new AppParams("url", new DummySmsSender(),
             new DummyEmailSender(), formSpecs);
         // for a form not using BlockTime, calendarSettings can be null
         var calendarSettings = new CalendarSettings
@@ -32,14 +33,14 @@
             MinBlockDuration = 30,
             Services = new List<Service>()// needs to be valued after data available
         };
-        _allSettings = new AllSettings(appSettings, calendarSettings);
+        _allParams = new AllParams(appSettings, calendarSettings);
         // for a form not using BlockTime, CurrentBlockParameters can be null
         // so no need to setup calendarDay and block
         var calendarId = "anything";
         var calendarDay= new CalendarDay(calendarId, DateTimeOffset.Now, 1);
         var block = new Block(1, DateTimeOffset.Now, TimeSpan.FromHours(1), 1,
             BlockType.Available, calendarId);
-        _allSettings.CurrentBlockParameters =  new CurrentBlockParameters(block, calendarDay,
+        _allParams.CurrentBlockParameters =  new CurrentBlockParameters(block, calendarDay,
             "", false, DateTimeOffset.MinValue, DateTimeOffset.MaxValue);
     }
 
@@ -48,13 +49,13 @@
         if (formSpecsName == "demoFormSpecs")
         {
             var parameters = new ModalParameters();
-            parameters.Add(nameof(DemoForm.AllSettings), _allSettings);
+            parameters.Add(nameof(DemoForm.AllParams), _allParams);
             parameters.Add(nameof(DemoForm.FormSpecsName), formSpecsName);
             var options = new ModalOptions()
             {
                 HideCloseButton = true
             };
-            Modal.Show<DemoForm>("", parameters, options); 
+            Modal.Show<DemoForm>("", parameters, options);
         }
         else if (formSpecsName == "basicFormSpecs")
         {

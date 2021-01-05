@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using FRTForm.BlockTime.Models;
 using FRTForm.Enums;
 using FRTForm.Models;
-using FRTForm.Settings;
+using FRTForm.Parameters;
 using FRTForm.Utilities;
 
 namespace Demo.FormClasses.Utilities
@@ -16,7 +16,7 @@ namespace Demo.FormClasses.Utilities
     public class DemoFormProcessor : IFormProcessor
     {
         private bool _shouldValidate;
-        public async Task HandleClickAsync(List<IFormElement> formElements, string elementName, IAllSettings allSettings)
+        public async Task HandleClickAsync(List<IFormElement> formElements, string elementName, IAllParams allParams)
         {
             var displayOnly = false;
             if (elementName == "DisplayOnlyButton")
@@ -36,12 +36,12 @@ namespace Demo.FormClasses.Utilities
             {
                 throw new NotImplementedException();
             }
-            await UpdateElementsAsync(formElements, allSettings, displayOnly);
+            await UpdateElementsAsync(formElements, allParams, displayOnly);
         }
 
         
 
-        public async Task UpdateElementsAsync(List<IFormElement> formElements, IAllSettings allSettings, bool displayOnly)
+        public async Task UpdateElementsAsync(List<IFormElement> formElements, IAllParams allParams, bool displayOnly)
         {
             ExtractElements(out var displayOnlyButton, out var closeElement, out var display,
                 out var input, out var select, out var submit,
@@ -70,7 +70,7 @@ namespace Demo.FormClasses.Utilities
         }
 
         
-        public async Task FormSubmittedAsync(List<IFormElement> formElements, IAllSettings allSettings)
+        public async Task FormSubmittedAsync(List<IFormElement> formElements, IAllParams allParams)
         {
             // nothing to do in this demo
         }
