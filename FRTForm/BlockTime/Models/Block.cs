@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using FRTForm.BlockTime.Enums;
 
 namespace FRTForm.BlockTime.Models
@@ -18,15 +19,18 @@ namespace FRTForm.BlockTime.Models
 
         //do not want to disclose this Id, so may use something else like truncated name
         //    This would also be a more user friendly url 
+        
+        [StringLength(ModelConstants.MAX_NAME_LENGTH)]
         public string CalendarId { set; get; }
 
         // ********************** optional fields
         public Service Service { set; get; }
+        [StringLength(ModelConstants.MAX_NAME_LENGTH)]
         public string Title { set; get; }
+        [StringLength(ModelConstants.MAX_DESCRIPTION_LENGTH)]
         public string Description { set; get; }
+        [StringLength(ModelConstants.MAX_NAME_LENGTH)]
         public string ClientId { set; get; }
-        // json string with messages - format TBA
-        // probably timestamp, senderId, recipientId, and content
         public List<Message> Messages { set; get; } = new List<Message>();
         public bool IsUnchanged => _originalStart == Start &&
                                    _originalDuration == Duration &&
