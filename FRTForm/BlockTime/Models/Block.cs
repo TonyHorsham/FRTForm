@@ -53,11 +53,10 @@ namespace FRTForm.BlockTime.Models
         {
             // for EF
         }
-        public Block(int id, DateTimeOffset start, TimeSpan duration, int locationId,
+        public Block(DateTimeOffset start, TimeSpan duration, int locationId,
             BlockType blockType, string calendarId, string title = "",
             string description = "", string clientId = "", List<Message> messages = null)
         {
-            Id = id;
             Start = start;
             Duration = duration;
             LocationId = locationId;

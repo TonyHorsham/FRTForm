@@ -43,7 +43,7 @@ namespace Tests
             _allSettings = new AllParams(appSettings, calendarSettings);
             var calendarId = "anything";
             var calendarDay = new CalendarDay(calendarId, DateTimeOffset.Now, 1);
-            var block = new Block(1, DateTimeOffset.Now, TimeSpan.FromHours(1), 1,
+            var block = new Block(DateTimeOffset.Now, TimeSpan.FromHours(1), 1,
                 BlockType.Available, calendarId);
             _allSettings.CurrentBlockParameters = new CurrentBlockParameters(block, calendarDay,
                 "", false, DateTimeOffset.MinValue, DateTimeOffset.MaxValue);

@@ -17,7 +17,7 @@ namespace Tests
         {
             // setup one hour block starting at 1100 today
             // cannot do in Setup because Start and/or Duration changed in each test
-            var block = (new Block(0, DateTimeOffset.Now.Date + new TimeSpan(11, 0, 0),
+            var block = (new Block(DateTimeOffset.Now.Date + new TimeSpan(11, 0, 0),
                 new TimeSpan(1, 0, 0), 1, BlockType.NotAvailable,
                 "test", "", ""));
             var startLimit = block.Start - TimeSpan.FromMinutes(interval);
@@ -45,7 +45,7 @@ namespace Tests
         {
             // setup one hour block starting at 1100 today
             // cannot do in Setup because Start and/or Duration changed in each test
-            var block = (new Block(0, DateTimeOffset.Now.Date + new TimeSpan(11, 0, 0),
+            var block = (new Block(DateTimeOffset.Now.Date + new TimeSpan(11, 0, 0),
                 new TimeSpan(1, 0, 0), 1, BlockType.NotAvailable,
                 "test", "", ""));
             var startLimit = block.Start - TimeSpan.FromMinutes(interval);
@@ -73,7 +73,7 @@ namespace Tests
         {
             // setup one hour block starting at 1100 today
             // cannot do in Setup because Start and/or Duration changed in each test
-            var block = (new Block(0, DateTimeOffset.Now.Date + new TimeSpan(11, 0, 0),
+            var block = (new Block(DateTimeOffset.Now.Date + new TimeSpan(11, 0, 0),
                 new TimeSpan(1, 0, 0), 1, BlockType.NotAvailable,
                 "test", "", ""));
             var startLimit = block.Start - TimeSpan.FromMinutes(interval - 0.5);
@@ -101,7 +101,7 @@ namespace Tests
         {
             // setup one hour block starting at 1100 today
             // cannot do in Setup because Start and/or Duration changed in each test
-            var block = (new Block(0, DateTimeOffset.Now.Date + new TimeSpan(11, 0, 0),
+            var block = (new Block(DateTimeOffset.Now.Date + new TimeSpan(11, 0, 0),
                 new TimeSpan(1, 0, 0), 1, BlockType.NotAvailable,
                 "test", "", ""));
             var startLimit = block.Start - TimeSpan.FromMinutes(interval - 0.5);
@@ -129,7 +129,7 @@ namespace Tests
         {
             // setup one hour block starting at 1100 today
             // cannot do in Setup because Start and/or Duration changed in each test
-            var block = (new Block(0, DateTimeOffset.Now.Date + new TimeSpan(11, 0, 0),
+            var block = (new Block(DateTimeOffset.Now.Date + new TimeSpan(11, 0, 0),
                 new TimeSpan(1, 0, 0), 1, BlockType.NotAvailable,
                 "test", "", ""));
             var startLimit = block.Start - TimeSpan.FromMinutes(interval);
@@ -174,7 +174,7 @@ namespace Tests
         {
             // setup one hour block starting at 1100 today
             // cannot do in Setup because Start and/or Duration changed in each test
-            var block = (new Block(0, DateTimeOffset.Now.Date + new TimeSpan(11, 0, 0),
+            var block = (new Block(DateTimeOffset.Now.Date + new TimeSpan(11, 0, 0),
                 new TimeSpan(1, 0, 0), 1, BlockType.NotAvailable,
                 "test", "", ""));
             var startLimit = block.Start - TimeSpan.FromMinutes(interval);
@@ -219,7 +219,7 @@ namespace Tests
         {
             // setup half hour block starting at 1100 today
             // cannot do in Setup because Start and/or Duration changed in each test
-            var block = (new Block(0, DateTimeOffset.Now.Date + new TimeSpan(11, 0, 0),
+            var block = (new Block(DateTimeOffset.Now.Date + new TimeSpan(11, 0, 0),
                 new TimeSpan(0, interval, 0), 1, BlockType.NotAvailable,
                 "test", "", ""));
             var startLimit = block.Start - TimeSpan.FromMinutes(interval);
