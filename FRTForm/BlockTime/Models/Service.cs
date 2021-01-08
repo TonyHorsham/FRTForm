@@ -2,24 +2,27 @@
 
 namespace FRTForm.BlockTime.Models
 {
-    public readonly struct Service
+    public class Service
     {
-        public Service(string calendarId, int id, string name, 
+        public Service()
+        {
+            // for EF
+        }
+        public Service(string calendarId, string name, 
             string description, TimeSpan duration, decimal price)
         {
             CalendarId = calendarId;
-            Id = id;
             Name = name;
             Description = description;
             Duration = duration;
             Price = price;
         }
 
-        public string  CalendarId { get; }
-        public int Id { get; }
-        public string Name { get; }
-        public string Description { get; }
-        public TimeSpan Duration { get; }
-        public Decimal Price { get; }
+        public string  CalendarId { set; get; }
+        public int Id { set; get; }
+        public string Name { set; get; }
+        public string Description { set; get; }
+        public TimeSpan Duration { set; get; }
+        public Decimal Price { set; get; }
     }
 }
