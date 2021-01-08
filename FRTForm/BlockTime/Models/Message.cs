@@ -4,12 +4,15 @@ using System;
 
 namespace FRTForm.BlockTime.Models
 {
-    public readonly struct Message
+    public class Message
     {
-        public Message(int id, string fromId, string toId, DateTimeOffset timeStamp,
+        public Message()
+        {
+            // for EF
+        }
+        public Message(string fromId, string toId, DateTimeOffset timeStamp,
             string content, int? blockId = null)
         {
-            Id = id;
             FromId = fromId;
             ToId = toId;
             TimeStamp = timeStamp;
@@ -17,13 +20,13 @@ namespace FRTForm.BlockTime.Models
             Content = content;
         }
 
-        public int Id { get; }
-        public string FromId { get; }
-        public string ToId { get; }
-        public DateTimeOffset TimeStamp { get; }
-        public int? BlockId { get; }
-        public string Content { get; }
+        public int Id { set; get; } // set in database
+        public string FromId { set; get; }
+        public string ToId { set; get; }
+        public DateTimeOffset TimeStamp { set; get; }
+        public int? BlockId { set; get; }
+        public string Content { set; get; }
 
-
+        public virtual Block Block { set; get; }
     }
 }

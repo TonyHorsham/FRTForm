@@ -9,16 +9,16 @@ namespace FRTForm.BlockTime.Models
     /// </summary>
     public class Block
     {
-        public int Id { get; }
+        public int Id { set; get; } // set in database
         public DateTimeOffset Start { set; get; }
         public TimeSpan Duration { set; get; }
-        public int LocationId { get; }
+        public int LocationId { set; get; }
         public BlockType BlockType { set; get; }
         public DateTimeOffset End => Start.Add(Duration);
 
         //do not want to disclose this Id, so may use something else like truncated name
         //    This would also be a more user friendly url 
-        public string CalendarId { get; }
+        public string CalendarId { set; get; }
 
         // ********************** optional fields
         public Service Service { set; get; }
@@ -27,7 +27,7 @@ namespace FRTForm.BlockTime.Models
         public string ClientId { set; get; }
         // json string with messages - format TBA
         // probably timestamp, senderId, recipientId, and content
-        public List<Message> Messages { private set; get; }
+        public List<Message> Messages { set; get; } = new List<Message>();
         public bool IsUnchanged => _originalStart == Start &&
                                    _originalDuration == Duration &&
                                    _originalBlockType == BlockType &&
@@ -35,7 +35,8 @@ namespace FRTForm.BlockTime.Models
                                    // Title may be changed by code between DisplayOnly and Edit modes
                                    //_originalTitle == Title &&
                                    _originalDescription == Description &&
-                                   // Message immutable, so only need to check if a message has been added
+                                   // Not intended to allow Message edit or deletion,
+                                   //   so only need to check if a message has been added
                                    _originalMessages.Count == Messages.Count;
 
         //snapshot fields NOT persisted
@@ -48,6 +49,10 @@ namespace FRTForm.BlockTime.Models
         private List<Message> _originalMessages;
         private DateTimeOffset _snapshotTimeStamp;
 
+        public Block()
+        {
+            // for EF
+        }
         public Block(int id, DateTimeOffset start, TimeSpan duration, int locationId,
             BlockType blockType, string calendarId, string title = "",
             string description = "", string clientId = "", List<Message> messages = null)
@@ -59,7 +64,7 @@ namespace FRTForm.BlockTime.Models
             BlockType = blockType;
             CalendarId = calendarId;
             ClientId = clientId;
-            Messages = messages ?? new List<Message>();
+            Messages = messages ?? Messages;
             Service = new Service();
             Title = title;
             Description = description;
