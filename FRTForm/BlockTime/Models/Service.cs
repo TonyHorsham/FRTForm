@@ -19,12 +19,10 @@ namespace FRTForm.BlockTime.Models
             Price = price;
         }
         
-        [StringLength(ModelConstants.MAX_NAME_LENGTH)]
+        // N.B. no annotations - use Fluent API in caller's DataContext.OnModelCreating
         public string  CalendarId { set; get; }
         public int Id { set; get; }
-        [StringLength(ModelConstants.MAX_NAME_LENGTH)]
         public string Name { set; get; }
-        [StringLength(ModelConstants.MAX_DESCRIPTION_LENGTH)]
         public string Description { set; get; }
         public TimeSpan Duration { set; get; }
         public Decimal Price { set; get; }

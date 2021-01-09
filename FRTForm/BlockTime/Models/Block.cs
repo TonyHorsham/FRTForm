@@ -10,26 +10,19 @@ namespace FRTForm.BlockTime.Models
     /// </summary>
     public class Block
     {
+        // N.B. no annotations - use Fluent API in caller's DataContext.OnModelCreating
         public int Id { set; get; } // set in database
         public DateTimeOffset Start { set; get; }
         public TimeSpan Duration { set; get; }
         public int LocationId { set; get; }
         public BlockType BlockType { set; get; }
         public DateTimeOffset End => Start.Add(Duration);
-
-        //do not want to disclose this Id, so may use something else like truncated name
-        //    This would also be a more user friendly url 
-        
-        [StringLength(ModelConstants.MAX_NAME_LENGTH)]
         public string CalendarId { set; get; }
 
         // ********************** optional fields
         public Service Service { set; get; }
-        [StringLength(ModelConstants.MAX_NAME_LENGTH)]
         public string Title { set; get; }
-        [StringLength(ModelConstants.MAX_DESCRIPTION_LENGTH)]
         public string Description { set; get; }
-        [StringLength(ModelConstants.MAX_NAME_LENGTH)]
         public string ClientId { set; get; }
         public List<Message> Messages { set; get; } = new List<Message>();
         public bool IsUnchanged => _originalStart == Start &&
