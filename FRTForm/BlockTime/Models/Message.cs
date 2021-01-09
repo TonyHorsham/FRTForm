@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FRTForm.BlockTime.Models
 {
-    public class Message : IAuditedModel
+    public class Message
     {
         public Message()
         {
@@ -30,9 +30,5 @@ namespace FRTForm.BlockTime.Models
         public string Content { set; get; }
 
         public virtual Block Block { set; get; }
-        public string CreatedByUserId { get; set; }
-        public DateTimeOffset CreatedDate { get; set; }
-        public string LastModifiedUserId { get; set; }
-        public DateTimeOffset? LastModifiedDate { get; set; }
     }
 }

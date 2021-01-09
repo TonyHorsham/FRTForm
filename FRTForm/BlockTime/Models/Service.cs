@@ -20,8 +20,8 @@ namespace FRTForm.BlockTime.Models
         }
         
         // N.B. no annotations - use Fluent API in caller's DataContext.OnModelCreating
-        public string  CalendarId { set; get; }
         public int Id { set; get; }
+        public string  CalendarId { set; get; }
         public string Name { set; get; }
         public string Description { set; get; }
         public TimeSpan Duration { set; get; }

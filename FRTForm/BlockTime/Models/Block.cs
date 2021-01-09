@@ -12,12 +12,12 @@ namespace FRTForm.BlockTime.Models
     {
         // N.B. no annotations - use Fluent API in caller's DataContext.OnModelCreating
         public int Id { set; get; } // set in database
+        public string CalendarId { set; get; }
+        public int LocationId { set; get; }
         public DateTimeOffset Start { set; get; }
         public TimeSpan Duration { set; get; }
-        public int LocationId { set; get; }
         public BlockType BlockType { set; get; }
         public DateTimeOffset End => Start.Add(Duration);
-        public string CalendarId { set; get; }
 
         // ********************** optional fields
         public Service Service { set; get; }
