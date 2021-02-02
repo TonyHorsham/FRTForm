@@ -17,14 +17,11 @@ namespace FRTForm.BlockTime.Models
             Content = content;
         }
 
-        // N.B. no annotations - use Fluent API in caller's DataContext.OnModelCreating
         public int Id { set; get; } // set in database
-        public string FromId { set; get; }
-        public string ToId { set; get; }
-        public DateTimeOffset TimeStamp { set; get; }
-        public int? BlockId { set; get; }
-        public string Content { set; get; }
-
-        public virtual Block Block { set; get; }
+        public string FromId { get; }
+        public string ToId { get; }
+        public DateTimeOffset TimeStamp { get; }
+        public int? BlockId { get; }
+        public string Content { get; }
     }
 }

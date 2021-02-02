@@ -19,7 +19,6 @@ namespace FRTForm.BlockTime.Models
             Price = price;
         }
         
-        // N.B. no annotations - use Fluent API in caller's DataContext.OnModelCreating
         public int Id { set; get; }
         public string  CalendarId { set; get; }
         public string Name { set; get; }

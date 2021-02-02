@@ -10,7 +10,6 @@ namespace FRTForm.BlockTime.Models
     /// </summary>
     public class Block
     {
-        // N.B. no annotations - use Fluent API in caller's DataContext.OnModelCreating
         public int Id { set; get; } // set in database
         public string CalendarId { set; get; }
         public int LocationId { set; get; }
