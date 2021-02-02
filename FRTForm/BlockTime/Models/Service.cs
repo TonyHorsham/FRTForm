@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FRTForm.BlockTime.Models
 {
-    public class Service : IAuditedModel, IActivatableModel
+    public class Service 
     {
         public Service()
         {
@@ -26,11 +26,5 @@ namespace FRTForm.BlockTime.Models
         public string Description { set; get; }
         public TimeSpan Duration { set; get; }
         public Decimal Price { set; get; }
-
-        public string CreatedByUserId { get; set; }
-        public DateTimeOffset CreatedDate { get; set; }
-        public string LastModifiedUserId { get; set; }
-        public DateTimeOffset? LastModifiedDate { get; set; }
-        public bool IsActive { get; set; }
     }
 }

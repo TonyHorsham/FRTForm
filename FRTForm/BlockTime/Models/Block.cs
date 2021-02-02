@@ -8,7 +8,7 @@ namespace FRTForm.BlockTime.Models
     /// <summary>
     /// Basic building block of booking system.
     /// </summary>
-    public class Block : IAuditedModel
+    public class Block
     {
         // N.B. no annotations - use Fluent API in caller's DataContext.OnModelCreating
         public int Id { set; get; } // set in database
@@ -113,10 +113,5 @@ namespace FRTForm.BlockTime.Models
         {
             Messages.Add(message);
         }
-
-        public string CreatedByUserId { get; set; }
-        public DateTimeOffset CreatedDate { get; set; }
-        public string LastModifiedUserId { get; set; }
-        public DateTimeOffset? LastModifiedDate { get; set; }
     }
 }
