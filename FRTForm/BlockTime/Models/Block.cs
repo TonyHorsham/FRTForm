@@ -46,10 +46,6 @@ namespace FRTForm.BlockTime.Models
         private List<Message> _originalMessages;
         private DateTimeOffset _snapshotTimeStamp;
 
-        public Block()
-        {
-            // for EF
-        }
         public Block(DateTimeOffset start, TimeSpan duration, int locationId,
             BlockType blockType, string calendarId, string title = "",
             string description = "", string clientId = "", List<Message> messages = null)

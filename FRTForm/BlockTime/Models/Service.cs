@@ -7,7 +7,7 @@ namespace FRTForm.BlockTime.Models
     {
         public Service()
         {
-            // for EF
+            // for initial Block creation
         }
         public Service(string calendarId, string name, 
             string description, TimeSpan duration, decimal price)
