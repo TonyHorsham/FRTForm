@@ -16,12 +16,19 @@ namespace FRTForm.BlockTime.Models
             BlockId = blockId;
             Content = content;
         }
-
+        public Message(string fromId, string toId,
+            string content, int? blockId = null)
+        {
+            FromId = fromId;
+            ToId = toId;
+            BlockId = blockId;
+            Content = content;
+        }
         public int Id { set; get; } // set in database
-        public string FromId { get; }
-        public string ToId { get; }
-        public DateTimeOffset TimeStamp { get; }
-        public int? BlockId { get; }
-        public string Content { get; }
+        public string FromId { set; get; }
+        public string ToId { set; get; }
+        public DateTimeOffset TimeStamp { set; get; } // typically set in the database
+        public int? BlockId { set; get; }
+        public string Content { set; get; }
     }
 }
