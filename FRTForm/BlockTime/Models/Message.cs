@@ -7,6 +7,10 @@ namespace FRTForm.BlockTime.Models
 {
     public class Message
     {
+        public Message()
+        {
+            // for EF
+        }
         public Message(string fromId, string toId, DateTimeOffset timeStamp,
             string content, int? blockId = null)
         {
