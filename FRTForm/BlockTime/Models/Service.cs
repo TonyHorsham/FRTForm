@@ -23,7 +23,7 @@ namespace FRTForm.BlockTime.Models
         public string  CalendarId { set; get; }
         public string Name { set; get; }
         public string Description { set; get; }
-        public TimeSpan Duration { set; get; }
+        public TimeSpan Duration { set; get; }// for simple serialisation, .Minutes might be preferable
         public Decimal Price { set; get; }
     }
 }
