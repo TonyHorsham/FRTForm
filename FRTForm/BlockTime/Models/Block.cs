@@ -27,7 +27,7 @@ namespace FRTForm.BlockTime.Models
         public bool IsUnchanged => _originalStart == Start &&
                                    _originalDuration == Duration &&
                                    _originalBlockType == BlockType &&
-                                   _originalService.Id == Service.Id &&
+                                   (Service == null || _originalService.Id == Service.Id) &&
                                    // Title may be changed by code between DisplayOnly and Edit modes
                                    //_originalTitle == Title &&
                                    _originalDescription == Description &&
