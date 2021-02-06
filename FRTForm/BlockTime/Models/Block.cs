@@ -56,7 +56,6 @@ namespace FRTForm.BlockTime.Models
             CalendarId = calendarId;
             ClientId = clientId;
             Messages = messages ?? Messages;
-            Service = new Service();
             Title = title;
             Description = description;
         }
