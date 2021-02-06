@@ -7,10 +7,12 @@ namespace FRTForm.BlockTime.Models
 {
     public class Message
     {
-        public Message()
-        {
-            // for EF
-        }
+        public int Id { set; get; } // set in database
+        public string FromId { set; get; }
+        public string ToId { set; get; }
+        public DateTimeOffset TimeStamp { set; get; } // typically set in the database
+        public int? BlockId { set; get; }
+        public string Content { set; get; }
         public Message(string fromId, string toId, DateTimeOffset timeStamp,
             string content, int? blockId = null)
         {
@@ -28,11 +30,5 @@ namespace FRTForm.BlockTime.Models
             BlockId = blockId;
             Content = content;
         }
-        public int Id { set; get; } // set in database
-        public string FromId { set; get; }
-        public string ToId { set; get; }
-        public DateTimeOffset TimeStamp { set; get; } // typically set in the database
-        public int? BlockId { set; get; }
-        public string Content { set; get; }
     }
 }

@@ -5,10 +5,12 @@ namespace FRTForm.BlockTime.Models
 {
     public class Service 
     {
-        public Service()
-        {
-            // for initial Block creation
-        }
+        public int Id { set; get; }
+        public string  CalendarId { set; get; }
+        public string Name { set; get; }
+        public string Description { set; get; }
+        public TimeSpan Duration { set; get; }
+        public Decimal Price { set; get; }
         public Service(string calendarId, string name, 
             string description, TimeSpan duration, decimal price)
         {
@@ -18,12 +20,5 @@ namespace FRTForm.BlockTime.Models
             Duration = duration;
             Price = price;
         }
-        
-        public int Id { set; get; }
-        public string  CalendarId { set; get; }
-        public string Name { set; get; }
-        public string Description { set; get; }
-        public TimeSpan Duration { set; get; }
-        public Decimal Price { set; get; }
     }
 }
