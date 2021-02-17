@@ -15,7 +15,6 @@ namespace FRTForm.BlockTime.Models
         public string CalendarId { set; get; }
         public int LocationId { set; get; }
         public DateTimeOffset Start { set; get; }
-        [JsonConverter(typeof(TimeSpanConverter))]
         public TimeSpan Duration { set; get; }
         public BlockType BlockType { set; get; }
         public DateTimeOffset End => Start.Add(Duration);
