@@ -6,7 +6,7 @@ namespace FRTForm.BlockTime.Models
 {
     public class Service 
     {
-        public int Id { set; get; }
+        public int Id { set; get; } // set in database
         public string  CalendarId { set; get; }
         public string Name { set; get; }
         public string Description { set; get; }
