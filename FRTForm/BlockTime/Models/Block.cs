@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 using FRTForm.BlockTime.Enums;
 
 namespace FRTForm.BlockTime.Models
@@ -14,6 +15,7 @@ namespace FRTForm.BlockTime.Models
         public string CalendarId { set; get; }
         public int LocationId { set; get; }
         public DateTimeOffset Start { set; get; }
+        [JsonConverter(typeof(TimeSpanConverter))]
         public TimeSpan Duration { set; get; }
         public BlockType BlockType { set; get; }
         public DateTimeOffset End => Start.Add(Duration);
