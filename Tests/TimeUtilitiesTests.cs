@@ -19,7 +19,7 @@ namespace Tests
             // cannot do in Setup because Start and/or Duration changed in each test
             var block = (new Block(DateTimeOffset.Now.Date + new TimeSpan(11, 0, 0),
                 new TimeSpan(1, 0, 0), 1, BlockType.NotAvailable,
-                "test", "", ""));
+                "test"));
             var startLimit = block.Start - TimeSpan.FromMinutes(interval);
             var endLimit = block.End + TimeSpan.FromMinutes(interval);
             var minBlockDuration = 30;
@@ -47,7 +47,7 @@ namespace Tests
             // cannot do in Setup because Start and/or Duration changed in each test
             var block = (new Block(DateTimeOffset.Now.Date + new TimeSpan(11, 0, 0),
                 new TimeSpan(1, 0, 0), 1, BlockType.NotAvailable,
-                "test", "", ""));
+                "test"));
             var startLimit = block.Start - TimeSpan.FromMinutes(interval);
             var endLimit = block.End + TimeSpan.FromMinutes(interval);
             var minBlockDuration = 30;
@@ -75,7 +75,7 @@ namespace Tests
             // cannot do in Setup because Start and/or Duration changed in each test
             var block = (new Block(DateTimeOffset.Now.Date + new TimeSpan(11, 0, 0),
                 new TimeSpan(1, 0, 0), 1, BlockType.NotAvailable,
-                "test", "", ""));
+                "test"));
             var startLimit = block.Start - TimeSpan.FromMinutes(interval - 0.5);
             var endLimit = block.End + TimeSpan.FromMinutes(interval - 0.5);
             var minBlockDuration = 30;
@@ -103,7 +103,7 @@ namespace Tests
             // cannot do in Setup because Start and/or Duration changed in each test
             var block = (new Block(DateTimeOffset.Now.Date + new TimeSpan(11, 0, 0),
                 new TimeSpan(1, 0, 0), 1, BlockType.NotAvailable,
-                "test", "", ""));
+                "test"));
             var startLimit = block.Start - TimeSpan.FromMinutes(interval - 0.5);
             var endLimit = block.End + TimeSpan.FromMinutes(interval - 0.5);
             var minBlockDuration = 30;
@@ -131,7 +131,7 @@ namespace Tests
             // cannot do in Setup because Start and/or Duration changed in each test
             var block = (new Block(DateTimeOffset.Now.Date + new TimeSpan(11, 0, 0),
                 new TimeSpan(1, 0, 0), 1, BlockType.NotAvailable,
-                "test", "", ""));
+                "test"));
             var startLimit = block.Start - TimeSpan.FromMinutes(interval);
             var endLimit = block.End + TimeSpan.FromMinutes(interval);
             var minBlockDuration = 30;
@@ -176,7 +176,7 @@ namespace Tests
             // cannot do in Setup because Start and/or Duration changed in each test
             var block = (new Block(DateTimeOffset.Now.Date + new TimeSpan(11, 0, 0),
                 new TimeSpan(1, 0, 0), 1, BlockType.NotAvailable,
-                "test", "", ""));
+                "test"));
             var startLimit = block.Start - TimeSpan.FromMinutes(interval);
             var endLimit = block.End + TimeSpan.FromMinutes(interval);
             var minBlockDuration = 30;
@@ -221,7 +221,7 @@ namespace Tests
             // cannot do in Setup because Start and/or Duration changed in each test
             var block = (new Block(DateTimeOffset.Now.Date + new TimeSpan(11, 0, 0),
                 new TimeSpan(0, interval, 0), 1, BlockType.NotAvailable,
-                "test", "", ""));
+                "test"));
             var startLimit = block.Start - TimeSpan.FromMinutes(interval);
             var endLimit = block.End + TimeSpan.FromMinutes(interval);
             var minBlockDuration = interval;

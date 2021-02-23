@@ -47,8 +47,7 @@ namespace FRTForm.BlockTime.Models
         private DateTimeOffset _snapshotTimeStamp;
 
         public Block(DateTimeOffset start, TimeSpan duration, int locationId,
-            BlockType blockType, string calendarId, string title = "",
-            string description = "", string clientId = "", List<Message> messages = null)
+            BlockType blockType, string calendarId, string clientId = "")
         {
             Start = start;
             Duration = duration;
@@ -56,9 +55,6 @@ namespace FRTForm.BlockTime.Models
             BlockType = blockType;
             CalendarId = calendarId;
             ClientId = clientId;
-            Messages = messages ?? Messages;
-            Title = title;
-            Description = description;
         }
         /// <summary>
         /// TakeSnapshot used to capture state so can restore after cancelled edit.
