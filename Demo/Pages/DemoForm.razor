@@ -13,6 +13,7 @@
 
 @code {
     [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
+    [CascadingParameter] IModalService Modal { get; set; }
     [Parameter] public IAllParams AllParams { get; set; }
     [Parameter] public string FormSpecsName { get; set; }
 
@@ -67,7 +68,7 @@
         {
             _formProcessor.FormSubmittedAsync(_elements, AllParams);
             ModalResult result = ModalResult.Ok("");
-            BlazoredModal.Close();// if all data changes handled in this method (including in IFormProcessor), no need to pass a param back
+            BlazoredModal.CloseAsync();// if all data changes handled in this method (including in IFormProcessor), no need to pass a param back
         }
         else
         {
@@ -78,6 +79,6 @@
 
     void Close()
     {
-        BlazoredModal.Cancel();
+        BlazoredModal.CancelAsync();
     }
 }
